@@ -346,7 +346,7 @@ class SmoothScroll {
 function initWhatsAppButton() {
   const whatsappBtn = document.querySelector('.whatsapp-button');
   if (whatsappBtn) {
-    const phoneNumber = '919999999999'; // Replace with actual number
+    const phoneNumber = '919931691959';
     const message = 'Hello! I would like to inquire about BASDILS PHARMA products.';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     

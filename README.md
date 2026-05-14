@@ -275,7 +275,7 @@ This website design is proprietary to BASDILS PHARMACEUTICALS PVT. LTD.
 
 **BASDILS PHARMACEUTICALS PVT. LTD**
 - Email: info@basdilspharma.com
-- Phone: +91 99999 99999
+- Phone: +91 9931691959
 - Website: https://basdilspharma.com
 
 ---
