@@ -4,8 +4,22 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
-        <div>
-          <h3>BASDILS PHARMACEUTICALS PVT. LTD.</h3>
+        <div className="footer-brand-panel">
+          <NavLink className="footer-brand" to="/" aria-label="BASDILS Pharmaceuticals home">
+            <img
+              className="footer-logo"
+              src="/logo.jpeg"
+              alt="BASDILS Pharmaceuticals Pvt. Ltd."
+              width="180"
+              height="180"
+              loading="lazy"
+              decoding="async"
+            />
+          </NavLink>
+          <p>
+            Quality-driven pharmaceutical, nutraceutical, and Ayurvedic healthcare solutions built with a focus on trust,
+            consistency, and long-term healthcare value.
+          </p>
           <p>Email: <a href="mailto:info@basdilspharma.com">info@basdilspharma.com</a></p>
           <p>Website: <a href="https://www.basdilspharma.com">www.basdilspharma.com</a></p>
         </div>

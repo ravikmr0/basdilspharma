@@ -10,6 +10,12 @@ type FilterState = {
   therapeutic: string;
 };
 
+const defaultFilters: FilterState = {
+  category: 'all',
+  dosage: 'all',
+  therapeutic: 'all'
+};
+
 function matchesFilter(values: string[], filter: string) {
   return filter === 'all' || values.includes(filter);
 }
@@ -18,11 +24,7 @@ export function ProductsPage() {
   const [search, setSearch] = useState('');
   const deferredSearch = useDeferredValue(search);
   const [, startTransition] = useTransition();
-  const [filters, setFilters] = useState<FilterState>({
-    category: 'all',
-    dosage: 'all',
-    therapeutic: 'all'
-  });
+  const [filters, setFilters] = useState<FilterState>(defaultFilters);
 
   const filteredProducts = useMemo(() => {
     const query = deferredSearch.trim().toLowerCase();
@@ -35,6 +37,17 @@ export function ProductsPage() {
       return queryMatch && categoryMatch && dosageMatch && therapeuticMatch;
     });
   }, [deferredSearch, filters.category, filters.dosage, filters.therapeutic]);
+
+  const hasActiveFilters =
+    search.trim().length > 0 ||
+    filters.category !== 'all' ||
+    filters.dosage !== 'all' ||
+    filters.therapeutic !== 'all';
+
+  function resetFilters() {
+    setSearch('');
+    startTransition(() => setFilters(defaultFilters));
+  }
 
   return (
     <>
@@ -140,11 +153,33 @@ export function ProductsPage() {
             description="Each product card links to an individual detail page with composition, benefits, dosage, and pack size information."
           />
 
-          <div className="product-grid">
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.slug} product={product} />
-            ))}
+          <div className="product-results-summary reveal">
+            <p>
+              <strong>{filteredProducts.length}</strong> products available
+            </p>
+            {hasActiveFilters ? (
+              <button className="link-button product-results-reset" type="button" onClick={resetFilters}>
+                Clear search &amp; filters
+              </button>
+            ) : null}
           </div>
+
+          {filteredProducts.length > 0 ? (
+            <div className="product-grid">
+              {filteredProducts.map((product) => (
+                <ProductCard key={product.slug} product={product} />
+              ))}
+            </div>
+          ) : (
+            <div className="empty-products glass-panel reveal">
+              <p className="eyebrow">No products found</p>
+              <h3>Try a broader search or reset the active filters.</h3>
+              <p>We could not find a matching product in the current catalogue selection.</p>
+              <button className="button button-primary" type="button" onClick={resetFilters}>
+                Reset Filters
+              </button>
+            </div>
+          )}
         </div>
       </section>
 

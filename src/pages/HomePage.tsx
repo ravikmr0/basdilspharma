@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { AnimatedCounter } from '../components/AnimatedCounter';
+import { HeroProductSlider } from '../components/HeroProductSlider';
 import { SectionHeading } from '../components/SectionHeading';
+import { products } from '../data/catalog';
 
 export function HomePage() {
   return (
@@ -45,30 +47,7 @@ export function HomePage() {
           </div>
 
           <div className="hero-visual reveal">
-            <div className="hero-card hero-card-main glass-panel">
-              <div className="hero-card-badge">
-                <i className="fa-solid fa-shield-heart" /> Premium Healthcare
-              </div>
-              <div className="lab-orbit">
-                <span />
-                <span />
-                <span />
-                <span />
-              </div>
-              <div className="hero-pack">
-                <div className="pack-label">BASIFOL</div>
-                <div className="pack-sub">Healthcare Innovation Formula</div>
-              </div>
-            </div>
-            <div className="hero-card hero-card-side glass-panel">
-              <p className="eyebrow">R&amp;D</p>
-              <h3>Trusted Healthcare Solutions</h3>
-              <p>Quality-assured products, scientific formulation, and partner-focused execution across therapeutic segments.</p>
-            </div>
-            <div className="hero-card hero-card-mini glass-panel">
-              <i className="fa-solid fa-vial-circle-check" />
-              <span>Quality Assured</span>
-            </div>
+            <HeroProductSlider products={products} />
           </div>
         </div>
       </section>

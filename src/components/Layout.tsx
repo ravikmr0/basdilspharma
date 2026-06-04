@@ -1,28 +1,11 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
-type Theme = 'light' | 'dark';
-
-function getInitialTheme(): Theme {
-  const saved = window.localStorage.getItem('basdils-theme') as Theme | null;
-  if (saved === 'dark' || saved === 'light') {
-    return saved;
-  }
-
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
-
 export function SiteLayout() {
   const location = useLocation();
-  const [theme, setTheme] = useState<Theme>(() => getInitialTheme());
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    document.body.dataset.theme = theme;
-    window.localStorage.setItem('basdils-theme', theme);
-  }, [theme]);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -49,17 +32,11 @@ export function SiteLayout() {
     return () => observer.disconnect();
   }, [location.pathname]);
 
-  const onToggleTheme = useCallback(() => {
-    setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
-  }, []);
-
   return (
     <>
       <Header
-        theme={theme}
         menuOpen={menuOpen}
         onToggleMenu={() => setMenuOpen((current) => !current)}
-        onToggleTheme={onToggleTheme}
       />
       <main id="main-content">
         <Outlet />

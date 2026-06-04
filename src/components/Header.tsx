@@ -2,27 +2,30 @@ import { NavLink } from 'react-router-dom';
 import { navigation } from '../data/catalog';
 
 type HeaderProps = {
-  theme: 'light' | 'dark';
   menuOpen: boolean;
   onToggleMenu: () => void;
-  onToggleTheme: () => void;
 };
 
-export function Header({ theme, menuOpen, onToggleMenu, onToggleTheme }: HeaderProps) {
+export function Header({ menuOpen, onToggleMenu }: HeaderProps) {
   return (
     <header className="site-header">
       <div className="container header-bar">
         <NavLink className="brand" to="/" aria-label="BASDILS Pharmaceuticals home">
-          <span className="brand-mark">B</span>
+          <span className="brand-mark" aria-hidden="true">
+            <img
+              className="brand-logo"
+              src="/logo.jpeg"
+              alt=""
+              width="60"
+              height="60"
+              decoding="async"
+            />
+          </span>
           <span className="brand-copy">
             <strong>BASDILS</strong>
             <small>Pharmaceuticals Pvt. Ltd.</small>
           </span>
         </NavLink>
-
-        <button className="icon-button theme-toggle" type="button" aria-label="Toggle dark mode" onClick={onToggleTheme}>
-          <i className={theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon'} />
-        </button>
 
         <button
           className="icon-button menu-toggle"
