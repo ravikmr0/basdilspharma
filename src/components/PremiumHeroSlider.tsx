@@ -12,7 +12,6 @@ type Slide = {
   featuredProduct?: { name: string; to: string };
   featuredProducts?: { name: string; to: string }[];
   highlights?: string[];
-  accentColor: string;
 };
 
 const slides: Slide[] = [
@@ -28,7 +27,6 @@ const slides: Slide[] = [
       { label: 'Explore Products', to: '/products', variant: 'primary' },
       { label: 'Contact Us', to: '/contact', variant: 'secondary' },
     ],
-    accentColor: '#0d5cab',
   },
   {
     id: 'portfolio',
@@ -42,7 +40,6 @@ const slides: Slide[] = [
       { label: 'View Products', to: '/products', variant: 'primary' },
       { label: 'Download Catalogue', to: '/contact', variant: 'secondary' },
     ],
-    accentColor: '#1677d8',
   },
   {
     id: 'womens-health',
@@ -57,7 +54,6 @@ const slides: Slide[] = [
       { label: 'Request Inquiry', to: '/contact', variant: 'secondary' },
     ],
     featuredProduct: { name: 'Mensoris Syrup', to: '/products/mensoris' },
-    accentColor: '#d62828',
   },
   {
     id: 'liver-care',
@@ -72,7 +68,6 @@ const slides: Slide[] = [
       { label: 'Contact Us', to: '/contact', variant: 'secondary' },
     ],
     featuredProduct: { name: 'Basdil-Liv DS Syrup', to: '/products/basdil-liv-ds' },
-    accentColor: '#0f766e',
   },
   {
     id: 'nutrition',
@@ -91,7 +86,6 @@ const slides: Slide[] = [
       { name: 'Basofer-D3', to: '/products/basofer-d3' },
       { name: 'Bacitrol-Plus', to: '/products/bacitrol-plus' },
     ],
-    accentColor: '#16a34a',
   },
   {
     id: 'manufacturing',
@@ -111,271 +105,230 @@ const slides: Slide[] = [
       'Nationwide Distribution',
       'Ethical Business Practices',
     ],
-    accentColor: '#083b73',
   },
-];
-
-const floatingIcons = [
-  { icon: 'fa-capsules', x: '8%', y: '18%', delay: 0, duration: 8 },
-  { icon: 'fa-dna', x: '85%', y: '22%', delay: 2, duration: 10 },
-  { icon: 'fa-flask-vial', x: '12%', y: '72%', delay: 4, duration: 9 },
-  { icon: 'fa-syringe', x: '78%', y: '68%', delay: 1, duration: 7 },
-  { icon: 'fa-heart-pulse', x: '92%', y: '45%', delay: 3, duration: 11 },
-  { icon: 'fa-staff-snake', x: '4%', y: '48%', delay: 5, duration: 8 },
 ];
 
 export function PremiumHeroSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set([slides[0].id]));
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const [animDirection, setAnimDirection] = useState(1);
+  const touchRef = useRef<number | null>(null);
+  const autoRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const pausedRef = useRef(false);
+
+  // Keep pausedRef in sync so the interval callback reads the latest value
+  useEffect(() => {
+    pausedRef.current = isPaused;
+  }, [isPaused]);
 
   const goTo = useCallback(
     (index: number) => {
-      if (isTransitioning) return;
-      setIsTransitioning(true);
-      setActiveIndex(index);
-      setLoadedImages((prev) => new Set([...prev, slides[index].id]));
-      setTimeout(() => setIsTransitioning(false), 800);
+      setActiveIndex((prev) => {
+        setAnimDirection(index >= prev ? 1 : -1);
+        return index;
+      });
     },
-    [isTransitioning],
+    [],
   );
 
   const goNext = useCallback(() => {
-    goTo((activeIndex + 1) % slides.length);
-  }, [activeIndex, goTo]);
+    setActiveIndex((prev) => {
+      setAnimDirection(1);
+      return (prev + 1) % slides.length;
+    });
+  }, []);
 
   const goPrev = useCallback(() => {
-    goTo((activeIndex - 1 + slides.length) % slides.length);
-  }, [activeIndex, goTo]);
+    setActiveIndex((prev) => {
+      setAnimDirection(-1);
+      return (prev - 1 + slides.length) % slides.length;
+    });
+  }, []);
 
   // Autoplay
   useEffect(() => {
-    if (isPaused) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    timerRef.current = setInterval(() => {
-      if (document.visibilityState === 'visible') {
-        setActiveIndex((prev) => {
-          const next = (prev + 1) % slides.length;
-          setLoadedImages((l) => new Set([...l, slides[next].id]));
-          return next;
-        });
-        setIsTransitioning(true);
-        setTimeout(() => setIsTransitioning(false), 800);
+    autoRef.current = setInterval(() => {
+      if (!pausedRef.current && document.visibilityState === 'visible') {
+        goNext();
       }
     }, 5000);
 
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
+      if (autoRef.current) clearInterval(autoRef.current);
     };
-  }, [isPaused]);
+  }, [goNext]);
 
-  // Preload next image
+  // Preload adjacent images
   useEffect(() => {
-    const nextIndex = (activeIndex + 1) % slides.length;
-    const img = new Image();
-    img.src = slides[nextIndex].image;
+    const prev = (activeIndex - 1 + slides.length) % slides.length;
+    const next = (activeIndex + 1) % slides.length;
+    [prev, next].forEach((i) => {
+      const img = new Image();
+      img.src = slides[i].image;
+    });
   }, [activeIndex]);
 
   // Touch swipe
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.touches[0].clientX);
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchRef.current = e.touches[0].clientX;
   };
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStart === null) return;
-    const diff = touchStart - e.changedTouches[0].clientX;
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchRef.current === null) return;
+    const diff = touchRef.current - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 50) {
       diff > 0 ? goNext() : goPrev();
     }
-    setTouchStart(null);
+    touchRef.current = null;
   };
 
-  // Keyboard navigation
+  // Keyboard
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
+    const onKey = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') goNext();
       if (e.key === 'ArrowLeft') goPrev();
     };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
   }, [goNext, goPrev]);
 
-  const activeSlide = slides[activeIndex];
+  const slide = slides[activeIndex];
 
   return (
-    <div
-      ref={sliderRef}
-      className="premium-hero"
+    <section
+      className="ph"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
       role="region"
-      aria-label="Hero product showcase"
+      aria-label="Hero showcase"
       aria-roledescription="carousel"
     >
-      {/* Background images with Ken Burns */}
-      {slides.map((slide, index) => (
+      {/* Background layers: previous + current for crossfade */}
+      {slides.map((s, i) => (
         <div
-          key={slide.id}
-          className={`premium-hero-bg ${index === activeIndex ? 'is-active' : ''} ${index === activeIndex ? 'ken-burns' : ''}`}
-          style={{ backgroundImage: `url(${slide.image})` }}
-          aria-hidden={index !== activeIndex}
+          key={s.id}
+          className={`ph-bg${i === activeIndex ? ' is-active' : ''}`}
+          style={{ backgroundImage: `url(${s.image})` }}
+          aria-hidden={i !== activeIndex}
         />
       ))}
 
-      {/* Dark gradient overlay */}
-      <div className="premium-hero-overlay" />
+      <div className="ph-overlay" />
 
-      {/* Floating medical icons */}
-      <div className="premium-hero-icons" aria-hidden="true">
-        {floatingIcons.map((item, i) => (
-          <i
-            key={i}
-            className={`fa-solid ${item.icon} premium-hero-float`}
-            style={{
-              left: item.x,
-              top: item.y,
-              animationDelay: `${item.delay}s`,
-              animationDuration: `${item.duration}s`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Content */}
+      <div className="container ph-inner">
+        <div className="ph-text" key={slide.id} data-dir={animDirection}>
+          <p className="ph-eyebrow">{slide.eyebrow}</p>
+          <h1 className="ph-title">{slide.title}</h1>
+          <p className="ph-desc">{slide.description}</p>
 
-      {/* Slide content */}
-      <div className="container premium-hero-content">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`premium-hero-slide ${index === activeIndex ? 'is-active' : ''}`}
-            aria-hidden={index !== activeIndex}
-          >
-            <p className="premium-hero-eyebrow">{slide.eyebrow}</p>
-            <h1 className="premium-hero-title">{slide.title}</h1>
-            <p className="premium-hero-desc">{slide.description}</p>
+          {slide.featuredProduct && (
+            <Link className="ph-badge" to={slide.featuredProduct.to}>
+              <i className="fa-solid fa-star" />
+              <span>Featured: {slide.featuredProduct.name}</span>
+            </Link>
+          )}
 
-            {/* Featured product badge */}
-            {slide.featuredProduct && (
-              <Link className="premium-hero-featured" to={slide.featuredProduct.to}>
-                <i className="fa-solid fa-star" />
-                <span>Featured: {slide.featuredProduct.name}</span>
-              </Link>
-            )}
-
-            {/* Featured products list */}
-            {slide.featuredProducts && (
-              <div className="premium-hero-featured-list">
-                {slide.featuredProducts.map((fp) => (
-                  <Link key={fp.name} className="premium-hero-featured-chip" to={fp.to}>
-                    <i className="fa-solid fa-capsules" />
-                    {fp.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-
-            {/* Highlights */}
-            {slide.highlights && (
-              <ul className="premium-hero-highlights">
-                {slide.highlights.map((h) => (
-                  <li key={h}>
-                    <i className="fa-solid fa-circle-check" />
-                    {h}
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            {/* CTA buttons */}
-            <div className="premium-hero-actions">
-              {slide.buttons.map((btn) => (
-                <Link
-                  key={btn.label}
-                  className={`button premium-hero-btn premium-hero-btn-${btn.variant}`}
-                  to={btn.to}
-                >
-                  {btn.label}
+          {slide.featuredProducts && (
+            <div className="ph-chips">
+              {slide.featuredProducts.map((fp) => (
+                <Link key={fp.name} className="ph-chip" to={fp.to}>
+                  <i className="fa-solid fa-capsules" />
+                  {fp.name}
                 </Link>
               ))}
             </div>
-          </div>
-        ))}
-      </div>
+          )}
 
-      {/* Stats bar */}
-      <div className="premium-hero-stats-bar">
-        <div className="container premium-hero-stats-grid">
-          <div className="premium-hero-stat">
-            <strong><AnimatedCounter value={100} />+</strong>
-            <span>Products</span>
+          {slide.highlights && (
+            <ul className="ph-checks">
+              {slide.highlights.map((h) => (
+                <li key={h}>
+                  <i className="fa-solid fa-circle-check" />
+                  {h}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <div className="ph-actions">
+            {slide.buttons.map((btn) => (
+              <Link
+                key={btn.label}
+                className={`ph-btn ph-btn-${btn.variant}`}
+                to={btn.to}
+              >
+                {btn.label}
+              </Link>
+            ))}
           </div>
-          <div className="premium-hero-stat">
-            <strong><AnimatedCounter value={1} /></strong>
-            <span>Nationwide Presence</span>
-          </div>
-          <div className="premium-hero-stat">
-            <strong><AnimatedCounter value={12} />+</strong>
-            <span>WHO-GMP Partners</span>
-          </div>
-          <div className="premium-hero-stat">
-            <strong><AnimatedCounter value={98} />%</strong>
-            <span>Trust Index</span>
-          </div>
+        </div>
+
+        {/* Stats */}
+        <div className="ph-stats">
+          {([
+            [100, '+', 'Products'],
+            [1, '', 'Nationwide Presence'],
+            [12, '+', 'WHO-GMP Partners'],
+            [98, '%', 'Trust Index'],
+          ] as const).map(([val, suffix, label]) => (
+            <div className="ph-stat" key={label}>
+              <strong>
+                <AnimatedCounter value={val} />
+                {suffix}
+              </strong>
+              <span>{label}</span>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Navigation */}
-      <div className="premium-hero-nav">
+      <nav className="ph-nav" aria-label="Slide navigation">
         <button
-          className="icon-button premium-hero-arrow"
+          className="ph-arrow"
           type="button"
           aria-label="Previous slide"
           onClick={goPrev}
         >
           <i className="fa-solid fa-chevron-left" />
         </button>
-
-        <div className="premium-hero-dots">
-          {slides.map((slide, index) => (
+        <div className="ph-dots">
+          {slides.map((s, i) => (
             <button
-              key={slide.id}
-              className={`premium-hero-dot ${index === activeIndex ? 'is-active' : ''}`}
+              key={s.id}
+              className={`ph-dot${i === activeIndex ? ' is-active' : ''}`}
               type="button"
-              aria-label={`Go to ${slide.eyebrow}`}
-              aria-pressed={index === activeIndex}
-              onClick={() => goTo(index)}
-            >
-              <span className="premium-hero-dot-label">{slide.eyebrow}</span>
-            </button>
+              aria-label={s.eyebrow}
+              aria-pressed={i === activeIndex}
+              onClick={() => goTo(i)}
+            />
           ))}
         </div>
-
         <button
-          className="icon-button premium-hero-arrow"
+          className="ph-arrow"
           type="button"
           aria-label="Next slide"
           onClick={goNext}
         >
           <i className="fa-solid fa-chevron-right" />
         </button>
-      </div>
+      </nav>
 
       {/* Scroll indicator */}
-      <div className="premium-hero-scroll" aria-hidden="true">
-        <div className="premium-hero-scroll-line" />
+      <div className="ph-scroll" aria-hidden="true">
+        <div className="ph-scroll-line" />
         <span>Scroll</span>
       </div>
 
-      {/* Slide counter */}
-      <div className="premium-hero-counter" aria-live="polite">
+      {/* Counter */}
+      <div className="ph-counter" aria-live="polite">
         {String(activeIndex + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
       </div>
-    </div>
+    </section>
   );
 }
