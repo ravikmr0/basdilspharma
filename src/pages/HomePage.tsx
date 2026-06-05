@@ -1,56 +1,11 @@
 import { Link } from 'react-router-dom';
-import { AnimatedCounter } from '../components/AnimatedCounter';
-import { HeroProductSlider } from '../components/HeroProductSlider';
+import { PremiumHeroSlider } from '../components/PremiumHeroSlider';
 import { SectionHeading } from '../components/SectionHeading';
-import { products } from '../data/catalog';
 
 export function HomePage() {
   return (
     <>
-      <section className="hero section-shell" id="home">
-        <div className="container hero-grid">
-          <div className="hero-copy reveal">
-            <p className="eyebrow">Empowering Healthcare Through Innovation, Quality &amp; Trust</p>
-            <h1>Empowering Healthcare Through Innovation, Quality &amp; Trust</h1>
-            <p className="lead">
-              At <strong>BASDILS PHARMACEUTICALS PVT. LTD.</strong>, we are committed to delivering high-quality pharmaceutical,
-              nutraceutical, and Ayurvedic healthcare solutions that improve lives and support better health outcomes.
-              With a strong focus on quality, innovation, and customer satisfaction, we strive to make healthcare accessible,
-              effective, and reliable across India.
-            </p>
-            <div className="hero-actions">
-              <Link className="button button-primary" to="/products">
-                Explore Products
-              </Link>
-              <Link className="button button-secondary" to="/contact">
-                Contact Us
-              </Link>
-            </div>
-            <div className="hero-stats">
-              <article className="stat-card">
-                <strong><AnimatedCounter value={100} /></strong>
-                <span>Products</span>
-              </article>
-              <article className="stat-card">
-                <strong><AnimatedCounter value={1} /></strong>
-                <span>Nationwide Presence</span>
-              </article>
-              <article className="stat-card">
-                <strong><AnimatedCounter value={12} /></strong>
-                <span>WHO-GMP Partners</span>
-              </article>
-              <article className="stat-card">
-                <strong><AnimatedCounter value={98} /></strong>
-                <span>Trust Index</span>
-              </article>
-            </div>
-          </div>
-
-          <div className="hero-visual reveal">
-            <HeroProductSlider products={products} />
-          </div>
-        </div>
-      </section>
+      <PremiumHeroSlider />
 
       <section className="logo-band section-tight">
         <div className="container band-row">
