@@ -24,53 +24,65 @@ export function ProductCard({ product }: ProductCardProps) {
       data-dosage={product.dosageTags.join(' ')}
       data-therapeutic={product.therapeuticTags.join(' ')}
     >
-      <div className="product-card-top">
-        <p className="product-card-category">{product.categoryLabel}</p>
-        <span className="product-card-form">{product.dosageForm}</span>
-      </div>
-
-      <div className="pack-shot">
-        <span>{product.name}</span>
-        <small>{product.packSize}</small>
-      </div>
-
-      <div className="product-card-body">
-        <p className="product-card-kicker">{formatTag(product.therapeuticTags[0])}</p>
-        <h3>{product.displayName}</h3>
-        <p className="muted">{product.shortDescription}</p>
-        <p className="product-card-overview">{product.overview}</p>
-
-        <ul className="product-meta">
-          <li>{product.dosageForm}</li>
-          <li>{formatTag(product.therapeuticTags[0])}</li>
-          <li>{product.packSize}</li>
-        </ul>
-
-        <div className="product-card-detail">
-          <strong>{product.ingredientsLabel}</strong>
-          <p>
-            {ingredientPreview}
-            {extraIngredients > 0 ? ` +${extraIngredients} more` : ''}
-          </p>
+      <div className="product-card-wrapper">
+        <div className="product-card-header">
+          <div className="product-card-top">
+            <span className="product-card-category">{product.categoryLabel}</span>
+            <span className="product-card-form">{product.dosageForm}</span>
+          </div>
+          <div className="product-card-icon">
+            <i className="fa-solid fa-bottle-droplet" />
+          </div>
         </div>
 
-        <div className="product-card-detail">
-          <strong>Key Benefits</strong>
-          <ul className="product-highlights">
-            {highlightedBenefits.map((benefit) => (
-              <li key={benefit}>{benefit}</li>
-            ))}
+        <div className="pack-shot">
+          <span className="pack-shot-name">{product.name}</span>
+          <small className="pack-shot-size">{product.packSize}</small>
+        </div>
+
+        <div className="product-card-body">
+          <p className="product-card-kicker">{formatTag(product.therapeuticTags[0])}</p>
+          <h3>{product.displayName}</h3>
+          <p className="muted product-card-description">{product.shortDescription}</p>
+          <p className="product-card-overview">{product.overview}</p>
+
+          <ul className="product-meta">
+            <li><i className="fa-solid fa-vial" /> {product.dosageForm}</li>
+            <li><i className="fa-solid fa-leaf" /> {formatTag(product.therapeuticTags[0])}</li>
+            <li><i className="fa-solid fa-box" /> {product.packSize}</li>
           </ul>
-        </div>
-      </div>
 
-      <div className="product-card-actions">
-        <Link className="link-button" to={`/products/${product.slug}`}>
-          View Details
-        </Link>
-        <Link className="button button-secondary product-card-enquiry" to="/contact">
-          Enquire Now
-        </Link>
+          <div className="product-card-detail">
+            <strong><i className="fa-solid fa-flask" /> Key Ingredients</strong>
+            <p>
+              {ingredientPreview}
+              {extraIngredients > 0 ? ` +${extraIngredients} more` : ''}
+            </p>
+          </div>
+
+          <div className="product-card-detail">
+            <strong><i className="fa-solid fa-star" /> Key Benefits</strong>
+            <ul className="product-highlights">
+              {highlightedBenefits.map((benefit) => (
+                <li key={benefit}>
+                  <i className="fa-solid fa-check-circle" />
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="product-card-actions">
+          <Link className="link-button" to={`/products/${product.slug}`}>
+            <i className="fa-solid fa-arrow-right" />
+            View Details
+          </Link>
+          <Link className="button button-secondary product-card-enquiry" to="/contact">
+            <i className="fa-solid fa-envelope" />
+            Enquire Now
+          </Link>
+        </div>
       </div>
     </article>
   );

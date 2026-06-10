@@ -2,6 +2,31 @@ import { Link } from 'react-router-dom';
 import { PremiumHeroSlider } from '../components/PremiumHeroSlider';
 import { SectionHeading } from '../components/SectionHeading';
 
+const trustHighlights = [
+  { value: 'WHO-GMP', label: 'Manufacturing Standards', icon: 'fa-shield-halved' },
+  { value: '98%', label: 'Client Trust Index', icon: 'fa-heart-pulse' },
+  { value: '12+', label: 'Specialty Categories', icon: 'fa-capsules' },
+  { value: '24/7', label: 'Partner Support', icon: 'fa-headset' }
+];
+
+const testimonials = [
+  {
+    quote: 'Their quality controls and professional approach make them a dependable partner for our healthcare network.',
+    name: 'Amit Sharma',
+    role: 'Regional Distribution Lead'
+  },
+  {
+    quote: 'The product portfolio feels thoughtfully curated, and every interaction reflects strong credibility and care.',
+    name: 'Priya Menon',
+    role: 'Healthcare Franchise Partner'
+  },
+  {
+    quote: 'A premium brand experience backed by genuine product quality and responsive support from the team.',
+    name: 'Rahul Verma',
+    role: 'Private Label Client'
+  }
+];
+
 export function HomePage() {
   return (
     <>
@@ -9,11 +34,30 @@ export function HomePage() {
 
       <section className="logo-band section-tight">
         <div className="container band-row">
-          <span>WHO-GMP Manufacturing</span>
-          <span>ISO-aligned Systems</span>
-          <span>Research-led Formulations</span>
-          <span>Ethical Business Practices</span>
-          <span>Healthcare Distribution Support</span>
+          <span className="band-pill">WHO-GMP Manufacturing</span>
+          <span className="band-pill">ISO-aligned Systems</span>
+          <span className="band-pill">Research-led Formulations</span>
+          <span className="band-pill">Ethical Business Practices</span>
+          <span className="band-pill">Healthcare Distribution Support</span>
+        </div>
+      </section>
+
+      <section className="section-shell section-surface" id="trust">
+        <div className="container">
+          <div className="section-intro reveal">
+            <p className="eyebrow">Trusted Healthcare Partner</p>
+            <h2>Premium quality commitments, deep expertise, and growth-focused partnerships.</h2>
+            <p>BASDILS brings together scientific formulation, operational discipline, and a modern customer experience to support healthcare brands at every stage of growth.</p>
+          </div>
+          <div className="stats-strip">
+            {trustHighlights.map((item) => (
+              <article className="value-card reveal" key={item.label}>
+                <i className={`fa-solid ${item.icon}`} />
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -24,7 +68,7 @@ export function HomePage() {
             title="A growing healthcare company with a clear purpose"
             description="Founded with a vision to contribute meaningfully to the healthcare industry, BASDILS PHARMACEUTICALS PVT. LTD. has emerged as a growing pharmaceutical company offering a diverse portfolio of healthcare products across multiple therapeutic segments."
           />
-          <div className="about-panel glass-panel reveal">
+          <div className="about-panel glass-panel reveal premium-surface">
             <div>
               <h3>Company Overview</h3>
               <p>Our product range includes nutraceuticals, women's healthcare, liver care, iron and hematinic supplements, bone health products, joint care solutions, Ayurvedic formulations, and general wellness products.</p>
@@ -136,7 +180,7 @@ export function HomePage() {
               ['Ethical Business Practices', 'fa-people-arrows'],
               ['Customer Satisfaction', 'fa-heart']
             ].map(([title, icon]) => (
-              <article className="feature-card reveal" key={title as string}>
+              <article className="feature-card reveal premium-card" key={title as string}>
                 <i className={`fa-solid ${icon}`} />
                 <h3>{title}</h3>
               </article>
@@ -162,7 +206,7 @@ export function HomePage() {
               ['Marketing Support', 'fa-bullhorn'],
               ['Distribution Network', 'fa-route']
             ].map(([title, icon]) => (
-              <article className="service-card reveal" key={title as string}>
+              <article className="service-card reveal premium-card" key={title as string}>
                 <i className={`fa-solid ${icon}`} />
                 <h3>{title}</h3>
               </article>
@@ -171,8 +215,32 @@ export function HomePage() {
         </div>
       </section>
 
+      <section className="section-shell" id="testimonials">
+        <div className="container">
+          <SectionHeading
+            eyebrow="Client Experience"
+            title="What partners value most about BASDILS"
+            description="A premium customer experience is built on transparency, responsiveness, and product credibility."
+          />
+          <div className="testimonial-grid">
+            {testimonials.map((testimonial) => (
+              <article className="testimonial-card reveal" key={testimonial.name}>
+                <div className="testimonial-rating" aria-label="Five star review">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <i key={`${testimonial.name}-${index}`} className="fa-solid fa-star" />
+                  ))}
+                </div>
+                <p>“{testimonial.quote}”</p>
+                <strong>{testimonial.name}</strong>
+                <span>{testimonial.role}</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section-shell">
-        <div className="container cta-banner glass-panel reveal">
+        <div className="container cta-banner glass-panel reveal premium-banner">
           <div>
             <p className="eyebrow">Contact Information</p>
             <h2>Let's build healthier lives together</h2>
