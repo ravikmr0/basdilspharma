@@ -68,7 +68,7 @@ export function Footer() {
                 </div>
                 <div className="footer-contact-item">
                   <i className="fa-solid fa-map-marker-alt" />
-                  <span>Headquarters: India</span>
+                  <span>Basdils Pharmaceuticals Pvt. Ltd. Reg. Office :- BML, HJP, VSL, BR-844101 INDIA</span>
                 </div>
               </div>
             </div>

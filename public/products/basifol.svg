@@ -1,0 +1,44 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5f5f5;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow3">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-opacity="0.15" />
+    </filter>
+  </defs>
+  <!-- Clean Background -->
+  <rect width="400" height="300" fill="url(#bgGradient3)"/>
+  
+  <!-- Subtle Floor Shadow -->
+  <ellipse cx="200" cy="270" rx="100" ry="15" fill="#000000" opacity="0.08"/>
+  
+  <!-- Blister Pack -->
+  <g filter="url(#shadow3)">
+    <!-- Backing Card -->
+    <rect x="140" y="70" width="120" height="140" rx="8" fill="white" stroke="#ddd" stroke-width="1" opacity="0.98"/>
+    
+    <!-- Blister Grid Pattern -->
+    <rect x="150" y="80" width="20" height="25" rx="2" fill="#FFB3D9" stroke="#FF69B4" stroke-width="1" opacity="0.8"/>
+    <rect x="175" y="80" width="20" height="25" rx="2" fill="#FFB3D9" stroke="#FF69B4" stroke-width="1" opacity="0.8"/>
+    <rect x="200" y="80" width="20" height="25" rx="2" fill="#FFB3D9" stroke="#FF69B4" stroke-width="1" opacity="0.8"/>
+    
+    <rect x="150" y="110" width="20" height="25" rx="2" fill="#FFB3D9" stroke="#FF69B4" stroke-width="1" opacity="0.8"/>
+    <rect x="175" y="110" width="20" height="25" rx="2" fill="#FFB3D9" stroke="#FF69B4" stroke-width="1" opacity="0.8"/>
+    <rect x="200" y="110" width="20" height="25" rx="2" fill="#FFB3D9" stroke="#FF69B4" stroke-width="1" opacity="0.8"/>
+    
+    <!-- Shine on tablets -->
+    <circle cx="158" cy="85" r="3" fill="#ffffff" opacity="0.4"/>
+    <circle cx="183" cy="85" r="3" fill="#ffffff" opacity="0.4"/>
+    <circle cx="208" cy="85" r="3" fill="#ffffff" opacity="0.4"/>
+  </g>
+  
+  <!-- Label/Information -->
+  <g>
+    <rect x="145" y="155" width="110" height="45" rx="3" fill="#ffffff" opacity="0.98" stroke="#FFB3D9" stroke-width="0.5"/>
+    <text x="200" y="172" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#FF6B9D">Basifol</text>
+    <text x="200" y="188" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#666">Prenatal Support</text>
+    <text x="200" y="198" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="#999">10x10 Tablets</text>
+  </g>
+</svg>

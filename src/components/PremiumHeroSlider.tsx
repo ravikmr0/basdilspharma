@@ -1,109 +1,93 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AnimatedCounter } from './AnimatedCounter';
 
 type Slide = {
   id: string;
   eyebrow: string;
   title: string;
+  subtitle?: string;
   description: string;
   image: string;
   buttons: { label: string; to: string; variant: 'primary' | 'secondary' }[];
-  featuredProduct?: { name: string; to: string };
-  featuredProducts?: { name: string; to: string }[];
-  highlights?: string[];
 };
 
+/**
+ * Premium pharmaceutical industry background images
+ * Slide 1: Modern laboratory research
+ * Slide 2: Manufacturing & production
+ * Slide 3: Healthcare professionals
+ * Slide 4: Pharmaceutical products
+ * Slide 5: Biotechnology innovation
+ */
 const slides: Slide[] = [
   {
-    id: 'corporate',
-    eyebrow: 'Corporate Healthcare',
-    title: 'Delivering Quality Healthcare Solutions Across India',
+    id: 'research',
+    eyebrow: 'Scientific Innovation',
+    title: 'Healthcare Excellence Through Quality & Innovation',
+    subtitle: 'Scientific Formulations. Trusted Manufacturing. Quality Care.',
     description:
-      'BASDILS Pharmaceuticals is committed to providing innovative pharmaceutical, nutraceutical, and Ayurvedic products that improve lives through quality, trust, and excellence.',
+      'Delivering pharmaceutical, nutraceutical, and Ayurvedic solutions backed by scientific expertise, rigorous quality standards, and a commitment to advancing healthcare.',
     image:
-      'https://images.pexels.com/photos/4056820/pexels-photo-4056820.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80',
-    buttons: [
-      { label: 'Explore Products', to: '/products', variant: 'primary' },
-      { label: 'Contact Us', to: '/contact', variant: 'secondary' },
-    ],
-  },
-  {
-    id: 'portfolio',
-    eyebrow: 'Product Portfolio',
-    title: 'Comprehensive Healthcare Product Portfolio',
-    description:
-      "From Women's Healthcare and Liver Care to Nutraceuticals, Bone Health, and Iron Supplements, we offer scientifically formulated healthcare solutions for every stage of life.",
-    image:
-      'https://images.pexels.com/photos/3683098/pexels-photo-3683098.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80',
+      'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=2000&q=80',
     buttons: [
       { label: 'View Products', to: '/products', variant: 'primary' },
       { label: 'Download Catalogue', to: '/contact', variant: 'secondary' },
     ],
   },
   {
-    id: 'womens-health',
-    eyebrow: "Women's Healthcare",
-    title: "Supporting Women's Health & Wellness",
-    description:
-      "Advanced Ayurvedic and nutritional formulations designed to promote women's wellness, reproductive health, and overall well-being.",
-    image:
-      'https://images.pexels.com/photos/7089401/pexels-photo-7089401.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80',
-    buttons: [
-      { label: 'Learn More', to: '/products/mensoris', variant: 'primary' },
-      { label: 'Request Inquiry', to: '/contact', variant: 'secondary' },
-    ],
-    featuredProduct: { name: 'Mensoris Syrup', to: '/products/mensoris' },
-  },
-  {
-    id: 'liver-care',
-    eyebrow: 'Liver Care Solutions',
-    title: 'Advanced Liver Health & Digestive Support',
-    description:
-      'Scientifically formulated herbal solutions that help support liver function, digestion, appetite, and daily wellness.',
-    image:
-      'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80',
-    buttons: [
-      { label: 'View Details', to: '/products/basdil-liv-ds', variant: 'primary' },
-      { label: 'Contact Us', to: '/contact', variant: 'secondary' },
-    ],
-    featuredProduct: { name: 'Basdil-Liv DS Syrup', to: '/products/basdil-liv-ds' },
-  },
-  {
-    id: 'nutrition',
-    eyebrow: 'Nutrition & Wellness',
-    title: 'Strengthening Health Through Nutrition',
-    description:
-      'High-quality nutraceutical formulations enriched with vitamins, minerals, folate, DHA, iron, calcium, and essential nutrients.',
-    image:
-      'https://images.pexels.com/photos/5910499/pexels-photo-5910499.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80',
-    buttons: [
-      { label: 'Explore Range', to: '/products', variant: 'primary' },
-      { label: 'Get Quote', to: '/contact', variant: 'secondary' },
-    ],
-    featuredProducts: [
-      { name: 'Basifol', to: '/products/basifol' },
-      { name: 'Basofer-D3', to: '/products/basofer-d3' },
-      { name: 'Bacitrol-Plus', to: '/products/bacitrol-plus' },
-    ],
-  },
-  {
     id: 'manufacturing',
-    eyebrow: 'Manufacturing & Quality',
-    title: 'Quality You Can Trust',
+    eyebrow: 'Manufacturing Excellence',
+    title: 'Advanced Manufacturing & Quality Excellence',
+    subtitle: 'Trusted Pharmaceutical, Nutraceutical & Ayurvedic Excellence',
     description:
-      'Manufactured in certified facilities following stringent quality standards, ensuring safety, consistency, and reliability in every product.',
+      'Advanced manufacturing facilities with automated production lines, rigorous quality control systems, and ISO-certified processes ensuring pharmaceutical excellence in every product.',
     image:
-      'https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80',
+      'https://images.pexels.com/photos/3735857/pexels-photo-3735857.jpeg?auto=compress&cs=tinysrgb&w=2000&q=80',
     buttons: [
-      { label: 'About Us', to: '/about', variant: 'primary' },
-      { label: 'Become a Partner', to: '/contact', variant: 'secondary' },
+      { label: 'Learn More', to: '/manufacturing', variant: 'primary' },
+      { label: 'Certifications', to: '/about', variant: 'secondary' },
     ],
-    highlights: [
-      'Quality Assured Products',
-      'Certified Manufacturing Partners',
-      'Nationwide Distribution',
-      'Ethical Business Practices',
+  },
+  {
+    id: 'healthcare-professionals',
+    eyebrow: 'Medical Excellence',
+    title: 'Trusted by Healthcare Professionals Nationwide',
+    subtitle: 'Innovation in Pharmaceutical Healthcare',
+    description:
+      'Partnering with healthcare professionals across India to deliver innovative pharmaceutical solutions trusted for quality, efficacy, and safety.',
+    image:
+      'https://images.pexels.com/photos/7974355/pexels-photo-7974355.jpeg?auto=compress&cs=tinysrgb&w=2000&q=80',
+    buttons: [
+      { label: 'Explore Products', to: '/products', variant: 'primary' },
+      { label: 'Contact Sales', to: '/contact', variant: 'secondary' },
+    ],
+  },
+  {
+    id: 'products',
+    eyebrow: 'Product Portfolio',
+    title: 'Quality Pharmaceuticals & Wellness Solutions',
+    subtitle: 'Pharmaceutical, Nutraceutical & Ayurvedic Solutions',
+    description:
+      'Formulated and manufactured with pharmaceutical precision. Capsules, tablets, syrups, and supplements backed by scientific research and quality excellence.',
+    image:
+      'https://images.pexels.com/photos/5632399/pexels-photo-5632399.jpeg?auto=compress&cs=tinysrgb&w=2000&q=80',
+    buttons: [
+      { label: 'View All Products', to: '/products', variant: 'primary' },
+      { label: 'Request Samples', to: '/contact', variant: 'secondary' },
+    ],
+  },
+  {
+    id: 'biotechnology',
+    eyebrow: 'Future of Medicine',
+    title: 'Pioneering Biotech & Scientific Innovation',
+    subtitle: 'Leading Scientific Research & Development',
+    description:
+      'Advanced R&D, scientific research, and biotechnology innovation driving breakthrough pharmaceutical treatments and wellness solutions for tomorrow\'s healthcare.',
+    image:
+      'https://images.pexels.com/photos/3962286/pexels-photo-3962286.jpeg?auto=compress&cs=tinysrgb&w=2000&q=80',
+    buttons: [
+      { label: 'About Our R&D', to: '/about', variant: 'primary' },
+      { label: 'Innovation Hub', to: '/contact', variant: 'secondary' },
     ],
   },
 ];
@@ -145,7 +129,7 @@ export function PremiumHeroSlider() {
     });
   }, []);
 
-  // Autoplay
+  // Autoplay: 4-5 second interval
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -153,14 +137,14 @@ export function PremiumHeroSlider() {
       if (!pausedRef.current && document.visibilityState === 'visible') {
         goNext();
       }
-    }, 5000);
+    }, 4500);
 
     return () => {
       if (autoRef.current) clearInterval(autoRef.current);
     };
   }, [goNext]);
 
-  // Preload adjacent images
+  // Preload adjacent images for performance
   useEffect(() => {
     const prev = (activeIndex - 1 + slides.length) % slides.length;
     const next = (activeIndex + 1) % slides.length;
@@ -170,7 +154,7 @@ export function PremiumHeroSlider() {
     });
   }, [activeIndex]);
 
-  // Touch swipe
+  // Touch swipe support for mobile and tablet
   const onTouchStart = (e: React.TouchEvent) => {
     touchRef.current = e.touches[0].clientX;
   };
@@ -184,7 +168,7 @@ export function PremiumHeroSlider() {
     touchRef.current = null;
   };
 
-  // Keyboard
+  // Keyboard accessibility
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') goNext();
@@ -204,10 +188,10 @@ export function PremiumHeroSlider() {
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
       role="region"
-      aria-label="Hero showcase"
+      aria-label="Premium hero carousel - Pharmaceutical healthcare solutions"
       aria-roledescription="carousel"
     >
-      {/* Background layers: previous + current for crossfade */}
+      {/* Background image layers with smooth fade transition */}
       {slides.map((s, i) => (
         <div
           key={s.id}
@@ -217,44 +201,25 @@ export function PremiumHeroSlider() {
         />
       ))}
 
+      {/* Premium dark-blue gradient overlay */}
       <div className="ph-overlay" />
 
-      {/* Content */}
+      {/* Content section */}
       <div className="container ph-inner">
         <div className="ph-text" key={slide.id} data-dir={animDirection}>
+          {/* Section eyebrow label */}
           <p className="ph-eyebrow">{slide.eyebrow}</p>
+
+          {/* Main heading */}
           <h1 className="ph-title">{slide.title}</h1>
+
+          {/* Optional subtitle */}
+          {slide.subtitle && <p className="ph-subtitle">{slide.subtitle}</p>}
+
+          {/* Description */}
           <p className="ph-desc">{slide.description}</p>
 
-          {slide.featuredProduct && (
-            <Link className="ph-badge" to={slide.featuredProduct.to}>
-              <i className="fa-solid fa-star" />
-              <span>Featured: {slide.featuredProduct.name}</span>
-            </Link>
-          )}
-
-          {slide.featuredProducts && (
-            <div className="ph-chips">
-              {slide.featuredProducts.map((fp) => (
-                <Link key={fp.name} className="ph-chip" to={fp.to}>
-                  <i className="fa-solid fa-capsules" />
-                  {fp.name}
-                </Link>
-              ))}
-            </div>
-          )}
-
-          {slide.highlights && (
-            <ul className="ph-checks">
-              {slide.highlights.map((h) => (
-                <li key={h}>
-                  <i className="fa-solid fa-circle-check" />
-                  {h}
-                </li>
-              ))}
-            </ul>
-          )}
-
+          {/* CTA buttons with premium styling */}
           <div className="ph-actions">
             {slide.buttons.map((btn) => (
               <Link
@@ -267,53 +232,43 @@ export function PremiumHeroSlider() {
             ))}
           </div>
         </div>
-
-        {/* Stats */}
-        <div className="ph-stats">
-          {([
-            [100, '+', 'Products'],
-            [1, '', 'Nationwide Presence'],
-            [12, '+', 'WHO-GMP Partners'],
-            [98, '%', 'Trust Index'],
-          ] as const).map(([val, suffix, label]) => (
-            <div className="ph-stat" key={label}>
-              <strong>
-                <AnimatedCounter value={val} />
-                {suffix}
-              </strong>
-              <span>{label}</span>
-            </div>
-          ))}
-        </div>
       </div>
 
-      {/* Navigation */}
+      {/* Navigation controls */}
       <nav className="ph-nav" aria-label="Slide navigation">
+        {/* Left arrow control */}
         <button
           className="ph-arrow"
           type="button"
           aria-label="Previous slide"
           onClick={goPrev}
+          title="Previous slide (or press left arrow key)"
         >
           <i className="fa-solid fa-chevron-left" />
         </button>
+
+        {/* Pagination dots */}
         <div className="ph-dots">
           {slides.map((s, i) => (
             <button
               key={s.id}
               className={`ph-dot${i === activeIndex ? ' is-active' : ''}`}
               type="button"
-              aria-label={s.eyebrow}
+              aria-label={`Go to ${s.eyebrow} slide`}
               aria-pressed={i === activeIndex}
               onClick={() => goTo(i)}
+              title={s.eyebrow}
             />
           ))}
         </div>
+
+        {/* Right arrow control */}
         <button
           className="ph-arrow"
           type="button"
           aria-label="Next slide"
           onClick={goNext}
+          title="Next slide (or press right arrow key)"
         >
           <i className="fa-solid fa-chevron-right" />
         </button>
@@ -325,8 +280,8 @@ export function PremiumHeroSlider() {
         <span>Scroll</span>
       </div>
 
-      {/* Counter */}
-      <div className="ph-counter" aria-live="polite">
+      {/* Slide counter */}
+      <div className="ph-counter" aria-live="polite" aria-label="Slide counter">
         {String(activeIndex + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
       </div>
     </section>

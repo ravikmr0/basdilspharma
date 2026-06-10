@@ -1,13 +1,8 @@
 import { Link } from 'react-router-dom';
 import { PremiumHeroSlider } from '../components/PremiumHeroSlider';
 import { SectionHeading } from '../components/SectionHeading';
-
-const trustHighlights = [
-  { value: 'WHO-GMP', label: 'Manufacturing Standards', icon: 'fa-shield-halved' },
-  { value: '98%', label: 'Client Trust Index', icon: 'fa-heart-pulse' },
-  { value: '12+', label: 'Specialty Categories', icon: 'fa-capsules' },
-  { value: '24/7', label: 'Partner Support', icon: 'fa-headset' }
-];
+import { ProductCardsSlider } from '../components/ProductCardsSlider';
+import { products } from '../data/catalog';
 
 const testimonials = [
   {
@@ -31,87 +26,6 @@ export function HomePage() {
   return (
     <>
       <PremiumHeroSlider />
-
-      <section className="logo-band section-tight">
-        <div className="container band-row">
-          <span className="band-pill">WHO-GMP Manufacturing</span>
-          <span className="band-pill">ISO-aligned Systems</span>
-          <span className="band-pill">Research-led Formulations</span>
-          <span className="band-pill">Ethical Business Practices</span>
-          <span className="band-pill">Healthcare Distribution Support</span>
-        </div>
-      </section>
-
-      <section className="section-shell section-surface" id="trust">
-        <div className="container">
-          <div className="section-intro reveal">
-            <p className="eyebrow">Trusted Healthcare Partner</p>
-            <h2>Premium quality commitments, deep expertise, and growth-focused partnerships.</h2>
-            <p>BASDILS brings together scientific formulation, operational discipline, and a modern customer experience to support healthcare brands at every stage of growth.</p>
-          </div>
-          <div className="stats-strip">
-            {trustHighlights.map((item) => (
-              <article className="value-card reveal" key={item.label}>
-                <i className={`fa-solid ${item.icon}`} />
-                <strong>{item.value}</strong>
-                <span>{item.label}</span>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell" id="about">
-        <div className="container split-layout">
-          <SectionHeading
-            eyebrow="Company Overview"
-            title="A growing healthcare company with a clear purpose"
-            description="Founded with a vision to contribute meaningfully to the healthcare industry, BASDILS PHARMACEUTICALS PVT. LTD. has emerged as a growing pharmaceutical company offering a diverse portfolio of healthcare products across multiple therapeutic segments."
-          />
-          <div className="about-panel glass-panel reveal premium-surface">
-            <div>
-              <h3>Company Overview</h3>
-              <p>Our product range includes nutraceuticals, women's healthcare, liver care, iron and hematinic supplements, bone health products, joint care solutions, Ayurvedic formulations, and general wellness products.</p>
-            </div>
-            <div className="about-grid-cards">
-              <article className="info-card">
-                <span className="icon-wrap"><i className="fa-solid fa-lightbulb" /></span>
-                <h4>Innovation</h4>
-                <p>Continuously developing advanced formulations.</p>
-              </article>
-              <article className="info-card">
-                <span className="icon-wrap"><i className="fa-solid fa-badge-check" /></span>
-                <h4>Quality</h4>
-                <p>Strict quality standards throughout every stage.</p>
-              </article>
-              <article className="info-card">
-                <span className="icon-wrap"><i className="fa-solid fa-handshake-angle" /></span>
-                <h4>Trust</h4>
-                <p>Transparent and dependable business practices.</p>
-              </article>
-              <article className="info-card">
-                <span className="icon-wrap"><i className="fa-solid fa-medal" /></span>
-                <h4>Excellence</h4>
-                <p>Customer satisfaction remains at the center of everything we do.</p>
-              </article>
-            </div>
-            <div className="mission-grid">
-              <article>
-                <h4>Vision</h4>
-                <p>To become a trusted and respected healthcare company by delivering innovative, affordable, and high-quality pharmaceutical solutions that improve quality of life.</p>
-              </article>
-              <article>
-                <h4>Mission</h4>
-                <p>To provide quality healthcare products at affordable prices, maintain the highest standards of ethics and integrity, and build long-term relationships with partners.</p>
-              </article>
-              <article>
-                <h4>Core Values</h4>
-                <p>Quality first, innovation, integrity, customer focus, and excellence.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="section-shell" id="products">
         <div className="container">
@@ -144,23 +58,7 @@ export function HomePage() {
             title="Quality is the foundation of BASDILS Pharmaceuticals"
             description="Our products are manufactured in facilities that follow WHO-GMP standards, ISO certified processes, stringent quality control measures, advanced manufacturing practices, and regulatory compliance standards."
           />
-          <div className="carousel glass-panel reveal">
-            <div className="carousel-track">
-              {[
-                ['BASOFER-D3', 'Iron and nutritional support for healthy hemoglobin levels.'],
-                ['BASIFOL', 'Premium folate, DHA, and B12 nutrition support.'],
-                ['TENDODIL-FORTE', 'Joint support formula for mobility and musculoskeletal wellness.'],
-                ['BASDIL-LIV DS', 'Liver tonic with enzyme support.'],
-                ['MENSORIS', 'Ayurvedic uterine tonic.'],
-                ['BACITROL-PLUS', 'Bone health and calcium metabolism support.']
-              ].map(([title, description]) => (
-                <article className="carousel-card" key={title}>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
+          <ProductCardsSlider products={products} />
         </div>
       </section>
 
