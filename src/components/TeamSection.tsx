@@ -14,14 +14,14 @@ const teamMembers: TeamMember[] = [
     position: 'CEO & Managing Director',
     expertise: 'Pharmaceutical Strategy & Operations',
     bio: 'Visionary leader with 15+ years in pharmaceutical manufacturing and brand development.',
-    image: '/public/basant.jpeg'
+    image: '/basant.jpeg'
   },
   {
     name: 'Dr. Dilasa Kumari ',
     position: 'Director - Commercial Operations',
     expertise: 'Quality Assurance & Regulatory Compliance',
     bio: 'Expert in WHO-GMP standards with 12+ years ensuring pharmaceutical excellence.',
-    image: '/public/dilasa.jpeg'
+    image: '/dilasa.jpeg'
   }
 ];
 

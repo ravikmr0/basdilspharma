@@ -42,8 +42,18 @@ export function SiteLayout() {
         <Outlet />
       </main>
       <Footer />
+      {/* Call Button */}
       <a
-        className="fixed bottom-6 right-6 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-2xl z-40"
+        className="fixed bottom-32 right-6 w-20 h-20 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-3xl z-40"
+        href="tel:+919931691959"
+        aria-label="Call BASDILS"
+      >
+        <i className="fa-solid fa-phone" />
+      </a>
+      
+      {/* WhatsApp Button */}
+      <a
+        className="fixed bottom-6 right-6 w-20 h-20 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-3xl z-40"
         href="https://wa.me/919931691959"
         target="_blank"
         rel="noreferrer"

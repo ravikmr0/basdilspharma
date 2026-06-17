@@ -82,74 +82,77 @@ export function ProductCardsSlider({ products }: ProductCardsSliderProps) {
   ];
 
   return (
-    <div className="space-y-6">
-      {/* Carousel Track */}
-      <div 
-        className="overflow-hidden rounded-2xl"
-        ref={scrollContainerRef}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        <div className="flex gap-5 transition-transform duration-500 ease-out">
-          {showcaseProducts.map((product, idx) => (
-            <article
-              key={idx}
-              className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 h-64 rounded-xl overflow-hidden group cursor-pointer relative shadow-lg hover:shadow-2xl transition-all duration-300"
-              style={{ backgroundImage: `url(${product.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-            >
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent group-hover:from-gray-900/90 transition-all duration-300" />
-              
-              {/* Content */}
-              <div className="absolute inset-0 flex flex-col justify-end p-5">
-                <p className="text-xs font-semibold text-white/80 mb-1">{product.category}</p>
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-primary-300 transition-colors">{product.name}</h3>
-                <p className="text-white/90 text-xs leading-relaxed group-hover:text-white transition-colors">{product.description}</p>
-                
-                {/* Accent line */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r" style={{ backgroundImage: `linear-gradient(90deg, ${product.color}, ${product.color}00)` }} />
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-
-      {/* Navigation Controls */}
-      <div className="flex items-center justify-between">
+    <div className="w-full">
+      {/* Carousel Container with Side Controls */}
+      <div className="flex items-center justify-center gap-4 max-w-7xl mx-auto px-4">
+        {/* Left Arrow Button */}
         <button
-          className="group w-10 h-10 rounded-full bg-gray-200 hover:bg-primary-600 text-gray-900 hover:text-white flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-lg"
+          className="group flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-110"
           type="button"
           aria-label="Previous products"
           onClick={goPrev}
         >
-          <i className="fa-solid fa-chevron-left group-hover:scale-125 transition-transform text-sm" />
+          <i className="fa-solid fa-chevron-left group-hover:scale-125 transition-transform text-xl" />
         </button>
 
-        <div className="flex gap-2">
-          {Array.from({ length: Math.ceil(products.length / 3) }).map((_, idx) => (
-            <button
-              key={idx}
-              className={`transition-all duration-300 rounded-full ${
-                idx === activeIndex
-                  ? 'w-8 h-2 bg-primary-600'
-                  : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
-              }`}
-              type="button"
-              aria-label={`Go to slide ${idx + 1}`}
-              aria-pressed={idx === activeIndex}
-              onClick={() => setActiveIndex(idx)}
-            />
-          ))}
+        {/* Carousel Track */}
+        <div 
+          className="flex-grow overflow-hidden rounded-2xl"
+          ref={scrollContainerRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="flex gap-5 transition-transform duration-500 ease-out">
+            {showcaseProducts.map((product, idx) => (
+              <article
+                key={idx}
+                className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 h-80 rounded-2xl overflow-hidden group cursor-pointer relative shadow-lg hover:shadow-2xl transition-all duration-300 product-showcase-card"
+                style={{ backgroundImage: `url(${product.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+              >
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/95 via-gray-900/40 to-transparent group-hover:from-gray-900/98 transition-all duration-300" />
+                
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col justify-end p-6">
+                  <p className="text-xs font-semibold text-primary-300 mb-2 uppercase tracking-wider">{product.category}</p>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary-300 transition-colors duration-300 leading-tight">{product.name}</h3>
+                  <p className="text-white/90 text-sm leading-relaxed group-hover:text-white transition-colors duration-300 line-clamp-2">{product.description}</p>
+                  
+                  {/* Accent line */}
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r" style={{ backgroundImage: `linear-gradient(90deg, ${product.color}, ${product.color}00)` }} />
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
 
+        {/* Right Arrow Button */}
         <button
-          className="group w-10 h-10 rounded-full bg-gray-200 hover:bg-primary-600 text-gray-900 hover:text-white flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-lg"
+          className="group flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-110"
           type="button"
           aria-label="Next products"
           onClick={goNext}
         >
-          <i className="fa-solid fa-chevron-right group-hover:scale-125 transition-transform text-sm" />
+          <i className="fa-solid fa-chevron-right group-hover:scale-125 transition-transform text-xl" />
         </button>
+      </div>
+
+      {/* Dot Indicators - Centered Below */}
+      <div className="flex justify-center gap-3 mt-8">
+        {Array.from({ length: Math.ceil(showcaseProducts.length / 3) }).map((_, idx) => (
+          <button
+            key={idx}
+            className={`transition-all duration-300 rounded-full ${
+              idx === activeIndex
+                ? 'w-10 h-3 bg-primary-600'
+                : 'w-3 h-3 bg-gray-300 hover:bg-primary-400'
+            }`}
+            type="button"
+            aria-label={`Go to slide ${idx + 1}`}
+            aria-pressed={idx === activeIndex}
+            onClick={() => setActiveIndex(idx)}
+          />
+        ))}
       </div>
     </div>
   );
