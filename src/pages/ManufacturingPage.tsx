@@ -7,7 +7,7 @@ export function ManufacturingPage() {
       title: 'WHO-GMP Standards',
       description: 'Current quality expectations across production.',
       details: 'We maintain international pharmaceutical manufacturing standards ensuring safety, efficacy, and consistency.',
-      image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=600&fit=crop',
+      image: 'https://5.imimg.com/data5/SELLER/Default/2023/8/332723723/TG/DO/PO/25087216/who-gmp-compliance-services.jpg',
       icon: 'fa-industry'
     },
     {
@@ -15,7 +15,7 @@ export function ManufacturingPage() {
       title: 'Quality Control',
       description: 'Testing and review discipline at each stage.',
       details: 'Advanced laboratory testing and quality assurance at every step of the manufacturing process.',
-      image: 'https://images.unsplash.com/photo-1576091160550-112173e7f44b?w=600&h=600&fit=crop',
+      image: 'https://qodenext.com/wp-content/uploads/2023/06/quality-control-in-pharmaceutical-industry-compressed.jpg',
       icon: 'fa-flask'
     },
     {
@@ -23,7 +23,7 @@ export function ManufacturingPage() {
       title: 'Packaging Excellence',
       description: 'Premium, compliant, and production-ready packaging.',
       details: 'State-of-the-art packaging technology ensuring product integrity and regulatory compliance.',
-      image: 'https://images.unsplash.com/photo-1578496781514-8bab03247f8a?w=600&h=600&fit=crop',
+      image: 'https://www.arka.com/cdn/shop/files/pharmaceutical-packaging-materials.jpg?v=1700564885',
       icon: 'fa-box'
     },
     {
@@ -31,7 +31,7 @@ export function ManufacturingPage() {
       title: 'Compliance Management',
       description: 'Documentation, audits, and partner readiness.',
       details: 'Comprehensive audit trails, documentation systems, and regulatory compliance management.',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=600&fit=crop',
+      image: 'https://alpineprohealth.com/blog/wp-content/uploads/2025/05/Medical-Coding-Compliance-The-Good-the-Bad-and-the-Ugly.png',
       icon: 'fa-certificate'
     }
   ];
@@ -39,8 +39,8 @@ export function ManufacturingPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="section-shell manufacturing-hero">
-        <div className="container">
+      <section className="py-16 md:py-24 bg-gradient-to-r from-primary-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Manufacturing & Quality"
             title="Built around compliance and quality control"
@@ -50,34 +50,31 @@ export function ManufacturingPage() {
       </section>
 
       {/* Manufacturing Pillars Section */}
-      <section className="section-shell manufacturing-pillars">
-        <div className="container">
-          <div className="pillars-grid">
-            {manufacturingPillars.map((pillar) => (
-              <div key={pillar.number} className="pillar-card reveal">
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {manufacturingPillars.map((pillar, idx) => (
+              <div key={pillar.number} className="group rounded-2xl overflow-hidden bg-white border border-gray-200 hover:shadow-xl transition-all duration-300 animate-fade-in" style={{ animationDelay: `${0.1 * (idx + 1)}s` }}>
                 {/* Image Section */}
-                <div className="pillar-image-wrapper">
+                <div className="relative h-56 overflow-hidden">
                   <img
                     src={pillar.image}
                     alt={pillar.title}
-                    className="pillar-image"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     loading="lazy"
                     onError={(e: any) => {
                       e.target.style.display = 'none';
                     }}
                   />
-                  <div className="pillar-image-overlay" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
                 {/* Content Section */}
-                <div className="pillar-content">
-                  <div className="pillar-number">{pillar.number}</div>
-                  <div className="pillar-icon">
-                    <i className={`fa-solid ${pillar.icon}`} />
-                  </div>
-                  <h3 className="pillar-title">{pillar.title}</h3>
-                  <p className="pillar-description">{pillar.description}</p>
-                  <p className="pillar-details">{pillar.details}</p>
+                <div className="p-8">
+                  <div className="text-sm font-bold text-primary-600 mb-2">{pillar.number}</div>
+                  <h3 className="text-2xl font-bold font-display text-gray-900 mb-2">{pillar.title}</h3>
+                  <p className="text-gray-600 mb-3">{pillar.description}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">{pillar.details}</p>
                 </div>
               </div>
             ))}
@@ -86,26 +83,26 @@ export function ManufacturingPage() {
       </section>
 
       {/* Quality Assurance Section */}
-      <section className="section-shell quality-assurance-section">
-        <div className="container">
-          <div className="qa-content glass-panel reveal">
-            <div className="qa-text">
-              <h2>Quality Assurance Excellence</h2>
-              <p>Our commitment to quality extends beyond compliance. We implement continuous improvement processes, regular audits, and partner training programs to ensure every product meets our exacting standards.</p>
-              <ul className="qa-features">
-                <li><i className="fa-solid fa-check-circle" /> WHO-GMP Certified Facilities</li>
-                <li><i className="fa-solid fa-check-circle" /> ISO 9001:2015 Quality Management</li>
-                <li><i className="fa-solid fa-check-circle" /> Advanced Laboratory Infrastructure</li>
-                <li><i className="fa-solid fa-check-circle" /> Automated Quality Control Systems</li>
-                <li><i className="fa-solid fa-check-circle" /> Real-time Traceability & Documentation</li>
-                <li><i className="fa-solid fa-check-circle" /> Regular Third-Party Audits</li>
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg p-8 md:p-12">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold font-display text-gray-900 mb-6">Quality Assurance Excellence</h2>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">Our commitment to quality extends beyond compliance. We implement continuous improvement processes, regular audits, and partner training programs to ensure every product meets our exacting standards.</p>
+              <ul className="space-y-3">
+                <li className="text-gray-700 font-medium">WHO-GMP Certified Facilities</li>
+                <li className="text-gray-700 font-medium">ISO 9001:2015 Quality Management</li>
+                <li className="text-gray-700 font-medium">Advanced Laboratory Infrastructure</li>
+                <li className="text-gray-700 font-medium">Automated Quality Control Systems</li>
+                <li className="text-gray-700 font-medium">Real-time Traceability & Documentation</li>
+                <li className="text-gray-700 font-medium">Regular Third-Party Audits</li>
               </ul>
             </div>
-            <div className="qa-image">
+            <div>
               <img
-                src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=600&fit=crop"
+                src="https://www.netra-accura.com/assets/img/automated-induction-seal-inspection.jpg"
                 alt="Quality Assurance"
-                className="qa-img"
+                className="w-full rounded-xl shadow-lg"
                 loading="lazy"
               />
             </div>
@@ -114,32 +111,28 @@ export function ManufacturingPage() {
       </section>
 
       {/* Certification Section */}
-      <section className="section-shell certifications-section">
-        <div className="container">
-          <div className="section-title-center">
-            <h2>Certifications & Accreditations</h2>
-            <p>Industry-recognized certifications demonstrating our commitment to quality and compliance</p>
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold font-display text-gray-900 mb-4">Certifications & Accreditations</h2>
+            <p className="text-lg text-gray-600">Industry-recognized certifications demonstrating our commitment to quality and compliance</p>
           </div>
-          <div className="certifications-grid">
-            <div className="certification-card glass-panel">
-              <i className="fa-solid fa-certificate certification-icon" />
-              <h4>WHO-GMP Certification</h4>
-              <p>Compliant with World Health Organization Good Manufacturing Practice standards</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="p-8 bg-white rounded-xl border border-gray-200 text-center hover:shadow-lg transition-all duration-300 space-y-2">
+              <h4 className="text-lg font-bold font-display text-gray-900">WHO-GMP Certification</h4>
+              <p className="text-gray-600 text-sm">Compliant with World Health Organization Good Manufacturing Practice standards</p>
             </div>
-            <div className="certification-card glass-panel">
-              <i className="fa-solid fa-check certification-icon" />
-              <h4>ISO 9001:2015</h4>
-              <p>Quality Management System certified for consistent product excellence</p>
+            <div className="p-8 bg-white rounded-xl border border-gray-200 text-center hover:shadow-lg transition-all duration-300 space-y-2">
+              <h4 className="text-lg font-bold font-display text-gray-900">ISO 9001:2015</h4>
+              <p className="text-gray-600 text-sm">Quality Management System certified for consistent product excellence</p>
             </div>
-            <div className="certification-card glass-panel">
-              <i className="fa-solid fa-shield certification-icon" />
-              <h4>FSSAI Approved</h4>
-              <p>Food Safety and Standards Authority of India approved manufacturing facility</p>
+            <div className="p-8 bg-white rounded-xl border border-gray-200 text-center hover:shadow-lg transition-all duration-300 space-y-2">
+              <h4 className="text-lg font-bold font-display text-gray-900">FSSAI Approved</h4>
+              <p className="text-gray-600 text-sm">Food Safety and Standards Authority of India approved manufacturing facility</p>
             </div>
-            <div className="certification-card glass-panel">
-              <i className="fa-solid fa-vial certification-icon" />
-              <h4>Pharmaceutical Grade</h4>
-              <p>Meets pharmaceutical manufacturing standards for quality and safety</p>
+            <div className="p-8 bg-white rounded-xl border border-gray-200 text-center hover:shadow-lg transition-all duration-300 space-y-2">
+              <h4 className="text-lg font-bold font-display text-gray-900">Pharmaceutical Grade</h4>
+              <p className="text-gray-600 text-sm">Meets pharmaceutical manufacturing standards for quality and safety</p>
             </div>
           </div>
         </div>

@@ -56,7 +56,7 @@ export const products: Product[] = [
     benefits: ['Supports reproductive wellness', 'Promotes hormonal balance', 'Supports metabolic health', 'Enriched with essential nutrients', 'Fertility support supplement'],
     icon: 'fa-person-pregnant',
     color: '#FF6B9D',
-    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde0e?w=600&h=600&fit=crop&crop=faces'
+    image: 'https://baxypharma.com/wp-content/uploads/2024/04/ovrite-od-scaled.jpg'
   },
   {
     slug: 'basdil-liv-ds',
@@ -77,7 +77,7 @@ export const products: Product[] = [
     benefits: ['Supports liver health', 'Helps improve digestion', 'Supports appetite', 'Useful in digestive wellness', 'Sugar-free formula'],
     icon: 'fa-leaf',
     color: '#2ECC71',
-    image: 'https://images.unsplash.com/photo-1563427436-cbf36c3fecb9?w=600&h=600&fit=crop'
+    image: 'https://5.imimg.com/data5/SELLER/Default/2022/12/GK/MZ/TR/180833290/b-live-ds-liver-syrup.jpg'
   },
   {
     slug: 'basifol',
@@ -98,7 +98,7 @@ export const products: Product[] = [
     benefits: ['Prenatal nutritional support', 'Folate supplementation', 'DHA enriched formula', 'Vitamin B12 support', 'Pregnancy support supplement'],
     icon: 'fa-person-pregnant',
     color: '#FF6B9D',
-    image: 'https://images.unsplash.com/photo-1584307938042-469ce38bd936?w=600&h=600&fit=crop'
+    image: 'https://www.practostatic.com/practopedia-images/v3/res-750/baclof-10mg-tablet-10-s_9cf40bfb-62b6-47c3-95ad-b809315d3e5f.JPG'
   },
   {
     slug: 'basofer-d3',
@@ -119,7 +119,7 @@ export const products: Product[] = [
     benefits: ['Iron supplementation', 'Folic Acid support', 'Vitamin B12 support', 'Vitamin D3 support', 'Zinc supplementation'],
     icon: 'fa-droplet',
     color: '#E74C3C',
-    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde0e?w=600&h=600&fit=crop&q=80'
+    image: 'https://5.imimg.com/data5/SELLER/Default/2024/8/441736998/EA/CQ/VI/38043662/bonsorb-d3-cholecalciferol-60000-i-u-chewabletablet-500x500.jpg'
   },
   {
     slug: 'bacitrol-plus',
@@ -140,7 +140,7 @@ export const products: Product[] = [
     benefits: ['Bone health support', 'Calcium supplementation', 'Nerve health support', 'Vitamin K2-7 support', 'Magnesium enrichment'],
     icon: 'fa-bone',
     color: '#F39C12',
-    image: 'https://images.unsplash.com/photo-1631549916768-4873b991538d?w=600&h=600&fit=crop'
+    image: 'https://images.apollo247.in/pub/media/catalog/product/U/P/UPT0005_1_2.jpg'
   },
   {
     slug: 'tendodil-forte',
@@ -161,7 +161,7 @@ export const products: Product[] = [
     benefits: ['Joint support', 'Cartilage health', 'Mobility support', 'Collagen supplementation', 'Osteoarthritis wellness support'],
     icon: 'fa-person-hiking',
     color: '#9B59B6',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=600&fit=crop'
+    image: 'https://www.curivohealthcare.com/wp-content/uploads/2025/02/TENDID-FORTE.webp'
   }
 ];
 

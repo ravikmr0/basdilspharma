@@ -8,62 +8,66 @@ type ProductDetailPageProps = {
 export function ProductDetailPage({ product }: ProductDetailPageProps) {
   return (
     <>
-      <section className="section-shell">
-        <div className="container split-layout">
-          <div className="section-heading reveal">
-            <p className="eyebrow">{product.categoryLabel}</p>
-            <h1>{product.displayName}</h1>
-            <p className="lead">{product.overview}</p>
-            <div className="hero-actions">
-              <Link className="button button-primary" to="/contact">
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <p className="text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">{product.categoryLabel}</p>
+            <h1 className="text-5xl md:text-6xl font-bold font-display text-gray-900 mb-6">{product.displayName}</h1>
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed">{product.overview}</p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link className="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all duration-300 text-center" to="/contact">
                 Enquire Now
               </Link>
-              <Link className="button button-secondary" to="/products">
+              <Link className="px-8 py-4 bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold rounded-lg transition-all duration-300 text-center" to="/products">
                 Back to Products
               </Link>
             </div>
           </div>
-          <div className="about-panel glass-panel reveal">
-            <div className="mission-grid">
-              <article>
-                <h4>Dosage</h4>
-                <p>{product.dosage}</p>
-              </article>
-              <article>
-                <h4>Pack Size</h4>
-                <p>{product.packSize}</p>
-              </article>
-              <article>
-                <h4>Category</h4>
-                <p>{product.categoryLabel}</p>
-              </article>
+          <div className="p-8 bg-gradient-to-br from-primary-50 to-blue-50 rounded-2xl border border-primary-100">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div>
+                <h4 className="text-lg font-bold font-display text-gray-900 mb-2">Dosage</h4>
+                <p className="text-gray-600">{product.dosage}</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-bold font-display text-gray-900 mb-2">Pack Size</h4>
+                <p className="text-gray-600">{product.packSize}</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-bold font-display text-gray-900 mb-2">Category</h4>
+                <p className="text-gray-600">{product.categoryLabel}</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-shell">
-        <div className="container">
-          <div className="feature-grid">
-            <article className="info-card reveal">
-              <h4>{product.ingredientsLabel}</h4>
-              <ul className="detail-list">
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <article className="p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in">
+              <h4 className="text-xl font-bold font-display text-gray-900 mb-4">{product.ingredientsLabel}</h4>
+              <ul className="space-y-2">
                 {product.ingredients.map((ingredient) => (
-                  <li key={ingredient}>{ingredient}</li>
+                  <li key={ingredient} className="flex items-center gap-2 text-gray-600">
+                    <i className="fa-solid fa-check-circle text-primary-600" /> {ingredient}
+                  </li>
                 ))}
               </ul>
             </article>
-            <article className="info-card reveal">
-              <h4>Benefits</h4>
-              <ul className="detail-list">
+            <article className="p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+              <h4 className="text-xl font-bold font-display text-gray-900 mb-4">Benefits</h4>
+              <ul className="space-y-2">
                 {product.benefits.map((benefit) => (
-                  <li key={benefit}>{benefit}</li>
+                  <li key={benefit} className="flex items-center gap-2 text-gray-600">
+                    <i className="fa-solid fa-check-circle text-green-600" /> {benefit}
+                  </li>
                 ))}
               </ul>
             </article>
-            <article className="info-card reveal">
-              <h4>Product Overview</h4>
-              <p>{product.overview}</p>
+            <article className="p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <h4 className="text-xl font-bold font-display text-gray-900 mb-4">Product Overview</h4>
+              <p className="text-gray-600 leading-relaxed">{product.overview}</p>
             </article>
           </div>
         </div>

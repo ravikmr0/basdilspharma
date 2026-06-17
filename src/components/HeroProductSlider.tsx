@@ -64,7 +64,7 @@ export function HeroProductSlider({ products }: HeroProductSliderProps) {
 
   return (
     <div
-      className="hero-slider"
+      className="p-8 md:p-12 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl border border-gray-700 relative overflow-hidden"
       role="region"
       aria-label="Featured products slider"
       aria-roledescription="carousel"
@@ -78,81 +78,102 @@ export function HeroProductSlider({ products }: HeroProductSliderProps) {
         }
       }}
     >
-      <div className="hero-slider-shell glass-panel" style={sliderStyle}>
-        <div className="hero-slider-top">
-          <div className="hero-card-badge">
-            <i className="fa-solid fa-shield-heart" /> Product Showcase
+      {/* Background Animated Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 right-20 w-40 h-40 rounded-full opacity-10" style={{ background: theme.primary }}></div>
+        <div className="absolute bottom-20 left-20 w-32 h-32 rounded-full opacity-10" style={{ background: theme.accent }}></div>
+      </div>
+
+      <div className="relative z-10">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-8">
+          <div className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white text-sm font-semibold">
+            <i className="fa-solid fa-shield-heart mr-2" /> Product Showcase
           </div>
-          <p className="hero-slider-count">
+          <p className="text-white/60 font-mono text-sm">
             {String(activeIndex + 1).padStart(2, '0')} / {String(products.length).padStart(2, '0')}
           </p>
         </div>
 
-        <div className="lab-orbit hero-slider-orbit">
-          <span />
-          <span />
-          <span />
-          <span />
+        {/* Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
+          {/* Product Details */}
+          <div aria-live="polite">
+            <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: theme.primary }}>{activeProduct.categoryLabel}</p>
+            <h3 className="text-4xl md:text-5xl font-bold font-display text-white mb-4">{activeProduct.displayName}</h3>
+            <p className="text-lg text-gray-300 mb-6">{activeProduct.overview}</p>
+            
+            {/* Meta Information */}
+            <div className="flex gap-4 mb-8">
+              <span className="px-4 py-2 bg-white/10 rounded-lg text-white/80 text-sm">{activeProduct.packSize}</span>
+              <span className="px-4 py-2 bg-white/10 rounded-lg text-white/80 text-sm">{formatTag(activeProduct.therapeuticTags[0])}</span>
+            </div>
+
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link className="px-6 py-3 rounded-lg font-semibold transition-all duration-300 text-center" style={{ backgroundColor: theme.primary, color: 'white' }} to={`/products/${activeProduct.slug}`}>
+                View Details
+              </Link>
+              <Link className="px-6 py-3 rounded-lg font-semibold border-2 transition-all duration-300 text-center text-white" style={{ borderColor: theme.accent }} to="/contact">
+                Enquire Now
+              </Link>
+            </div>
+          </div>
+
+          {/* Product Information Box */}
+          <div className="p-8 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
+            <p className="text-xs font-semibold uppercase tracking-wider text-white/60 mb-2">{activeProduct.dosageForm}</p>
+            <h4 className="text-2xl font-bold font-display text-white mb-2">{activeProduct.name}</h4>
+            <p className="text-gray-300 mb-6 text-sm">{activeProduct.shortDescription}</p>
+            <ul className="space-y-2">
+              <li className="flex items-center gap-2 text-white/80">
+                <i className="fa-solid fa-check text-green-400" /> {activeProduct.benefits[0]}
+              </li>
+              <li className="flex items-center gap-2 text-white/80">
+                <i className="fa-solid fa-check text-green-400" /> {activeProduct.benefits[1] ?? activeProduct.packSize}
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <article className="hero-slider-detail glass-panel" aria-live="polite">
-          <p className="hero-slider-kicker">{activeProduct.categoryLabel}</p>
-          <h3>{activeProduct.displayName}</h3>
-          <p>{activeProduct.overview}</p>
-          <div className="hero-slider-meta">
-            <span>{activeProduct.packSize}</span>
-            <span>{formatTag(activeProduct.therapeuticTags[0])}</span>
-          </div>
-          <div className="hero-slider-actions">
-            <Link className="button button-primary" to={`/products/${activeProduct.slug}`}>
-              View Details
-            </Link>
-            <Link className="button button-secondary" to="/contact">
-              Enquire Now
-            </Link>
-          </div>
-        </article>
-
-        <div className="hero-pack hero-slider-pack">
-          <span className="hero-slider-form">{activeProduct.dosageForm}</span>
-          <div className="pack-label">{activeProduct.name}</div>
-          <div className="pack-sub">{activeProduct.shortDescription}</div>
-          <ul className="hero-slider-highlights">
-            <li>{activeProduct.benefits[0]}</li>
-            <li>{activeProduct.benefits[1] ?? activeProduct.packSize}</li>
-          </ul>
-        </div>
-
-        <div className="hero-slider-preview-rail">
+        {/* Preview Rail */}
+        <div className="flex gap-4 mb-8 overflow-x-auto pb-2">
           {previewProducts.map(({ index, product }, previewPosition) => (
             <button
               key={product.slug}
-              className={`hero-slider-preview preview-${previewPosition + 1}`}
+              className="flex-shrink-0 p-4 bg-white/5 hover:bg-white/10 backdrop-blur-sm rounded-lg border border-white/10 text-left transition-all duration-300 min-w-max"
               type="button"
               aria-label={`Show ${product.displayName}`}
               onClick={() => setActiveIndex(index)}
             >
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <strong>{product.name}</strong>
-              <small>{product.dosageForm}</small>
+              <span className="block text-xs font-mono text-white/60 mb-1">{String(index + 1).padStart(2, '0')}</span>
+              <strong className="block text-white font-display">{product.name}</strong>
+              <small className="block text-white/60 text-xs">{product.dosageForm}</small>
             </button>
           ))}
         </div>
 
-        <div className="hero-slider-nav">
+        {/* Navigation */}
+        <div className="flex justify-between items-center">
           <button
-            className="icon-button hero-slider-arrow"
+            className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all duration-300 flex items-center justify-center"
             type="button"
             aria-label="Previous product"
             onClick={() => shiftSlide(-1)}
           >
             <i className="fa-solid fa-arrow-left" />
           </button>
-          <div className="hero-slider-dots">
+
+          {/* Dots */}
+          <div className="flex gap-2">
             {products.map((product, index) => (
               <button
                 key={product.slug}
-                className={`hero-slider-dot ${index === activeIndex ? 'is-active' : ''}`}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === activeIndex 
+                    ? 'bg-white w-8' 
+                    : 'bg-white/30 hover:bg-white/50'
+                }`}
                 type="button"
                 aria-label={`Go to ${product.displayName}`}
                 aria-pressed={index === activeIndex}
@@ -160,8 +181,9 @@ export function HeroProductSlider({ products }: HeroProductSliderProps) {
               />
             ))}
           </div>
+
           <button
-            className="icon-button hero-slider-arrow"
+            className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all duration-300 flex items-center justify-center"
             type="button"
             aria-label="Next product"
             onClick={() => shiftSlide(1)}

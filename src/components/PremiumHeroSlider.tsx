@@ -23,12 +23,12 @@ const slides: Slide[] = [
   {
     id: 'research',
     eyebrow: 'Scientific Innovation',
-    title: 'Healthcare Excellence Through Quality & Innovation',
-    subtitle: 'Scientific Formulations. Trusted Manufacturing. Quality Care.',
+    title: 'Healthcare Excellence Through Quality',
+    subtitle: 'Scientific Formulations. Trusted Manufacturing. Quality.',
     description:
       'Delivering pharmaceutical, nutraceutical, and Ayurvedic solutions backed by scientific expertise, rigorous quality standards, and a commitment to advancing healthcare.',
     image:
-      'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=2000&q=80',
+      '/public/hero_section/scientific_innovation.png',
     buttons: [
       { label: 'View Products', to: '/products', variant: 'primary' },
       { label: 'Download Catalogue', to: '/contact', variant: 'secondary' },
@@ -38,11 +38,11 @@ const slides: Slide[] = [
     id: 'manufacturing',
     eyebrow: 'Manufacturing Excellence',
     title: 'Advanced Manufacturing & Quality Excellence',
-    subtitle: 'Trusted Pharmaceutical, Nutraceutical & Ayurvedic Excellence',
+    subtitle: 'Trusted Pharmaceutical, Nutraceutical & Ayurvedic.',
     description:
       'Advanced manufacturing facilities with automated production lines, rigorous quality control systems, and ISO-certified processes ensuring pharmaceutical excellence in every product.',
     image:
-      'https://images.pexels.com/photos/3735857/pexels-photo-3735857.jpeg?auto=compress&cs=tinysrgb&w=2000&q=80',
+      '/public/hero_section/manufacturing_process.png',
     buttons: [
       { label: 'Learn More', to: '/manufacturing', variant: 'primary' },
       { label: 'Certifications', to: '/about', variant: 'secondary' },
@@ -51,12 +51,12 @@ const slides: Slide[] = [
   {
     id: 'healthcare-professionals',
     eyebrow: 'Medical Excellence',
-    title: 'Trusted by Healthcare Professionals Nationwide',
+    title: 'Trusted by Healthcare Professionals.',
     subtitle: 'Innovation in Pharmaceutical Healthcare',
     description:
-      'Partnering with healthcare professionals across India to deliver innovative pharmaceutical solutions trusted for quality, efficacy, and safety.',
+      'Partnering with healthcare professionals across India to deliver innovative pharmaceutical solutions trusted for quality, efficacy.',
     image:
-      'https://images.pexels.com/photos/7974355/pexels-photo-7974355.jpeg?auto=compress&cs=tinysrgb&w=2000&q=80',
+      '/public/hero_section/medical_excellence.png',
     buttons: [
       { label: 'Explore Products', to: '/products', variant: 'primary' },
       { label: 'Contact Sales', to: '/contact', variant: 'secondary' },
@@ -70,7 +70,7 @@ const slides: Slide[] = [
     description:
       'Formulated and manufactured with pharmaceutical precision. Capsules, tablets, syrups, and supplements backed by scientific research and quality excellence.',
     image:
-      'https://images.pexels.com/photos/5632399/pexels-photo-5632399.jpeg?auto=compress&cs=tinysrgb&w=2000&q=80',
+      '/public/hero_section/product_portfolio.png',
     buttons: [
       { label: 'View All Products', to: '/products', variant: 'primary' },
       { label: 'Request Samples', to: '/contact', variant: 'secondary' },
@@ -84,7 +84,7 @@ const slides: Slide[] = [
     description:
       'Advanced R&D, scientific research, and biotechnology innovation driving breakthrough pharmaceutical treatments and wellness solutions for tomorrow\'s healthcare.',
     image:
-      'https://images.pexels.com/photos/3962286/pexels-photo-3962286.jpeg?auto=compress&cs=tinysrgb&w=2000&q=80',
+      '/public/hero_section/future_of_medicine.png',
     buttons: [
       { label: 'About Our R&D', to: '/about', variant: 'primary' },
       { label: 'Innovation Hub', to: '/contact', variant: 'secondary' },
@@ -182,7 +182,7 @@ export function PremiumHeroSlider() {
 
   return (
     <section
-      className="ph"
+      className="relative w-full h-screen overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={onTouchStart}
@@ -195,36 +195,54 @@ export function PremiumHeroSlider() {
       {slides.map((s, i) => (
         <div
           key={s.id}
-          className={`ph-bg${i === activeIndex ? ' is-active' : ''}`}
-          style={{ backgroundImage: `url(${s.image})` }}
+          className={`absolute inset-0 transition-opacity duration-1000 ${i === activeIndex ? 'opacity-100' : 'opacity-0'}`}
+          style={{ backgroundImage: `url(${s.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
           aria-hidden={i !== activeIndex}
         />
       ))}
 
       {/* Premium dark-blue gradient overlay */}
-      <div className="ph-overlay" />
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-blue-900/60" />
 
       {/* Content section */}
-      <div className="container ph-inner">
-        <div className="ph-text" key={slide.id} data-dir={animDirection}>
+      <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+        <div 
+          key={slide.id} 
+          data-dir={animDirection}
+          className={`max-w-2xl transition-all duration-700 ${
+            animDirection === 1 ? 'animate-slide-up' : 'animate-slide-down'
+          }`}
+        >
           {/* Section eyebrow label */}
-          <p className="ph-eyebrow">{slide.eyebrow}</p>
+          <p className="text-primary-300 text-sm font-semibold uppercase tracking-wider mb-4 animate-fade-in">{slide.eyebrow}</p>
 
           {/* Main heading */}
-          <h1 className="ph-title">{slide.title}</h1>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display text-white mb-6 leading-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            {slide.title}
+          </h1>
 
           {/* Optional subtitle */}
-          {slide.subtitle && <p className="ph-subtitle">{slide.subtitle}</p>}
+          {slide.subtitle && (
+            <p className="text-xl md:text-2xl text-primary-200 mb-6 font-semibold animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              {slide.subtitle}
+            </p>
+          )}
 
           {/* Description */}
-          <p className="ph-desc">{slide.description}</p>
+          <p className="text-lg text-gray-200 mb-8 leading-relaxed max-w-xl animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            {slide.description}
+          </p>
 
           {/* CTA buttons with premium styling */}
-          <div className="ph-actions">
+          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             {slide.buttons.map((btn) => (
               <Link
                 key={btn.label}
-                className={`ph-btn ph-btn-${btn.variant}`}
+                className={`px-8 py-4 font-semibold rounded-lg transition-all duration-300 inline-block text-center ${
+                  btn.variant === 'primary'
+                    ? 'bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-xl'
+                    : 'bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 backdrop-blur-sm'
+                }`}
                 to={btn.to}
               >
                 {btn.label}
@@ -234,25 +252,43 @@ export function PremiumHeroSlider() {
         </div>
       </div>
 
-      {/* Navigation controls */}
-      <nav className="ph-nav" aria-label="Slide navigation">
+      {/* Navigation controls - Centered side navigation */}
+      <nav className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 sm:px-6 lg:px-8 pointer-events-none" aria-label="Slide navigation">
         {/* Left arrow control */}
         <button
-          className="ph-arrow"
+          className="group pointer-events-auto w-14 h-14 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/40 hover:border-white/70 shadow-lg hover:shadow-xl"
           type="button"
           aria-label="Previous slide"
           onClick={goPrev}
           title="Previous slide (or press left arrow key)"
         >
-          <i className="fa-solid fa-chevron-left" />
+          <i className="fa-solid fa-chevron-left text-xl group-hover:scale-110 group-active:scale-95 transition-transform" />
         </button>
 
+        {/* Right arrow control */}
+        <button
+          className="group pointer-events-auto w-14 h-14 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/40 hover:border-white/70 shadow-lg hover:shadow-xl"
+          type="button"
+          aria-label="Next slide"
+          onClick={goNext}
+          title="Next slide (or press right arrow key)"
+        >
+          <i className="fa-solid fa-chevron-right text-xl group-hover:scale-110 group-active:scale-95 transition-transform" />
+        </button>
+      </nav>
+
+      {/* Pagination dots and scroll indicator - Bottom navigation */}
+      <div className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-6">
         {/* Pagination dots */}
-        <div className="ph-dots">
+        <div className="flex gap-3" aria-label="Slide indicators">
           {slides.map((s, i) => (
             <button
               key={s.id}
-              className={`ph-dot${i === activeIndex ? ' is-active' : ''}`}
+              className={`transition-all duration-300 ${
+                i === activeIndex
+                  ? 'w-8 h-2 bg-primary-400'
+                  : 'w-2 h-2 bg-white/50 hover:bg-white/80'
+              } rounded-full`}
               type="button"
               aria-label={`Go to ${s.eyebrow} slide`}
               aria-pressed={i === activeIndex}
@@ -262,26 +298,15 @@ export function PremiumHeroSlider() {
           ))}
         </div>
 
-        {/* Right arrow control */}
-        <button
-          className="ph-arrow"
-          type="button"
-          aria-label="Next slide"
-          onClick={goNext}
-          title="Next slide (or press right arrow key)"
-        >
-          <i className="fa-solid fa-chevron-right" />
-        </button>
-      </nav>
-
-      {/* Scroll indicator */}
-      <div className="ph-scroll" aria-hidden="true">
-        <div className="ph-scroll-line" />
-        <span>Scroll</span>
+        {/* Scroll indicator */}
+        <div className="text-white/60 animate-bounce hidden md:flex flex-col items-center gap-2" aria-hidden="true">
+          <div className="w-0.5 h-6 bg-gradient-to-b from-white/60 to-transparent" />
+          <span className="text-xs font-medium uppercase tracking-wider">Scroll</span>
+        </div>
       </div>
 
       {/* Slide counter */}
-      <div className="ph-counter" aria-live="polite" aria-label="Slide counter">
+      <div className="absolute top-8 right-8 text-white/80 font-mono text-sm" aria-live="polite" aria-label="Slide counter">
         {String(activeIndex + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
       </div>
     </section>

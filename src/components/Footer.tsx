@@ -20,94 +20,88 @@ export function Footer() {
   ];
 
   return (
-    <footer className="site-footer">
-      <div className="footer-divider" />
-      
-      <div className="container footer-container">
-        <div className="footer-grid">
+    <footer className="bg-gray-900 text-gray-300 pt-16 pb-8 mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 pb-12 border-b border-gray-800">
           {/* Company Information Section */}
-          <div className="footer-section footer-company">
-            <div className="footer-logo-wrapper">
-              <div className="footer-logo-container">
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-lg bg-primary-600 flex items-center justify-center">
                 <img
-                  className="footer-logo"
                   src="/logo.jpeg"
-                  alt="BASDILS Pharmaceuticals Pvt. Ltd."
-                  width="80"
-                  height="80"
+                  alt="BASDILS Pharmaceuticals"
+                  width="48"
+                  height="48"
                   loading="lazy"
                   decoding="async"
+                  className="w-10 h-10"
                 />
+              </div>
+              <div>
+                <h3 className="text-white font-bold text-lg">BASDILS</h3>
+                <p className="text-gray-400 text-xs">Pharmaceuticals</p>
               </div>
             </div>
 
-            <div className="footer-company-content">
-              <h3 className="footer-company-name">BASDILS Pharmaceuticals</h3>
-              <p className="footer-company-desc">
-                Quality-driven pharmaceutical, nutraceutical, and Ayurvedic healthcare solutions built with a focus on trust, consistency, and long-term healthcare value.
-              </p>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Quality-driven pharmaceutical, nutraceutical, and Ayurvedic healthcare solutions built with a focus on trust, consistency, and long-term healthcare value.
+            </p>
 
-              <div className="footer-company-contacts">
-                <div className="footer-contact-item">
-                  <i className="fa-solid fa-envelope" />
-                  <a href="mailto:info@basdilspharma.com">
-                    info@basdilspharma.com
-                  </a>
-                </div>
-                <div className="footer-contact-item">
-                  <i className="fa-solid fa-phone" />
-                  <a href="tel:+919931691959">
-                    +91 99316 91959
-                  </a>
-                </div>
-                <div className="footer-contact-item">
-                  <i className="fa-solid fa-globe" />
-                  <a href="https://www.basdilspharma.com" target="_blank" rel="noreferrer">
-                    www.basdilspharma.com
-                  </a>
-                </div>
-                <div className="footer-contact-item">
-                  <i className="fa-solid fa-map-marker-alt" />
-                  <span>Basdils Pharmaceuticals Pvt. Ltd. Reg. Office :- BML, HJP, VSL, BR-844101 INDIA</span>
-                </div>
+            <div className="space-y-3">
+              <a href="mailto:info@basdilspharma.com" className="flex items-center gap-3 hover:text-primary-400 transition-colors group">
+                <i className="fa-solid fa-envelope w-5 h-5 text-primary-500 group-hover:text-primary-400" />
+                <span className="text-sm">info@basdilspharma.com</span>
+              </a>
+              <a href="tel:+919931691959" className="flex items-center gap-3 hover:text-primary-400 transition-colors group">
+                <i className="fa-solid fa-phone w-5 h-5 text-primary-500 group-hover:text-primary-400" />
+                <span className="text-sm">+91 99316 91959</span>
+              </a>
+              <a href="https://www.basdilspharma.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-primary-400 transition-colors group">
+                <i className="fa-solid fa-globe w-5 h-5 text-primary-500 group-hover:text-primary-400" />
+                <span className="text-sm">www.basdilspharma.com</span>
+              </a>
+              <div className="flex items-start gap-3">
+                <i className="fa-solid fa-map-marker-alt w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
+                <span className="text-sm">BML, HJP, VSL, BR-844101 INDIA</span>
               </div>
             </div>
           </div>
 
           {/* Quick Links Section */}
-          <div className="footer-section footer-links">
-            <h4 className="footer-section-title">Quick Links</h4>
-            <nav className="footer-nav">
-              <NavLink to="/" className="footer-nav-link">
+          <div>
+            <h4 className="text-white font-bold text-lg mb-6">Quick Links</h4>
+            <nav className="space-y-3">
+              <NavLink to="/" className="text-gray-400 hover:text-primary-400 transition-colors text-sm block">
                 Home
               </NavLink>
-              <NavLink to="/about" className="footer-nav-link">
+              <NavLink to="/about" className="text-gray-400 hover:text-primary-400 transition-colors text-sm block">
                 About Us
               </NavLink>
-              <NavLink to="/products" className="footer-nav-link">
+              <NavLink to="/products" className="text-gray-400 hover:text-primary-400 transition-colors text-sm block">
                 Products
               </NavLink>
-              <NavLink to="/services" className="footer-nav-link">
+              <NavLink to="/services" className="text-gray-400 hover:text-primary-400 transition-colors text-sm block">
                 Services
               </NavLink>
-              <NavLink to="/manufacturing" className="footer-nav-link">
+              <NavLink to="/manufacturing" className="text-gray-400 hover:text-primary-400 transition-colors text-sm block">
                 Manufacturing
               </NavLink>
-              <NavLink to="/contact" className="footer-nav-link">
+              <NavLink to="/contact" className="text-gray-400 hover:text-primary-400 transition-colors text-sm block">
                 Contact
               </NavLink>
             </nav>
           </div>
 
           {/* Product Categories Section */}
-          <div className="footer-section footer-categories">
-            <h4 className="footer-section-title">Product Categories</h4>
-            <nav className="footer-nav">
+          <div>
+            <h4 className="text-white font-bold text-lg mb-6">Product Categories</h4>
+            <nav className="space-y-3">
               {productCategories.map((category) => (
                 <NavLink 
                   key={category.name}
                   to={category.path} 
-                  className="footer-nav-link"
+                  className="text-gray-400 hover:text-primary-400 transition-colors text-sm block"
                 >
                   {category.name}
                 </NavLink>
@@ -115,58 +109,55 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Contact & Social Section */}
-          <div className="footer-section footer-social-section">
-            <h4 className="footer-section-title">Connect With Us</h4>
-            
-            <p className="footer-social-tagline">
-              Stay connected with us for the latest updates and innovative healthcare solutions.
-            </p>
+          {/* Social & CTA Section */}
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-white font-bold text-lg mb-6">Connect With Us</h4>
+              <p className="text-gray-400 text-sm mb-4">
+                Stay connected for the latest healthcare innovations and updates.
+              </p>
 
-            <div className="footer-social-links">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="footer-social-icon"
-                  aria-label={social.label}
-                  title={social.label}
-                >
-                  <i className={`fa-brands ${social.icon}`} />
-                </a>
-              ))}
+              <div className="flex gap-3 mb-6">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-primary-600 text-gray-400 hover:text-white flex items-center justify-center transition-all duration-300"
+                    aria-label={social.label}
+                    title={social.label}
+                  >
+                    <i className={`fa-brands ${social.icon}`} />
+                  </a>
+                ))}
+              </div>
             </div>
 
-            <div className="footer-cta-box">
-              <p className="footer-cta-text">Have questions? Reach out to our team.</p>
-              <NavLink to="/contact" className="button button-primary footer-cta-btn">
-                <i className="fa-solid fa-arrow-right" />
-                Get In Touch
-              </NavLink>
-            </div>
+            <NavLink 
+              to="/contact" 
+              className="block px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg text-center transition-colors duration-300"
+            >
+              <i className="fa-solid fa-arrow-right mr-2" />
+              Get In Touch
+            </NavLink>
           </div>
         </div>
-      </div>
 
-      {/* Footer Bottom Bar */}
-      <div className="footer-bottom">
-        <div className="container footer-bottom-content">
-          <div className="footer-bottom-left">
-            <p className="footer-copyright">
-              &copy; {currentYear} BASDILS Pharmaceuticals Pvt. Ltd. All rights reserved.
-            </p>
-          </div>
+        {/* Footer Bottom */}
+        <div className="flex flex-col md:flex-row items-center justify-between py-8 gap-4">
+          <p className="text-gray-400 text-sm">
+            &copy; {currentYear} BASDILS Pharmaceuticals Pvt. Ltd. All rights reserved.
+          </p>
 
-          <nav className="footer-legal-links">
-            <a href="#" className="footer-legal-link">
+          <nav className="flex items-center gap-6 text-sm">
+            <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
               Privacy Policy
             </a>
-            <span className="footer-legal-separator" />
-            <a href="#" className="footer-legal-link">
+            <span className="text-gray-700">•</span>
+            <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
               Terms of Service
             </a>
-            <span className="footer-legal-separator" />
-            <a href="#" className="footer-legal-link">
+            <span className="text-gray-700">•</span>
+            <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
               Cookie Policy
             </a>
           </nav>

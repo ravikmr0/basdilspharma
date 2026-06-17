@@ -14,13 +14,13 @@ export function ProductDetailPage() {
 
   if (!product) {
     return (
-      <section className="section-shell">
-        <div className="container">
-          <div className="empty-products glass-panel reveal">
-            <p className="eyebrow">Product Not Found</p>
-            <h3>We couldn't find the product you're looking for.</h3>
-            <p>This product may have been discontinued or the URL is incorrect.</p>
-            <Link className="button button-primary" to="/products">
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="p-12 bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl border border-red-100 text-center max-w-2xl mx-auto">
+            <p className="text-sm font-semibold text-red-600 uppercase tracking-wider mb-2">Product Not Found</p>
+            <h3 className="text-3xl font-bold font-display text-gray-900 mb-2">We couldn't find the product you're looking for.</h3>
+            <p className="text-gray-600 mb-8">This product may have been discontinued or the URL is incorrect.</p>
+            <Link className="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all duration-300 inline-block" to="/products">
               Back to Products
             </Link>
           </div>
@@ -36,32 +36,36 @@ export function ProductDetailPage() {
   return (
     <>
       {/* Hero Section with Product Header */}
-      <section className="section-shell product-detail-hero">
-        <div className="container product-detail-header">
-          <div className="breadcrumb-nav">
-            <Link to="/products">Products</Link>
-            <span>/</span>
-            <span className="current">{product.name}</span>
+      <section className="py-16 md:py-24 bg-gradient-to-r from-primary-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 mb-8 text-gray-600">
+            <Link to="/products" className="hover:text-primary-600 transition-colors">Products</Link>
+            <span className="text-gray-400">/</span>
+            <span className="text-gray-900 font-semibold">{product.name}</span>
           </div>
 
-          <div className="product-detail-hero-content">
-            <div className="product-detail-icon-large" style={{ '--product-color': product.color } as React.CSSProperties}>
-              <i className={`fa-solid ${product.icon}`} />
+          {/* Product Hero Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="flex justify-center">
+              <div className="w-32 h-32 rounded-2xl flex items-center justify-center text-6xl text-white shadow-2xl" style={{ backgroundColor: product.color }}>
+                <i className={`fa-solid ${product.icon}`} />
+              </div>
             </div>
 
-            <div className="product-detail-hero-text">
-              <p className="eyebrow">{formatTag(product.therapeuticTags[0])}</p>
-              <h1>{product.displayName}</h1>
-              <p className="product-detail-kicker">{product.categoryLabel}</p>
+            <div>
+              <p className="text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">{formatTag(product.therapeuticTags[0])}</p>
+              <h1 className="text-5xl md:text-6xl font-bold font-display text-gray-900 mb-2">{product.displayName}</h1>
+              <p className="text-lg text-gray-600 mb-6">{product.categoryLabel}</p>
               
-              <div className="product-detail-quick-info">
-                <div className="quick-info-item">
-                  <i className="fa-solid fa-vial" />
-                  <span>{product.dosageForm}</span>
+              <div className="flex flex-wrap gap-6">
+                <div className="flex items-center gap-3">
+                  <i className="fa-solid fa-vial text-primary-600 text-2xl" />
+                  <span className="text-gray-600">{product.dosageForm}</span>
                 </div>
-                <div className="quick-info-item">
-                  <i className="fa-solid fa-box" />
-                  <span>{product.packSize}</span>
+                <div className="flex items-center gap-3">
+                  <i className="fa-solid fa-box text-primary-600 text-2xl" />
+                  <span className="text-gray-600">{product.packSize}</span>
                 </div>
               </div>
             </div>
@@ -70,45 +74,45 @@ export function ProductDetailPage() {
       </section>
 
       {/* Main Content Section */}
-      <section className="section-shell">
-        <div className="container product-detail-layout">
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Left Column - Main Content */}
-          <div className="product-detail-main">
+          <div className="lg:col-span-2 space-y-8">
             {/* Overview */}
-            <div className="detail-section glass-panel reveal">
-              <h2>Overview</h2>
-              <p className="detail-lead">{product.overview}</p>
+            <div className="p-8 bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in">
+              <h2 className="text-3xl font-bold font-display text-gray-900 mb-4">Overview</h2>
+              <p className="text-lg text-gray-700 leading-relaxed mb-4">{product.overview}</p>
               {product.fullDescription && (
-                <p>{product.fullDescription}</p>
+                <p className="text-gray-600 leading-relaxed">{product.fullDescription}</p>
               )}
             </div>
 
-            {/* Short Description */}
-            <div className="detail-section glass-panel reveal">
-              <p className="detail-highlight">{product.shortDescription}</p>
+            {/* Short Description Highlight */}
+            <div className="p-8 bg-gradient-to-r from-primary-50 to-blue-50 rounded-xl border border-primary-100 hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+              <p className="text-lg font-semibold text-primary-900">{product.shortDescription}</p>
             </div>
 
             {/* Ingredients Section */}
-            <div className="detail-section glass-panel reveal">
-              <h3>{product.ingredientsLabel}</h3>
-              <div className="ingredients-grid">
+            <div className="p-8 bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <h3 className="text-2xl font-bold font-display text-gray-900 mb-6">{product.ingredientsLabel}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {product.ingredients.map((ingredient: string, index: number) => (
-                  <div key={index} className="ingredient-item">
-                    <i className="fa-solid fa-flask" />
-                    <span>{ingredient}</span>
+                  <div key={index} className="flex items-center gap-3 p-3 bg-white rounded-lg border border-gray-200 hover:border-primary-300 transition-colors">
+                    <i className="fa-solid fa-flask text-primary-600 text-lg" />
+                    <span className="text-gray-700 font-medium">{ingredient}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Benefits Section */}
-            <div className="detail-section glass-panel reveal">
-              <h3>Key Benefits</h3>
-              <ul className="benefits-list">
+            <div className="p-8 bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+              <h3 className="text-2xl font-bold font-display text-gray-900 mb-6">Key Benefits</h3>
+              <ul className="space-y-3">
                 {product.benefits.map((benefit: string, index: number) => (
-                  <li key={index}>
-                    <i className="fa-solid fa-check-circle" />
-                    {benefit}
+                  <li key={index} className="flex items-start gap-3 text-gray-700">
+                    <i className="fa-solid fa-check-circle text-green-600 text-lg mt-0.5" />
+                    <span>{benefit}</span>
                   </li>
                 ))}
               </ul>
@@ -116,60 +120,62 @@ export function ProductDetailPage() {
           </div>
 
           {/* Right Column - Sidebar */}
-          <aside className="product-detail-sidebar">
+          <aside className="space-y-8">
             {/* Key Information Card */}
-            <div className="detail-card glass-panel reveal">
-              <h4>Product Information</h4>
+            <div className="p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <h4 className="text-xl font-bold font-display text-gray-900 mb-6">Product Information</h4>
               
-              <div className="info-row">
-                <label>Category</label>
-                <span>{product.categoryLabel}</span>
-              </div>
+              <div className="space-y-4">
+                <div className="pb-4 border-b border-gray-200">
+                  <label className="text-sm font-semibold text-gray-600 block mb-1">Category</label>
+                  <span className="text-gray-900 font-medium">{product.categoryLabel}</span>
+                </div>
 
-              <div className="info-row">
-                <label>Dosage Form</label>
-                <span>{product.dosageForm}</span>
-              </div>
+                <div className="pb-4 border-b border-gray-200">
+                  <label className="text-sm font-semibold text-gray-600 block mb-1">Dosage Form</label>
+                  <span className="text-gray-900 font-medium">{product.dosageForm}</span>
+                </div>
 
-              <div className="info-row">
-                <label>Pack Size</label>
-                <span>{product.packSize}</span>
-              </div>
+                <div className="pb-4 border-b border-gray-200">
+                  <label className="text-sm font-semibold text-gray-600 block mb-1">Pack Size</label>
+                  <span className="text-gray-900 font-medium">{product.packSize}</span>
+                </div>
 
-              <div className="info-row">
-                <label>Therapeutic Area</label>
-                <span>{formatTag(product.therapeuticTags[0])}</span>
-              </div>
+                <div className="pb-4 border-b border-gray-200">
+                  <label className="text-sm font-semibold text-gray-600 block mb-1">Therapeutic Area</label>
+                  <span className="text-gray-900 font-medium">{formatTag(product.therapeuticTags[0])}</span>
+                </div>
 
-              <div className="info-row">
-                <label>Dosage</label>
-                <span>{product.dosage}</span>
+                <div>
+                  <label className="text-sm font-semibold text-gray-600 block mb-1">Dosage</label>
+                  <span className="text-gray-900 font-medium">{product.dosage}</span>
+                </div>
               </div>
             </div>
 
             {/* CTA Card */}
-            <div className="detail-card glass-panel reveal cta-card">
-              <h4>Interested in this product?</h4>
-              <p>Get more information or place an enquiry with our team.</p>
+            <div className="p-8 bg-gradient-to-br from-primary-600 to-primary-700 rounded-xl text-white hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+              <h4 className="text-xl font-bold font-display mb-2">Interested in this product?</h4>
+              <p className="text-primary-100 mb-6">Get more information or place an enquiry with our team.</p>
               
-              <div className="cta-buttons">
-                <a href="tel:+919931691959" className="button button-primary full-width">
-                  <i className="fa-solid fa-phone" />
+              <div className="space-y-3">
+                <a href="tel:+919931691959" className="block w-full px-6 py-3 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 text-center">
+                  <i className="fa-solid fa-phone mr-2" />
                   Call Us
                 </a>
-                <Link to="/contact" className="button button-secondary full-width">
-                  <i className="fa-solid fa-envelope" />
+                <Link to="/contact" className="block w-full px-6 py-3 bg-primary-800 hover:bg-primary-900 text-white font-semibold rounded-lg transition-all duration-300 text-center border-2 border-white/30">
+                  <i className="fa-solid fa-envelope mr-2" />
                   Enquire Now
                 </Link>
               </div>
             </div>
 
             {/* Tags */}
-            <div className="detail-card glass-panel reveal">
-              <h4>Product Tags</h4>
-              <div className="tags-container">
+            <div className="p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+              <h4 className="text-lg font-bold font-display text-gray-900 mb-4">Product Tags</h4>
+              <div className="flex flex-wrap gap-2">
                 {product.categoryTags.map((tag: string) => (
-                  <span key={tag} className="tag">
+                  <span key={tag} className="px-3 py-1 bg-primary-50 text-primary-600 rounded-full text-xs font-semibold hover:bg-primary-100 transition-colors cursor-pointer">
                     {formatTag(tag)}
                   </span>
                 ))}
@@ -181,30 +187,34 @@ export function ProductDetailPage() {
 
       {/* Navigation Section */}
       {(prevProduct || nextProduct) && (
-        <section className="section-shell product-navigation">
-          <div className="container">
-            <h3 className="eyebrow">Related Products</h3>
-            <div className="product-nav-grid">
-              {prevProduct && (
-                <Link to={`/products/${prevProduct.slug}`} className="product-nav-card prev">
-                  <i className="fa-solid fa-chevron-left" />
-                  <span className="nav-label">Previous</span>
-                  <span className="nav-product">{prevProduct.name}</span>
+        <section className="py-16 md:py-24 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-sm font-semibold text-primary-600 uppercase tracking-wider mb-8">Related Products</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {prevProduct ? (
+                <Link to={`/products/${prevProduct.slug}`} className="p-6 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all duration-300 group flex flex-col items-center text-center">
+                  <i className="fa-solid fa-chevron-left text-primary-600 text-2xl mb-2 group-hover:translate-x-2 transition-transform" />
+                  <span className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">Previous</span>
+                  <span className="text-lg font-bold font-display text-gray-900">{prevProduct.name}</span>
                 </Link>
+              ) : (
+                <div />
               )}
               
-              <Link to="/products" className="product-nav-card center">
-                <i className="fa-solid fa-th" />
-                <span className="nav-label">View All</span>
-                <span className="nav-product">Product Catalogue</span>
+              <Link to="/products" className="p-6 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all duration-300 flex flex-col items-center text-center">
+                <i className="fa-solid fa-th text-primary-600 text-2xl mb-2" />
+                <span className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">View All</span>
+                <span className="text-lg font-bold font-display text-gray-900">Product Catalogue</span>
               </Link>
 
-              {nextProduct && (
-                <Link to={`/products/${nextProduct.slug}`} className="product-nav-card next">
-                  <span className="nav-label">Next</span>
-                  <span className="nav-product">{nextProduct.name}</span>
-                  <i className="fa-solid fa-chevron-right" />
+              {nextProduct ? (
+                <Link to={`/products/${nextProduct.slug}`} className="p-6 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all duration-300 group flex flex-col items-center text-center">
+                  <span className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">Next</span>
+                  <span className="text-lg font-bold font-display text-gray-900">{nextProduct.name}</span>
+                  <i className="fa-solid fa-chevron-right text-primary-600 text-2xl mt-2 group-hover:translate-x-2 transition-transform" />
                 </Link>
+              ) : (
+                <div />
               )}
             </div>
           </div>

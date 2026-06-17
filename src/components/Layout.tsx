@@ -38,12 +38,12 @@ export function SiteLayout() {
         menuOpen={menuOpen}
         onToggleMenu={() => setMenuOpen((current) => !current)}
       />
-      <main id="main-content">
+      <main id="main-content" className="pt-20">
         <Outlet />
       </main>
       <Footer />
       <a
-        className="whatsapp-float"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-2xl z-40"
         href="https://wa.me/919931691959"
         target="_blank"
         rel="noreferrer"
