@@ -27,7 +27,7 @@ const teamMembers: TeamMember[] = [
 
 export function TeamSection() {
   return (
-    <section className="py-16 md:py-24 bg-gray-50" id="team">
+    <section className="py-10 md:py-14 lg:py-16 bg-gray-50" id="team">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Meet Our Team"
@@ -35,7 +35,7 @@ export function TeamSection() {
           description="Our diverse team brings decades of combined expertise in pharmaceutical manufacturing, quality assurance, innovation, and customer success."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           {teamMembers.map((member, idx) => (
             <article key={idx} className="group rounded-2xl overflow-hidden bg-white border border-gray-200 hover:shadow-xl transition-all duration-300 flex flex-col animate-fade-in" style={{ animationDelay: `${0.1 * (idx + 1)}s` }}>
               {/* Image Container */}
@@ -50,13 +50,13 @@ export function TeamSection() {
               </div>
 
               {/* Content */}
-              <div className="p-8 flex-grow">
-                <h3 className="text-2xl font-bold font-display text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-sm font-semibold text-primary-600 uppercase tracking-wider mb-3">{member.position}</p>
-                <div className="mb-4">
+              <div className="p-6 flex-grow">
+                <h3 className="text-xl font-bold font-display text-gray-900 mb-1">{member.name}</h3>
+                <p className="text-xs font-semibold text-primary-600 uppercase tracking-wider mb-2">{member.position}</p>
+                <div className="mb-3">
                   <span className="inline-block px-3 py-1 bg-primary-50 text-primary-600 rounded-full text-xs font-medium">{member.expertise}</span>
                 </div>
-                <p className="text-gray-600 leading-relaxed">{member.bio}</p>
+                <p className="text-gray-600 leading-relaxed text-sm">{member.bio}</p>
               </div>
 
               {/* Bottom Accent */}

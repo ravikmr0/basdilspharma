@@ -82,7 +82,7 @@ export function ProductCardsSlider({ products }: ProductCardsSliderProps) {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Carousel Track */}
       <div 
         className="overflow-hidden rounded-2xl"
@@ -90,21 +90,21 @@ export function ProductCardsSlider({ products }: ProductCardsSliderProps) {
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="flex gap-6 transition-transform duration-500 ease-out">
+        <div className="flex gap-5 transition-transform duration-500 ease-out">
           {showcaseProducts.map((product, idx) => (
             <article
               key={idx}
-              className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 h-80 rounded-xl overflow-hidden group cursor-pointer relative shadow-lg hover:shadow-2xl transition-all duration-300"
+              className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 h-64 rounded-xl overflow-hidden group cursor-pointer relative shadow-lg hover:shadow-2xl transition-all duration-300"
               style={{ backgroundImage: `url(${product.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent group-hover:from-gray-900/90 transition-all duration-300" />
               
               {/* Content */}
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <p className="text-sm font-semibold text-white/80 mb-2">{product.category}</p>
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary-300 transition-colors">{product.name}</h3>
-                <p className="text-white/90 text-sm leading-relaxed group-hover:text-white transition-colors">{product.description}</p>
+              <div className="absolute inset-0 flex flex-col justify-end p-5">
+                <p className="text-xs font-semibold text-white/80 mb-1">{product.category}</p>
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-primary-300 transition-colors">{product.name}</h3>
+                <p className="text-white/90 text-xs leading-relaxed group-hover:text-white transition-colors">{product.description}</p>
                 
                 {/* Accent line */}
                 <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r" style={{ backgroundImage: `linear-gradient(90deg, ${product.color}, ${product.color}00)` }} />
@@ -117,12 +117,12 @@ export function ProductCardsSlider({ products }: ProductCardsSliderProps) {
       {/* Navigation Controls */}
       <div className="flex items-center justify-between">
         <button
-          className="group w-12 h-12 rounded-full bg-gray-200 hover:bg-primary-600 text-gray-900 hover:text-white flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-lg"
+          className="group w-10 h-10 rounded-full bg-gray-200 hover:bg-primary-600 text-gray-900 hover:text-white flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-lg"
           type="button"
           aria-label="Previous products"
           onClick={goPrev}
         >
-          <i className="fa-solid fa-chevron-left group-hover:scale-125 transition-transform" />
+          <i className="fa-solid fa-chevron-left group-hover:scale-125 transition-transform text-sm" />
         </button>
 
         <div className="flex gap-2">
@@ -131,8 +131,8 @@ export function ProductCardsSlider({ products }: ProductCardsSliderProps) {
               key={idx}
               className={`transition-all duration-300 rounded-full ${
                 idx === activeIndex
-                  ? 'w-8 h-3 bg-primary-600'
-                  : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
+                  ? 'w-8 h-2 bg-primary-600'
+                  : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
               }`}
               type="button"
               aria-label={`Go to slide ${idx + 1}`}
@@ -143,12 +143,12 @@ export function ProductCardsSlider({ products }: ProductCardsSliderProps) {
         </div>
 
         <button
-          className="group w-12 h-12 rounded-full bg-gray-200 hover:bg-primary-600 text-gray-900 hover:text-white flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-lg"
+          className="group w-10 h-10 rounded-full bg-gray-200 hover:bg-primary-600 text-gray-900 hover:text-white flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-lg"
           type="button"
           aria-label="Next products"
           onClick={goNext}
         >
-          <i className="fa-solid fa-chevron-right group-hover:scale-125 transition-transform" />
+          <i className="fa-solid fa-chevron-right group-hover:scale-125 transition-transform text-sm" />
         </button>
       </div>
     </div>

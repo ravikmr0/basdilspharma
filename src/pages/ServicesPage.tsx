@@ -60,7 +60,7 @@ export function ServicesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary-50 to-blue-50">
+      <section className="py-10 md:py-14 lg:py-16 bg-gradient-to-r from-primary-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Our Services"
@@ -71,9 +71,9 @@ export function ServicesPage() {
       </section>
 
       {/* Main Services Grid */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-10 md:py-14 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {serviceDetails.map((service) => (
               <article key={service.title} className="group rounded-2xl overflow-hidden bg-white border border-gray-200 hover:shadow-xl transition-all duration-300 flex flex-col animate-fade-in">
                 {/* Service Image */}
@@ -128,13 +128,13 @@ export function ServicesPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-10 md:py-14 lg:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-display text-gray-900 mb-4">Why Choose BASDILS?</h2>
-            <p className="text-lg text-gray-600">Industry-leading expertise, quality, and commitment to your success</p>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-display text-gray-900 mb-3">Why Choose BASDILS?</h2>
+            <p className="text-base text-gray-600">Industry-leading expertise, quality, and commitment to your success</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: 'Certified Quality', description: 'WHO-GMP and ISO 9001:2015 certifications' },
               { title: 'Fast Execution', description: 'Quick turnaround with dedicated project management' },
@@ -143,9 +143,9 @@ export function ServicesPage() {
               { title: 'R&D Capability', description: 'In-house research and development facility' },
               { title: '24/7 Support', description: 'Dedicated support team for all your needs' }
             ].map((item, idx) => (
-              <div key={item.title} className="p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 space-y-2 animate-fade-in" style={{ animationDelay: `${0.1 * (idx + 1)}s` }}>
-                <h4 className="text-lg font-bold font-display text-gray-900">{item.title}</h4>
-                <p className="text-gray-600 text-sm">{item.description}</p>
+              <div key={item.title} className="p-6 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 space-y-1 animate-fade-in" style={{ animationDelay: `${0.1 * (idx + 1)}s` }}>
+                <h4 className="text-base font-bold font-display text-gray-900">{item.title}</h4>
+                <p className="text-gray-600 text-xs">{item.description}</p>
               </div>
             ))}
           </div>
@@ -153,19 +153,19 @@ export function ServicesPage() {
       </section>
 
       {/* Our Process */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-10 md:py-14 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-display text-gray-900 mb-4">Our Process</h2>
-            <p className="text-lg text-gray-600">Streamlined approach to delivering excellence</p>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-display text-gray-900 mb-3">Our Process</h2>
+            <p className="text-base text-gray-600">Streamlined approach to delivering excellence</p>
           </div>
-          <div className="flex flex-col md:flex-row justify-between items-stretch gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-stretch gap-4">
             {processSteps.map((step, idx) => (
               <div key={step.number} className="flex-1 relative animate-fade-in" style={{ animationDelay: `${0.1 * (idx + 1)}s` }}>
-                <div className="p-8 bg-white rounded-xl border border-gray-200 text-center h-full hover:shadow-lg transition-all duration-300">
-                  <div className="w-12 h-12 rounded-lg bg-primary-600 text-white flex items-center justify-center text-2xl font-bold mx-auto mb-4">{step.number}</div>
-                  <h4 className="text-xl font-bold font-display text-gray-900 mb-2">{step.title}</h4>
-                  <p className="text-gray-600">{step.description}</p>
+                <div className="p-6 bg-white rounded-xl border border-gray-200 text-center h-full hover:shadow-lg transition-all duration-300">
+                  <div className="w-10 h-10 rounded-lg bg-primary-600 text-white flex items-center justify-center text-lg font-bold mx-auto mb-2">{step.number}</div>
+                  <h4 className="text-base font-bold font-display text-gray-900 mb-1">{step.title}</h4>
+                  <p className="text-gray-600 text-xs">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -174,11 +174,11 @@ export function ServicesPage() {
       </section>
 
       {/* Service Comparison */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-10 md:py-14 lg:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-display text-gray-900 mb-4">Service Comparison</h2>
-            <p className="text-lg text-gray-600">Choose the right solution for your needs</p>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-display text-gray-900 mb-3">Service Comparison</h2>
+            <p className="text-base text-gray-600">Choose the right solution for your needs</p>
           </div>
           <div className="overflow-x-auto rounded-xl border border-gray-200">
             <table className="w-full">
@@ -248,18 +248,18 @@ export function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary-600 to-primary-700">
+      <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-r from-primary-600 to-primary-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-4xl md:text-5xl font-bold font-display text-white">Ready to Get Started?</h2>
-              <p className="text-lg text-primary-100">Choose the service that fits your business needs and let's grow together.</p>
+          <div className="text-center max-w-2xl mx-auto space-y-6">
+            <div className="space-y-2">
+              <h2 className="text-3xl md:text-4xl font-bold font-display text-white">Ready to Get Started?</h2>
+              <p className="text-base text-primary-100">Choose the service that fits your business needs and let's grow together.</p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="px-8 py-4 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl inline-block">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a href="/contact" className="px-8 py-3 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl inline-block text-sm">
                 Send Inquiry
               </a>
-              <a href="https://wa.me/919931691959" target="_blank" rel="noreferrer" className="px-8 py-4 bg-primary-800 hover:bg-primary-900 text-white font-semibold rounded-lg transition-all duration-300 border-2 border-white/30 inline-block">
+              <a href="https://wa.me/919931691959" target="_blank" rel="noreferrer" className="px-8 py-3 bg-primary-800 hover:bg-primary-900 text-white font-semibold rounded-lg transition-all duration-300 border-2 border-white/30 inline-block text-sm">
                 Chat on WhatsApp
               </a>
             </div>
