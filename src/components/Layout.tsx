@@ -44,7 +44,7 @@ export function SiteLayout() {
       <Footer />
       {/* Call Button */}
       <a
-        className="fixed bottom-32 right-6 w-20 h-20 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-3xl z-40"
+        className="fixed bottom-[96px] right-6 w-[60px] h-[60px] bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-xl z-40 sm:text-xl lg:text-2xl sm:w-[65px] sm:h-[65px] lg:w-[70px] lg:h-[70px] sm:bottom-[105px] lg:bottom-[112px]"
         href="tel:+919931691959"
         aria-label="Call BASDILS"
       >
@@ -53,7 +53,7 @@ export function SiteLayout() {
       
       {/* WhatsApp Button */}
       <a
-        className="fixed bottom-6 right-6 w-20 h-20 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-3xl z-40"
+        className="fixed bottom-6 right-6 w-[60px] h-[60px] bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-xl z-40 sm:text-xl lg:text-2xl sm:w-[65px] sm:h-[65px] lg:w-[70px] lg:h-[70px]"
         href="https://wa.me/919931691959"
         target="_blank"
         rel="noreferrer"

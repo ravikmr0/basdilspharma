@@ -28,23 +28,23 @@ export function HomePage() {
       <PremiumHeroSlider />
 
       {/* Products Section */}
-      <section className="py-10 md:py-14 lg:py-16 bg-white" id="products">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-white" id="products">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Therapeutic Segments"
             title="Products across key healthcare categories"
             description="Explore BASDILS offerings across women's healthcare, liver care, nutraceuticals, iron and hematinics, bone health, joint care, Ayurvedic healthcare, and general wellness."
           />
-          <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-6 md:p-8 border border-primary-200 flex flex-col md:flex-row items-center justify-between gap-6 animate-slide-up">
-            <div className="space-y-1">
-              <p className="text-sm font-semibold text-primary-600 uppercase tracking-wider">Browse the catalog</p>
-              <p className="text-base text-gray-700 font-medium">Go to the dedicated products page for search and filters.</p>
+          <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-primary-200 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 animate-slide-up">
+            <div className="space-y-1 w-full md:w-auto">
+              <p className="text-xs sm:text-sm font-semibold text-primary-600 uppercase tracking-wider">Browse the catalog</p>
+              <p className="text-xs sm:text-base text-gray-700 font-medium">Go to the dedicated products page for search and filters.</p>
             </div>
-            <div className="flex gap-3 flex-shrink-0">
-              <Link className="btn-primary" to="/products">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 flex-shrink-0 w-full sm:w-auto">
+              <Link className="btn-primary text-xs sm:text-sm w-full sm:w-auto text-center" to="/products">
                 Browse Products
               </Link>
-              <Link className="btn-secondary" to="/services">
+              <Link className="btn-secondary text-xs sm:text-sm w-full sm:w-auto text-center" to="/services">
                 View Services
               </Link>
             </div>
@@ -53,8 +53,8 @@ export function HomePage() {
       </section>
 
       {/* Featured Products Section */}
-      <section className="py-10 md:py-14 lg:py-16 bg-gray-50" id="featured-products">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-gray-50" id="featured-products">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Quality Commitment"
             title="Quality is the foundation of BASDILS Pharmaceuticals"
@@ -65,14 +65,14 @@ export function HomePage() {
       </section>
 
       {/* Why Choose BASDILS Section */}
-      <section className="py-10 md:py-14 lg:py-16 bg-white" id="why-choose">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-white" id="why-choose">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Why Choose BASDILS"
             title="Partner with a company built on quality and trust"
             description="A wide product portfolio, ethical practices, and customer-focused execution keep the brand grounded in long-term value."
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {[
               'Premium Quality Products',
               'Scientific Formulations',
@@ -83,9 +83,9 @@ export function HomePage() {
             ].map((title) => (
               <div 
                 key={title} 
-                className="card-base hover:shadow-lg transition-all duration-300 p-6 border-l-4 border-primary-600 group"
+                className="card-base hover:shadow-lg transition-all duration-300 p-4 sm:p-5 md:p-6 border-l-4 border-primary-600 group"
               >
-                <h3 className="text-base font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
+                <h3 className="text-sm sm:text-base font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
                   {title}
                 </h3>
               </div>
@@ -95,14 +95,14 @@ export function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-10 md:py-14 lg:py-16 bg-gray-50" id="services">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-gray-50" id="services">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Services"
             title="Complete commercial support for brand growth"
             description="BASDILS supports partners with franchise opportunities, manufacturing execution, development support, and packaging-led brand building."
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {[
               { num: '01', title: 'PCD Pharma Franchise', desc: 'Exclusive territorial rights with comprehensive marketing support' },
               { num: '02', title: 'Third Party Manufacturing', desc: 'WHO-GMP facilities with advanced production capabilities' },
@@ -113,13 +113,13 @@ export function HomePage() {
             ].map((service) => (
               <div 
                 key={service.title} 
-                className="card-base hover:shadow-lg transition-all duration-300 p-6 space-y-2"
+                className="card-base hover:shadow-lg transition-all duration-300 p-4 sm:p-5 md:p-6 space-y-2"
               >
-                <div className="text-xs font-bold text-primary-600">{service.num}</div>
-                <h3 className="text-base font-bold text-gray-900">
+                <div className="text-xs sm:text-sm font-bold text-primary-600">{service.num}</div>
+                <h3 className="text-sm sm:text-base font-bold text-gray-900">
                   {service.title}
                 </h3>
-                <p className="text-xs text-gray-600">
+                <p className="text-xs sm:text-sm text-gray-600">
                   {service.desc}
                 </p>
               </div>
@@ -129,29 +129,29 @@ export function HomePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-10 md:py-14 lg:py-16 bg-white" id="testimonials">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-white" id="testimonials">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Client Experience"
             title="What partners value most about BASDILS"
             description="A premium customer experience is built on transparency, responsiveness, and product credibility."
           />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {testimonials.map((testimonial) => (
               <article 
                 key={testimonial.name}
-                className="card-base space-y-3 border-2 border-gray-200 hover:border-primary-300 hover:shadow-card-hover transition-all duration-300 p-6"
+                className="card-base space-y-2 sm:space-y-3 border-2 border-gray-200 hover:border-primary-300 hover:shadow-card-hover transition-all duration-300 p-4 sm:p-5 md:p-6"
               >
                 <div className="flex gap-0.5">
                   {Array.from({ length: 5 }).map((_, index) => (
-                    <span key={`${testimonial.name}-${index}`} className="w-1.5 h-1.5 rounded-full bg-primary-600" />
+                    <span key={`${testimonial.name}-${index}`} className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-primary-600" />
                   ))}
                 </div>
-                <p className="text-gray-700 italic leading-relaxed text-sm">
+                <p className="text-gray-700 italic leading-relaxed text-xs sm:text-sm">
                   "{testimonial.quote}"
                 </p>
-                <div className="pt-2 border-t border-gray-200">
-                  <p className="font-bold text-gray-900 text-sm">{testimonial.name}</p>
+                <div className="pt-2 sm:pt-3 border-t border-gray-200">
+                  <p className="font-bold text-gray-900 text-xs sm:text-sm">{testimonial.name}</p>
                   <p className="text-xs text-primary-600 font-medium">{testimonial.role}</p>
                 </div>
               </article>

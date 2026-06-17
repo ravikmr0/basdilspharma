@@ -156,7 +156,7 @@ export function HeroProductSlider({ products }: HeroProductSliderProps) {
         {/* Navigation */}
         <div className="flex justify-between items-center">
           <button
-            className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all duration-300 flex items-center justify-center"
+            className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all duration-300 flex items-center justify-center"
             type="button"
             aria-label="Previous product"
             onClick={() => shiftSlide(-1)}
@@ -183,7 +183,7 @@ export function HeroProductSlider({ products }: HeroProductSliderProps) {
           </div>
 
           <button
-            className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all duration-300 flex items-center justify-center"
+            className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all duration-300 flex items-center justify-center"
             type="button"
             aria-label="Next product"
             onClick={() => shiftSlide(1)}

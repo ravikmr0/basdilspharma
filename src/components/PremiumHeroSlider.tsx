@@ -205,40 +205,40 @@ export function PremiumHeroSlider() {
       <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-blue-900/60" />
 
       {/* Content section */}
-      <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+      <div className="relative h-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex items-center">
         <div 
           key={slide.id} 
           data-dir={animDirection}
-          className={`max-w-2xl transition-all duration-700 ${
+          className={`w-full max-w-2xl transition-all duration-700 ${
             animDirection === 1 ? 'animate-slide-up' : 'animate-slide-down'
           }`}
         >
           {/* Section eyebrow label */}
-          <p className="text-primary-300 text-sm font-semibold uppercase tracking-wider mb-4 animate-fade-in">{slide.eyebrow}</p>
+          <p className="text-primary-300 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2 sm:mb-4 animate-fade-in">{slide.eyebrow}</p>
 
-          {/* Main heading */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display text-white mb-6 leading-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          {/* Main heading - Responsive text sizes */}
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-display text-white mb-3 sm:mb-6 leading-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
             {slide.title}
           </h1>
 
-          {/* Optional subtitle */}
+          {/* Optional subtitle - Responsive */}
           {slide.subtitle && (
-            <p className="text-xl md:text-2xl text-primary-200 mb-6 font-semibold animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-200 mb-3 sm:mb-6 font-semibold animate-fade-in" style={{ animationDelay: '0.2s' }}>
               {slide.subtitle}
             </p>
           )}
 
-          {/* Description */}
-          <p className="text-lg text-gray-200 mb-8 leading-relaxed max-w-xl animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          {/* Description - Responsive */}
+          <p className="text-sm sm:text-base md:text-lg text-gray-200 mb-6 sm:mb-8 leading-relaxed max-w-xl animate-fade-in" style={{ animationDelay: '0.3s' }}>
             {slide.description}
           </p>
 
-          {/* CTA buttons with premium styling */}
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          {/* CTA buttons with responsive sizing */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             {slide.buttons.map((btn) => (
               <Link
                 key={btn.label}
-                className={`px-8 py-4 font-semibold rounded-lg transition-all duration-300 inline-block text-center ${
+                className={`px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 font-semibold rounded-lg transition-all duration-300 inline-block text-center text-xs sm:text-sm md:text-base hover:scale-105 ${
                   btn.variant === 'primary'
                     ? 'bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-xl'
                     : 'bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 backdrop-blur-sm'
@@ -253,40 +253,40 @@ export function PremiumHeroSlider() {
       </div>
 
       {/* Navigation controls - Centered side navigation */}
-      <nav className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 sm:px-6 lg:px-8 pointer-events-none" aria-label="Slide navigation">
+      <nav className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2 sm:px-4 md:px-6 lg:px-8 pointer-events-none" aria-label="Slide navigation">
         {/* Left arrow control */}
         <button
-          className="group pointer-events-auto w-14 h-14 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/40 hover:border-white/70 shadow-lg hover:shadow-xl"
+          className="group pointer-events-auto w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/40 hover:border-white/70 shadow-lg hover:shadow-xl text-base sm:text-lg md:text-xl"
           type="button"
           aria-label="Previous slide"
           onClick={goPrev}
           title="Previous slide (or press left arrow key)"
         >
-          <i className="fa-solid fa-chevron-left text-xl group-hover:scale-110 group-active:scale-95 transition-transform" />
+          <i className="fa-solid fa-chevron-left group-hover:scale-110 group-active:scale-95 transition-transform" />
         </button>
 
         {/* Right arrow control */}
         <button
-          className="group pointer-events-auto w-14 h-14 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/40 hover:border-white/70 shadow-lg hover:shadow-xl"
+          className="group pointer-events-auto w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/40 hover:border-white/70 shadow-lg hover:shadow-xl text-base sm:text-lg md:text-xl"
           type="button"
           aria-label="Next slide"
           onClick={goNext}
           title="Next slide (or press right arrow key)"
         >
-          <i className="fa-solid fa-chevron-right text-xl group-hover:scale-110 group-active:scale-95 transition-transform" />
+          <i className="fa-solid fa-chevron-right group-hover:scale-110 group-active:scale-95 transition-transform" />
         </button>
       </nav>
 
       {/* Pagination dots and scroll indicator - Bottom navigation */}
-      <div className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-6">
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 flex flex-col items-center gap-4 sm:gap-6">
         {/* Pagination dots */}
-        <div className="flex gap-3" aria-label="Slide indicators">
+        <div className="flex gap-2 sm:gap-3" aria-label="Slide indicators">
           {slides.map((s, i) => (
             <button
               key={s.id}
               className={`transition-all duration-300 ${
                 i === activeIndex
-                  ? 'w-8 h-2 bg-primary-400'
+                  ? 'w-6 sm:w-8 h-2 bg-primary-400'
                   : 'w-2 h-2 bg-white/50 hover:bg-white/80'
               } rounded-full`}
               type="button"
@@ -298,15 +298,15 @@ export function PremiumHeroSlider() {
           ))}
         </div>
 
-        {/* Scroll indicator */}
-        <div className="text-white/60 animate-bounce hidden md:flex flex-col items-center gap-2" aria-hidden="true">
+        {/* Scroll indicator - Hidden on mobile and tablet */}
+        <div className="text-white/60 animate-bounce hidden lg:flex flex-col items-center gap-2" aria-hidden="true">
           <div className="w-0.5 h-6 bg-gradient-to-b from-white/60 to-transparent" />
           <span className="text-xs font-medium uppercase tracking-wider">Scroll</span>
         </div>
       </div>
 
-      {/* Slide counter */}
-      <div className="absolute top-8 right-8 text-white/80 font-mono text-sm" aria-live="polite" aria-label="Slide counter">
+      {/* Slide counter - Mobile friendly */}
+      <div className="absolute top-4 sm:top-6 md:top-8 right-3 sm:right-4 md:right-8 text-white/80 font-mono text-xs sm:text-sm" aria-live="polite" aria-label="Slide counter">
         {String(activeIndex + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
       </div>
     </section>
