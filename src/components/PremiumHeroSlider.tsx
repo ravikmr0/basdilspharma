@@ -28,7 +28,7 @@ const slides: Slide[] = [
     description:
       'Delivering pharmaceutical, nutraceutical, and Ayurvedic solutions backed by scientific expertise, rigorous quality standards, and a commitment to advancing healthcare.',
     image:
-      '/public/hero_section/scientific_innovation.png',
+      '/hero_section/scientific_innovation.png',
     buttons: [
       { label: 'View Products', to: '/products', variant: 'primary' },
       { label: 'Download Catalogue', to: '/contact', variant: 'secondary' },
@@ -42,7 +42,7 @@ const slides: Slide[] = [
     description:
       'Advanced manufacturing facilities with automated production lines, rigorous quality control systems, and ISO-certified processes ensuring pharmaceutical excellence in every product.',
     image:
-      '/public/hero_section/manufacturing_process.png',
+      '/hero_section/manufacturing_process.png',
     buttons: [
       { label: 'Learn More', to: '/manufacturing', variant: 'primary' },
       { label: 'Certifications', to: '/about', variant: 'secondary' },
@@ -56,7 +56,7 @@ const slides: Slide[] = [
     description:
       'Partnering with healthcare professionals across India to deliver innovative pharmaceutical solutions trusted for quality, efficacy.',
     image:
-      '/public/hero_section/medical_excellence.png',
+      '/hero_section/medical_excellence.png',
     buttons: [
       { label: 'Explore Products', to: '/products', variant: 'primary' },
       { label: 'Contact Sales', to: '/contact', variant: 'secondary' },
@@ -70,7 +70,7 @@ const slides: Slide[] = [
     description:
       'Formulated and manufactured with pharmaceutical precision. Capsules, tablets, syrups, and supplements backed by scientific research and quality excellence.',
     image:
-      '/public/hero_section/product_portfolio.png',
+      '/hero_section/product_portfolio.png',
     buttons: [
       { label: 'View All Products', to: '/products', variant: 'primary' },
       { label: 'Request Samples', to: '/contact', variant: 'secondary' },
@@ -84,7 +84,7 @@ const slides: Slide[] = [
     description:
       'Advanced R&D, scientific research, and biotechnology innovation driving breakthrough pharmaceutical treatments and wellness solutions for tomorrow\'s healthcare.',
     image:
-      '/public/hero_section/future_of_medicine.png',
+      '/hero_section/future_of_medicine.png',
     buttons: [
       { label: 'About Our R&D', to: '/about', variant: 'primary' },
       { label: 'Innovation Hub', to: '/contact', variant: 'secondary' },
