@@ -94,6 +94,65 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* Manufacturing Excellence Section */}
+      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-gradient-to-br from-blue-50 to-indigo-50 border-y-2 border-blue-200" id="manufacturing">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Manufacturing Excellence"
+            title="State-of-the-art pharmaceutical manufacturing"
+            description="BASDILS operates WHO-GMP certified facilities with advanced quality control systems, ISO certifications, and stringent regulatory compliance to ensure every product meets the highest international standards."
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="space-y-4">
+              <div className="flex gap-3 items-start">
+                <div className="w-12 h-12 rounded-lg bg-blue-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-lg">✓</div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-sm sm:text-base">WHO-GMP Certification</h4>
+                  <p className="text-gray-600 text-xs sm:text-sm mt-1">Compliance with World Health Organization Good Manufacturing Practice standards</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <div className="w-12 h-12 rounded-lg bg-blue-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-lg">✓</div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-sm sm:text-base">ISO 9001:2015 Certified</h4>
+                  <p className="text-gray-600 text-xs sm:text-sm mt-1">Quality management system and international best practices</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <div className="w-12 h-12 rounded-lg bg-blue-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-lg">✓</div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-sm sm:text-base">Advanced R&D</h4>
+                  <p className="text-gray-600 text-xs sm:text-sm mt-1">Continuous research and development for innovative formulations</p>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="flex gap-3 items-start">
+                <div className="w-12 h-12 rounded-lg bg-indigo-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-lg">✓</div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-sm sm:text-base">Stringent Quality Control</h4>
+                  <p className="text-gray-600 text-xs sm:text-sm mt-1">In-process and finished product testing with certified laboratories</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <div className="w-12 h-12 rounded-lg bg-indigo-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-lg">✓</div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-sm sm:text-base">Regulatory Compliance</h4>
+                  <p className="text-gray-600 text-xs sm:text-sm mt-1">Full compliance with Indian Drugs and Cosmetics Act and regulations</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <div className="w-12 h-12 rounded-lg bg-indigo-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-lg">✓</div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-sm sm:text-base">Traceability Systems</h4>
+                  <p className="text-gray-600 text-xs sm:text-sm mt-1">Complete batch tracking and documentation from raw material to finished product</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-gray-50" id="services">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">

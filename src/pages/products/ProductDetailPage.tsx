@@ -48,8 +48,16 @@ export function ProductDetailPage() {
           {/* Product Hero Content */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="flex justify-center">
-              <div className="w-32 h-32 rounded-2xl flex items-center justify-center text-6xl text-white shadow-2xl" style={{ backgroundColor: product.color }}>
-                <i className={`fa-solid ${product.icon}`} />
+              <div className="w-full max-w-md rounded-3xl border border-gray-200 bg-white p-6 shadow-xl">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-72 object-contain"
+                  loading="eager"
+                  onError={(e) => {
+                    e.currentTarget.src = '/Images/logo.png';
+                  }}
+                />
               </div>
             </div>
 
@@ -79,7 +87,7 @@ export function ProductDetailPage() {
           {/* Left Column - Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Overview */}
-            <div className="p-8 bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in">
+            <div className="p-8 bg-[#fafafa] rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in">
               <h2 className="text-3xl font-bold font-display text-gray-900 mb-4">Overview</h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-4">{product.overview}</p>
               {product.fullDescription && (
@@ -93,7 +101,7 @@ export function ProductDetailPage() {
             </div>
 
             {/* Ingredients Section */}
-            <div className="p-8 bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <div className="p-8 bg-[#fafafa] rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <h3 className="text-2xl font-bold font-display text-gray-900 mb-6">{product.ingredientsLabel}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {product.ingredients.map((ingredient: string, index: number) => (
@@ -106,7 +114,7 @@ export function ProductDetailPage() {
             </div>
 
             {/* Benefits Section */}
-            <div className="p-8 bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <div className="p-8 bg-[#fafafa] rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <h3 className="text-2xl font-bold font-display text-gray-900 mb-6">Key Benefits</h3>
               <ul className="space-y-3">
                 {product.benefits.map((benefit: string, index: number) => (

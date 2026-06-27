@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { Product } from '../data/catalog';
+import { getCategoryColor } from '../utils/categoryColors';
 
 type ProductCardProps = {
   product: Product;
@@ -16,6 +17,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const ingredientPreview = product.ingredients.slice(0, 3).join(', ');
   const extraIngredients = product.ingredients.length - 3;
   const highlightedBenefits = product.benefits.slice(0, 3);
+  const categoryColor = getCategoryColor(product.categoryTags[0] || 'nutrition');
 
   return (
     <article
@@ -25,17 +27,29 @@ export function ProductCard({ product }: ProductCardProps) {
       data-therapeutic={product.therapeuticTags.join(' ')}
     >
       {/* Header with Category & Icon */}
-      <div className="bg-gradient-to-r from-primary-50 to-blue-50 px-6 py-6 border-b border-gray-100">
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex gap-2">
-            <span className="inline-block px-3 py-1 text-xs font-semibold text-primary-700 bg-primary-100 rounded-full">
+      <div 
+        className="px-6 py-6 border-b border-opacity-20 flex flex-col gap-4"
+        style={{ 
+          background: `linear-gradient(135deg, ${categoryColor.secondary} 0%, #ffffff 100%)`,
+          borderBottomColor: categoryColor.primary
+        }}
+      >
+        <div className="flex items-start justify-between">
+          <div className="flex gap-2 flex-wrap">
+            <span 
+              className="inline-block px-3 py-1 text-xs font-semibold text-white rounded-full"
+              style={{ backgroundColor: categoryColor.primary }}
+            >
               {product.categoryLabel}
             </span>
-            <span className="inline-block px-3 py-1 text-xs font-semibold text-gray-700 bg-gray-100 rounded-full">
+            <span className="inline-block px-3 py-1 text-xs font-semibold text-gray-700 bg-white rounded-full">
               {product.dosageForm}
             </span>
           </div>
-          <div className="w-10 h-10 rounded-lg bg-primary-600 text-white flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <div 
+            className="w-10 h-10 rounded-lg text-white flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0"
+            style={{ backgroundColor: categoryColor.primary }}
+          >
             <i className="fa-solid fa-bottle-droplet text-lg" />
           </div>
         </div>
@@ -106,16 +120,18 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Action Buttons */}
-      <div className="p-6 bg-gray-50 border-t border-gray-200 space-y-3">
+      <div className="p-6 border-t border-gray-200 space-y-3" style={{ backgroundColor: categoryColor.secondary + '20' }}>
         <Link 
-          className="flex items-center justify-center gap-2 px-4 py-2.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg text-sm"
+          className="flex items-center justify-center gap-2 px-4 py-2.5 text-white font-semibold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg text-sm hover:opacity-90"
+          style={{ backgroundColor: categoryColor.primary }}
           to={`/products/${product.slug}`}
         >
           View Details
           <i className="fa-solid fa-arrow-right" />
         </Link>
         <Link 
-          className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold rounded-lg transition-all duration-300 text-sm"
+          className="flex items-center justify-center gap-2 px-4 py-2.5 text-gray-900 font-semibold rounded-lg transition-all duration-300 text-sm border-2"
+          style={{ borderColor: categoryColor.primary, color: categoryColor.primary }}
           to="/contact"
         >
           <i className="fa-solid fa-envelope" />

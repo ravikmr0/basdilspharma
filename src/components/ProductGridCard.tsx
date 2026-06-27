@@ -29,11 +29,11 @@ export function ProductGridCard({ product }: ProductGridCardProps) {
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          className="w-full h-full object-contain bg-white p-4 group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
           onError={(e) => {
-            e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 300%22%3E%3Crect fill=%22%23f3f4f6%22 width=%22300%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2224%22 fill=%22%23999%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3EProduct Image%3C/text%3E%3C/svg%3E';
-            e.currentTarget.className = 'w-full h-full object-cover bg-gray-200';
+            e.currentTarget.src = '/Images/logo.png';
+            e.currentTarget.className = 'w-full h-full object-contain bg-white p-4';
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
