@@ -1,5 +1,5 @@
 // Category color utilities for pharmaceutical products
-import { branding } from '../config/branding';
+import { branding } from './branding';
 
 export type CategoryName = keyof typeof branding.categoryColors;
 
