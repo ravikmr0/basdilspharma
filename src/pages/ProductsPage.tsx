@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { ProductGridCard } from '../components/ProductGridCard';
-import { SectionHeading } from '../components/SectionHeading';
 import { PageMeta } from '../components/PageMeta';
 import { products } from '../data/catalog';
 
@@ -47,14 +46,47 @@ export function ProductsPage() {
       />
 
       {/* Hero Section */}
-      <section className="py-10 md:py-14 lg:py-16 bg-gradient-to-r from-primary-50 to-secondary-50">
+      <section className="relative overflow-hidden py-10 md:py-14 lg:py-16 bg-gradient-to-r from-primary-50 to-secondary-50">
+        <div className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-secondary-100/60 blur-3xl" aria-hidden="true" />
+        <div className="absolute -right-16 bottom-0 h-72 w-72 rounded-full bg-amber-100/50 blur-3xl" aria-hidden="true" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            asH1
-            eyebrow="Product Portfolio"
-            title="Healthcare Solutions For Every Need"
-            description="BASDILS Pharmaceuticals offers a comprehensive portfolio of nutraceuticals, Ayurvedic medicines, women's healthcare, liver care, iron supplements, bone health, joint care, and general wellness products designed to improve patient outcomes and quality of life."
-          />
+          <div className="relative grid items-center gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
+            <div className="text-center lg:text-left">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.22em] text-secondary-700">
+                Product Portfolio
+              </p>
+              <h1 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-bold font-display leading-[1.05] text-primary-950">
+                Healthcare Solutions For Every Need
+              </h1>
+              <p className="mt-5 text-sm sm:text-base lg:text-lg leading-relaxed text-gray-700">
+                BASDILS Pharmaceuticals offers a comprehensive portfolio of nutraceuticals, Ayurvedic medicines, women's healthcare, liver care, iron supplements, bone health, joint care, and general wellness products designed to improve patient outcomes and quality of life.
+              </p>
+              <div className="mt-6 flex flex-wrap justify-center gap-2 lg:justify-start">
+                {['Pharmaceuticals', 'Nutraceuticals', 'Ayurvedic Care'].map((label) => (
+                  <span key={label} className="rounded-full border border-primary-100 bg-white/80 px-3 py-1.5 text-xs font-semibold text-primary-900 shadow-sm">
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative mx-auto w-full max-w-2xl">
+              <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-secondary-200/60 via-white to-amber-100/70 blur-sm" aria-hidden="true" />
+              <figure className="relative overflow-hidden rounded-2xl border border-white/80 bg-white p-2 shadow-[0_24px_70px_rgba(13,32,39,0.18)]">
+                <img
+                  src="/hero_section/product_portfolio.png"
+                  alt="BASDILS pharmaceutical research, manufacturing, nutraceutical and Ayurvedic product portfolio"
+                  className="aspect-[16/9] w-full rounded-xl object-cover"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+                <figcaption className="absolute bottom-5 left-5 rounded-xl border border-white/30 bg-primary-950/85 px-4 py-3 text-left text-white shadow-lg backdrop-blur-md">
+                  <span className="block text-[10px] font-bold uppercase tracking-[0.18em] text-secondary-200">Complete catalogue</span>
+                  <span className="mt-1 block text-sm font-semibold">Quality-led healthcare portfolio</span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
         </div>
       </section>
 
