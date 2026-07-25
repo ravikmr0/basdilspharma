@@ -22,6 +22,25 @@ const testimonials = [
   }
 ];
 
+const faqs = [
+  {
+    question: 'What types of pharmaceutical partnerships does BASDILS offer?',
+    answer: 'We support PCD pharma franchise partnerships, third-party manufacturing, and product distribution across multiple therapeutic segments.'
+  },
+  {
+    question: 'How does BASDILS maintain product quality?',
+    answer: 'Our products are manufactured through quality-focused processes with stringent controls, regulatory compliance, and recognized manufacturing standards.'
+  },
+  {
+    question: 'Which therapeutic segments are available?',
+    answer: 'Our portfolio covers women’s healthcare, liver care, nutraceuticals, hematinics, bone and joint health, Ayurvedic healthcare, and general wellness.'
+  },
+  {
+    question: 'How can I enquire about a franchise or manufacturing partnership?',
+    answer: 'Use the contact page to share your location and requirements. Our team will review the enquiry and respond with the relevant details.'
+  }
+];
+
 export function HomePage() {
   return (
     <>
@@ -83,15 +102,12 @@ export function HomePage() {
             ].map((title) => (
               <div 
                 key={title} 
-                className="card-base hover:shadow-lg transition-all duration-300 p-4 sm:p-5 md:p-6 border-l-4 border-primary-600 group"
-              >
-                <h3 className="text-sm sm:text-base font-bold text-primary-950 group-hover:text-secondary-700 transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
+                  className="card-base hover:shadow-lg transition-all duration-300 p-4 sm:p-5 md:p-6 border-l-4 border-primary-600 group"
+                >
+                  <h3 className="text-sm sm:text-base font-bold text-primary-950 group-hover:text-secondary-700 transition-colors">
+                    {title}
+                  </h3>
+                </div>
             ))}
           </div>
         </div>
