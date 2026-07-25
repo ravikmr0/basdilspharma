@@ -23,6 +23,20 @@ const testimonials = [
   }
 ];
 
+const trustMetrics = [
+  { value: 'WHO-GMP', label: 'Quality-led manufacturing', icon: 'fa-shield-halved' },
+  { value: '8+', label: 'Therapeutic segments', icon: 'fa-capsules' },
+  { value: 'PAN India', label: 'Partnership opportunities', icon: 'fa-map-location-dot' },
+  { value: 'End-to-end', label: 'Commercial support', icon: 'fa-handshake' }
+];
+
+const therapyShortcuts = [
+  { label: 'Women’s Health', icon: 'fa-venus', tone: 'from-rose-50 to-white', border: 'border-rose-100', iconTone: 'text-rose-600 bg-rose-100' },
+  { label: 'Liver Care', icon: 'fa-leaf', tone: 'from-emerald-50 to-white', border: 'border-emerald-100', iconTone: 'text-emerald-700 bg-emerald-100' },
+  { label: 'Bone & Joint', icon: 'fa-bone', tone: 'from-violet-50 to-white', border: 'border-violet-100', iconTone: 'text-violet-700 bg-violet-100' },
+  { label: 'Nutraceuticals', icon: 'fa-seedling', tone: 'from-amber-50 to-white', border: 'border-amber-100', iconTone: 'text-amber-700 bg-amber-100' }
+];
+
 const faqs = [
   {
     question: 'Does Basdils Pharmaceuticals offer PCD Pharma Franchise opportunities in India?',
@@ -96,14 +110,55 @@ export function HomePage() {
 
       <PremiumHeroSlider />
 
+      {/* Trust proof strip */}
+      <section className="relative z-10 -mt-8 sm:-mt-10 px-3 sm:px-4 md:px-6 lg:px-8" aria-label="BASDILS at a glance">
+        <div className="max-w-7xl mx-auto rounded-2xl border border-white/70 bg-white/95 shadow-[0_18px_60px_rgba(13,32,39,0.14)] backdrop-blur-xl">
+          <div className="grid grid-cols-2 lg:grid-cols-4">
+            {trustMetrics.map((metric, index) => (
+              <div
+                key={metric.label}
+                className={`flex items-center gap-3 p-4 sm:p-5 lg:p-6 ${
+                  index % 2 === 0 ? 'border-r border-gray-100' : ''
+                } ${index < 2 ? 'border-b lg:border-b-0' : ''} ${index === 1 ? 'lg:border-r' : ''}`}
+              >
+                <span className="flex h-10 w-10 sm:h-11 sm:w-11 flex-none items-center justify-center rounded-xl bg-primary-50 text-secondary-700">
+                  <i className={`fa-solid ${metric.icon}`} aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="text-sm sm:text-base font-extrabold text-primary-950">{metric.value}</p>
+                  <p className="mt-0.5 text-[11px] sm:text-xs leading-snug text-gray-600">{metric.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Products Section */}
-      <section className="py-10 sm:py-12 md:py-16 lg:py-20 bg-white" id="products">
+      <section className="pt-16 pb-10 sm:pt-20 sm:pb-12 md:pt-24 md:pb-16 lg:pb-20 bg-white" id="products">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Therapeutic Segments"
             title="Products across key healthcare categories"
             description="Explore BASDILS offerings across women's healthcare, liver care, nutraceuticals, iron and hematinics, bone health, joint care, Ayurvedic healthcare, and general wellness."
           />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            {therapyShortcuts.map((therapy) => (
+              <Link
+                key={therapy.label}
+                to="/products"
+                className={`group rounded-2xl border ${therapy.border} bg-gradient-to-br ${therapy.tone} p-4 sm:p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
+              >
+                <span className={`mb-4 flex h-10 w-10 items-center justify-center rounded-xl ${therapy.iconTone} transition-transform duration-300 group-hover:scale-110`}>
+                  <i className={`fa-solid ${therapy.icon}`} aria-hidden="true" />
+                </span>
+                <div className="flex items-end justify-between gap-2">
+                  <span className="text-xs sm:text-sm font-bold text-primary-950">{therapy.label}</span>
+                  <i className="fa-solid fa-arrow-right text-[10px] text-gray-400 transition-all group-hover:translate-x-1 group-hover:text-secondary-700" aria-hidden="true" />
+                </div>
+              </Link>
+            ))}
+          </div>
           <div className="bg-gradient-to-r from-primary-50 via-white to-secondary-50 rounded-lg p-4 sm:p-6 md:p-8 border border-primary-100 shadow-card flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 animate-slide-up">
             <div className="space-y-1 w-full md:w-auto">
               <p className="text-xs sm:text-sm font-semibold text-secondary-700 uppercase tracking-wider">Browse the catalog</p>
@@ -239,6 +294,43 @@ export function HomePage() {
                   <p className="text-primary-100 text-xs sm:text-sm mt-1">Complete batch tracking and documentation from raw material to finished product</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partnership journey */}
+      <section className="relative overflow-hidden py-12 sm:py-16 md:py-20 bg-white">
+        <div className="absolute -left-24 top-12 h-64 w-64 rounded-full bg-secondary-100/50 blur-3xl" aria-hidden="true" />
+        <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-primary-100/60 blur-3xl" aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+            <div>
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-secondary-700">Built for partnership</p>
+              <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold font-display leading-tight text-primary-950">
+                From opportunity to market—supported at every step
+              </h2>
+              <p className="mt-4 max-w-xl text-sm sm:text-base leading-relaxed text-gray-700">
+                BASDILS combines quality formulations, commercial clarity, and responsive partner support to help healthcare businesses grow with confidence.
+              </p>
+              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                <Link className="btn-primary text-center" to="/contact">Start a Partnership</Link>
+                <Link className="btn-secondary text-center" to="/services">Explore Our Services</Link>
+              </div>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[
+                { step: '01', title: 'Share your requirement', text: 'Tell us your market, therapy focus, and business goals.' },
+                { step: '02', title: 'Choose the right portfolio', text: 'Get product and service recommendations aligned to your opportunity.' },
+                { step: '03', title: 'Plan with confidence', text: 'Receive clear commercial guidance, documentation, and execution support.' },
+                { step: '04', title: 'Grow with ongoing support', text: 'Stay backed by a responsive team beyond the first order.' }
+              ].map((item) => (
+                <article key={item.step} className="rounded-2xl border border-gray-100 bg-white p-5 shadow-[0_12px_35px_rgba(13,32,39,0.07)]">
+                  <span className="text-xs font-extrabold tracking-widest text-secondary-700">{item.step}</span>
+                  <h3 className="mt-3 text-base font-bold text-primary-950">{item.title}</h3>
+                  <p className="mt-2 text-xs sm:text-sm leading-relaxed text-gray-600">{item.text}</p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
