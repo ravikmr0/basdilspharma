@@ -22,6 +22,25 @@ const testimonials = [
   }
 ];
 
+const faqs = [
+  {
+    question: 'What types of pharmaceutical partnerships does BASDILS offer?',
+    answer: 'We support PCD pharma franchise partnerships, third-party manufacturing, and product distribution across multiple therapeutic segments.'
+  },
+  {
+    question: 'How does BASDILS maintain product quality?',
+    answer: 'Our products are manufactured through quality-focused processes with stringent controls, regulatory compliance, and recognized manufacturing standards.'
+  },
+  {
+    question: 'Which therapeutic segments are available?',
+    answer: 'Our portfolio covers women’s healthcare, liver care, nutraceuticals, hematinics, bone and joint health, Ayurvedic healthcare, and general wellness.'
+  },
+  {
+    question: 'How can I enquire about a franchise or manufacturing partnership?',
+    answer: 'Use the contact page to share your location and requirements. Our team will review the enquiry and respond with the relevant details.'
+  }
+];
+
 export function HomePage() {
   return (
     <>
@@ -83,12 +102,12 @@ export function HomePage() {
             ].map((title) => (
               <div 
                 key={title} 
-                className="card-base hover:shadow-lg transition-all duration-300 p-4 sm:p-5 md:p-6 border-l-4 border-primary-600 group"
-              >
-                <h3 className="text-sm sm:text-base font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
-                  {title}
-                </h3>
-              </div>
+                  className="card-base hover:shadow-lg transition-all duration-300 p-4 sm:p-5 md:p-6 border-l-4 border-primary-600 group"
+                >
+                  <h3 className="text-sm sm:text-base font-bold text-primary-950 group-hover:text-secondary-700 transition-colors">
+                    {title}
+                  </h3>
+                </div>
             ))}
           </div>
         </div>
@@ -214,6 +233,30 @@ export function HomePage() {
                   <p className="text-xs text-primary-600 font-medium">{testimonial.role}</p>
                 </div>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-gray-50" id="faq">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Frequently Asked Questions"
+            title="Everything you need to know about partnering with Basdils"
+            description="Common questions about our PCD pharma franchise, third-party manufacturing, and product quality standards."
+          />
+          <div className="max-w-4xl mx-auto space-y-4">
+            {faqs.map((faq, idx) => (
+              <details key={idx} className="group bg-white p-5 rounded-2xl border border-gray-200 transition-all duration-200">
+                <summary className="font-bold text-primary-950 text-sm sm:text-base cursor-pointer list-none flex justify-between items-center">
+                  <span>{faq.question}</span>
+                  <i className="fa-solid fa-chevron-down text-secondary-700 ml-2 transition-transform duration-200 group-open:rotate-180" aria-hidden="true" />
+                </summary>
+                <p className="mt-3 text-xs sm:text-sm text-gray-700 leading-relaxed border-t border-gray-100 pt-3">
+                  {faq.answer}
+                </p>
+              </details>
             ))}
           </div>
         </div>
