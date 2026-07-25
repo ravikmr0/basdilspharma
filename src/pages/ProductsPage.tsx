@@ -1,16 +1,56 @@
 import { Link } from 'react-router-dom';
 import { ProductGridCard } from '../components/ProductGridCard';
 import { SectionHeading } from '../components/SectionHeading';
+import { PageMeta } from '../components/PageMeta';
 import { products } from '../data/catalog';
 
-export function ProductsPage() {
+const productsSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': 'https://www.basdilspharma.com/products#webpage',
+      'url': 'https://www.basdilspharma.com/products',
+      'name': 'Pharmaceutical & Nutraceutical Products | Basdils Pharmaceuticals',
+      'description': 'Explore Basdils Pharmaceuticals product portfolio across Women Healthcare, Liver Care, Bone & Joint Care, Hematinics, and General Wellness.',
+      'isPartOf': { '@id': 'https://www.basdilspharma.com/#website' }
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://www.basdilspharma.com/products#breadcrumb',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://www.basdilspharma.com/'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': 'Products',
+          'item': 'https://www.basdilspharma.com/products'
+        }
+      ]
+    }
+  ]
+};
 
+export function ProductsPage() {
   return (
     <>
+      <PageMeta
+        title="Product Portfolio | Pharmaceutical & Nutraceutical Formulations"
+        description="Explore Basdils Pharmaceuticals product portfolio including OVADIL-OD, Basdil-Liv-DS, Basifol, BASOFER-D3, BACITROL-PLUS, and TENDODIL-FORTE across key healthcare categories."
+        canonical="https://www.basdilspharma.com/products"
+        schema={productsSchema}
+      />
+
       {/* Hero Section */}
-      <section className="py-10 md:py-14 lg:py-16 bg-gradient-to-r from-primary-50 to-blue-50">
+      <section className="py-10 md:py-14 lg:py-16 bg-gradient-to-r from-primary-50 to-secondary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
+            asH1
             eyebrow="Product Portfolio"
             title="Healthcare Solutions For Every Need"
             description="BASDILS Pharmaceuticals offers a comprehensive portfolio of nutraceuticals, Ayurvedic medicines, women's healthcare, liver care, iron supplements, bone health, joint care, and general wellness products designed to improve patient outcomes and quality of life."

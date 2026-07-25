@@ -21,7 +21,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <article
-      className="group bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col"
+      className="group bg-white rounded-lg shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden border border-primary-100 h-full flex flex-col"
       data-category={product.categoryTags.join(' ')}
       data-dosage={product.dosageTags.join(' ')}
       data-therapeutic={product.therapeuticTags.join(' ')}
@@ -79,11 +79,11 @@ export function ProductCard({ product }: ProductCardProps) {
             {product.dosageForm}
           </span>
           <span className="flex items-center gap-2 text-xs text-gray-700 bg-gray-50 px-3 py-1.5 rounded-lg">
-            <i className="fa-solid fa-leaf text-green-600" />
+            <i className="fa-solid fa-leaf text-secondary-500" />
             {formatTag(product.therapeuticTags[0])}
           </span>
           <span className="flex items-center gap-2 text-xs text-gray-700 bg-gray-50 px-3 py-1.5 rounded-lg">
-            <i className="fa-solid fa-box text-blue-600" />
+            <i className="fa-solid fa-box text-primary-700" />
             {product.packSize}
           </span>
         </div>
@@ -111,7 +111,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <ul className="space-y-1.5">
             {highlightedBenefits.map((benefit) => (
               <li key={benefit} className="flex items-start gap-2 text-sm text-gray-700">
-                <i className="fa-solid fa-check-circle text-green-500 flex-shrink-0 mt-0.5" />
+                <i className="fa-solid fa-check-circle text-secondary-500 flex-shrink-0 mt-0.5" />
                 <span>{benefit}</span>
               </li>
             ))}

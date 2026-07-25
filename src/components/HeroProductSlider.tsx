@@ -8,10 +8,10 @@ type HeroProductSliderProps = {
 };
 
 const sliderThemes = [
-  { primary: '#1e63b2', accent: '#d62828' },
-  { primary: '#0f766e', accent: '#f97316' },
-  { primary: '#7c3aed', accent: '#0ea5e9' },
-  { primary: '#0d5cab', accent: '#16a34a' }
+  { primary: '#245860', accent: '#e1bd4f' },
+  { primary: '#203f47', accent: '#cda035' },
+  { primary: '#31878c', accent: '#f8edc7' },
+  { primary: '#0d2027', accent: '#aa7d24' }
 ];
 
 function formatTag(tag: string) {
@@ -64,7 +64,7 @@ export function HeroProductSlider({ products }: HeroProductSliderProps) {
 
   return (
     <div
-      className="p-8 md:p-12 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl border border-gray-700 relative overflow-hidden"
+      className="p-8 md:p-12 bg-[linear-gradient(135deg,#0d2027_0%,#203f47_65%,#2e1d0e_100%)] rounded-lg border border-secondary-300/20 relative overflow-hidden shadow-card"
       role="region"
       aria-label="Featured products slider"
       aria-roledescription="carousel"
@@ -102,7 +102,7 @@ export function HeroProductSlider({ products }: HeroProductSliderProps) {
             <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: theme.primary }}>{activeProduct.categoryLabel}</p>
             <h3 className="text-4xl md:text-5xl font-bold font-display text-white mb-4">{activeProduct.displayName}</h3>
             <p className="text-lg text-gray-300 mb-6">{activeProduct.overview}</p>
-            
+
             {/* Meta Information */}
             <div className="flex gap-4 mb-8">
               <span className="px-4 py-2 bg-white/10 rounded-lg text-white/80 text-sm">{activeProduct.packSize}</span>
@@ -127,10 +127,10 @@ export function HeroProductSlider({ products }: HeroProductSliderProps) {
             <p className="text-gray-300 mb-6 text-sm">{activeProduct.shortDescription}</p>
             <ul className="space-y-2">
               <li className="flex items-center gap-2 text-white/80">
-                <i className="fa-solid fa-check text-green-400" /> {activeProduct.benefits[0]}
+                <i className="fa-solid fa-check text-secondary-300" /> {activeProduct.benefits[0]}
               </li>
               <li className="flex items-center gap-2 text-white/80">
-                <i className="fa-solid fa-check text-green-400" /> {activeProduct.benefits[1] ?? activeProduct.packSize}
+                <i className="fa-solid fa-check text-secondary-300" /> {activeProduct.benefits[1] ?? activeProduct.packSize}
               </li>
             </ul>
           </div>
@@ -169,11 +169,10 @@ export function HeroProductSlider({ products }: HeroProductSliderProps) {
             {products.map((product, index) => (
               <button
                 key={product.slug}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === activeIndex 
-                    ? 'bg-white w-8' 
-                    : 'bg-white/30 hover:bg-white/50'
-                }`}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${index === activeIndex
+                  ? 'bg-white w-8'
+                  : 'bg-white/30 hover:bg-white/50'
+                  }`}
                 type="button"
                 aria-label={`Go to ${product.displayName}`}
                 aria-pressed={index === activeIndex}

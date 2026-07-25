@@ -11,28 +11,12 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-# XML Sitemap
-Sitemap: https://basdilspharma.com/sitemap.xml
-
-# Crawl delay (in seconds)
-Crawl-delay: 1
-
-# Request rate
-Request-rate: 1/10s
-
-# Specific path rules
-User-agent: *
-Allow: /css/
-Allow: /js/
-Allow: /assets/
-
-# Block bad bots
-User-agent: MJ12bot
-Allow: /
-
+# Block aggressive SEO scrapers
 User-agent: AhrefsBot
 Crawl-delay: 10
 
-# Standard compliance
-User-agent: *
-Allow: /
+User-agent: MJ12bot
+Disallow: /
+
+# XML Sitemap
+Sitemap: https://www.basdilspharma.com/sitemap.xml

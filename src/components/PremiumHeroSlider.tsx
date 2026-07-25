@@ -182,7 +182,7 @@ export function PremiumHeroSlider() {
 
   return (
     <section
-      className="relative w-full h-screen overflow-hidden"
+      className="relative w-full min-h-[660px] h-[92vh] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={onTouchStart}
@@ -201,8 +201,9 @@ export function PremiumHeroSlider() {
         />
       ))}
 
-      {/* Premium dark-blue gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-blue-900/60" />
+      {/* Premium clinical overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-950/92 via-primary-900/76 to-primary-950/30" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(225,189,79,0.28),transparent_28rem)]" />
 
       {/* Content section */}
       <div className="relative h-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex items-center">
@@ -214,16 +215,16 @@ export function PremiumHeroSlider() {
           }`}
         >
           {/* Section eyebrow label */}
-          <p className="text-primary-300 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2 sm:mb-4 animate-fade-in">{slide.eyebrow}</p>
+          <p className="text-secondary-200 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] mb-2 sm:mb-4 animate-fade-in">{slide.eyebrow}</p>
 
           {/* Main heading - Responsive text sizes */}
-          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-display text-white mb-3 sm:mb-6 leading-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display text-white mb-3 sm:mb-6 leading-[0.95] animate-fade-in max-w-3xl" style={{ animationDelay: '0.1s' }}>
             {slide.title}
           </h1>
 
           {/* Optional subtitle - Responsive */}
           {slide.subtitle && (
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-200 mb-3 sm:mb-6 font-semibold animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-secondary-100 mb-3 sm:mb-6 font-semibold animate-fade-in" style={{ animationDelay: '0.2s' }}>
               {slide.subtitle}
             </p>
           )}
@@ -240,8 +241,8 @@ export function PremiumHeroSlider() {
                 key={btn.label}
                 className={`px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 font-semibold rounded-lg transition-all duration-300 inline-block text-center text-xs sm:text-sm md:text-base hover:scale-105 ${
                   btn.variant === 'primary'
-                    ? 'bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-xl'
-                    : 'bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 backdrop-blur-sm'
+                    ? 'bg-secondary-300 hover:bg-secondary-400 text-primary-950 shadow-lg hover:shadow-glow'
+                    : 'bg-white/15 hover:bg-white/25 text-white border border-white/40 backdrop-blur-sm'
                 }`}
                 to={btn.to}
               >
@@ -256,7 +257,7 @@ export function PremiumHeroSlider() {
       <nav className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2 sm:px-4 md:px-6 lg:px-8 pointer-events-none" aria-label="Slide navigation">
         {/* Left arrow control */}
         <button
-          className="group pointer-events-auto w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/40 hover:border-white/70 shadow-lg hover:shadow-xl text-base sm:text-lg md:text-xl"
+          className="group pointer-events-auto w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/15 hover:bg-white/25 active:bg-white/35 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/35 hover:border-secondary-200 shadow-lg hover:shadow-glow text-base sm:text-lg md:text-xl"
           type="button"
           aria-label="Previous slide"
           onClick={goPrev}
@@ -267,7 +268,7 @@ export function PremiumHeroSlider() {
 
         {/* Right arrow control */}
         <button
-          className="group pointer-events-auto w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/40 hover:border-white/70 shadow-lg hover:shadow-xl text-base sm:text-lg md:text-xl"
+          className="group pointer-events-auto w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/15 hover:bg-white/25 active:bg-white/35 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/35 hover:border-secondary-200 shadow-lg hover:shadow-glow text-base sm:text-lg md:text-xl"
           type="button"
           aria-label="Next slide"
           onClick={goNext}
@@ -286,7 +287,7 @@ export function PremiumHeroSlider() {
               key={s.id}
               className={`transition-all duration-300 ${
                 i === activeIndex
-                  ? 'w-6 sm:w-8 h-2 bg-primary-400'
+                  ? 'w-6 sm:w-8 h-2 bg-secondary-300'
                   : 'w-2 h-2 bg-white/50 hover:bg-white/80'
               } rounded-full`}
               type="button"

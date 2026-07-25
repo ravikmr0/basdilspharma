@@ -1,5 +1,38 @@
 import { SectionHeading } from '../components/SectionHeading';
+import { PageMeta } from '../components/PageMeta';
 import { services } from '../data/catalog';
+
+const servicesSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.basdilspharma.com/services#webpage',
+      'url': 'https://www.basdilspharma.com/services',
+      'name': 'Pharmaceutical Services | PCD Franchise & Third Party Manufacturing',
+      'description': 'PCD Pharma Franchise, Third-Party Manufacturing, Contract Manufacturing, and Product Development services by Basdils Pharmaceuticals.',
+      'isPartOf': { '@id': 'https://www.basdilspharma.com/#website' }
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://www.basdilspharma.com/services#breadcrumb',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://www.basdilspharma.com/'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': 'Services',
+          'item': 'https://www.basdilspharma.com/services'
+        }
+      ]
+    }
+  ]
+};
 
 export function ServicesPage() {
   const serviceDetails = [
@@ -9,7 +42,7 @@ export function ServicesPage() {
       description: 'Monopoly rights, promotional inputs, marketing support, and attractive margins.',
       fullDescription: 'Expand your business with our PCD (Propaganda Cum Distribution) pharma franchise model. Get exclusive territorial rights, comprehensive marketing support, and proven products with established brand reputation.',
       bullets: ['Monopoly Rights', 'Promotional Inputs', 'Marketing Support', 'Attractive Margins'],
-      image: 'https://www.biofieldpharma.com/wp-content/uploads/2018/05/487167270_1094814099327307_575181375430377370_n-1-1-1080x675.jpg',
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
       benefits: ['Established Product Portfolio', 'Comprehensive Training', 'Dedicated Support Team', 'Marketing Materials', 'Territory Protection']
     },
     {
@@ -18,7 +51,7 @@ export function ServicesPage() {
       description: 'WHO-GMP facilities, quality manufacturing, private label solutions, and timely delivery.',
       fullDescription: 'Leverage our state-of-the-art manufacturing capabilities to bring your formulations to market. We handle the entire production process with stringent quality controls and regulatory compliance.',
       bullets: ['WHO-GMP Facilities', 'Quality Manufacturing', 'Private Label Solutions', 'Timely Delivery'],
-      image: 'https://www.eraasinternational.com/Blogs/3qazFTdd3qB0gV6rVv7Ltu9kGvyBiaIME91inlPC.jpg',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&auto=format&fit=crop&q=80',
       benefits: ['Advanced Equipment', 'Expert Team', 'Quality Assurance', 'Regulatory Compliance', 'Flexible Volumes']
     },
     {
@@ -27,7 +60,7 @@ export function ServicesPage() {
       description: 'End-to-end production with regulatory compliance and packaging solutions.',
       fullDescription: 'Full-service contract manufacturing from formulation to finished product. Our experienced team ensures your specifications are met with pharmaceutical-grade quality and on-time delivery.',
       bullets: ['End-to-End Production', 'Regulatory Compliance', 'Packaging Solutions'],
-      image: 'https://5.imimg.com/data5/SELLER/Default/2022/7/HI/NS/YZ/29976809/3rd-party-medicine-manufacturer-500x500.jpeg',
+      image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&auto=format&fit=crop&q=80',
       benefits: ['Custom Solutions', 'Quality Control', 'Documentation Support', 'Scalability', 'Cost Efficiency']
     },
     {
@@ -36,7 +69,7 @@ export function ServicesPage() {
       description: 'Custom formulations for nutraceutical and Ayurvedic product development.',
       fullDescription: 'Transform your ideas into market-ready products. Our R&D team specializes in creating innovative formulations that meet market demands and regulatory requirements.',
       bullets: ['Custom Formulations', 'Nutraceutical Development', 'Ayurvedic Product Development'],
-      image: 'https://vixpharma.com/storage/2025/01/Product-development.png',
+      image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&auto=format&fit=crop&q=80',
       benefits: ['Expert Formulation', 'Market Research', 'Regulatory Guidance', 'Prototype Development', 'Fast Turnaround']
     }
   ];
@@ -59,10 +92,18 @@ export function ServicesPage() {
 
   return (
     <>
+      <PageMeta
+        title="Pharma Services | PCD Franchise & Third Party Manufacturing"
+        description="Basdils Pharmaceuticals offers PCD Pharma Franchise with monopoly rights, WHO-GMP Third-Party Manufacturing, Contract Manufacturing, and Product Development services."
+        canonical="https://www.basdilspharma.com/services"
+        schema={servicesSchema}
+      />
+
       {/* Hero Section */}
-      <section className="py-10 md:py-14 lg:py-16 bg-gradient-to-r from-primary-50 to-blue-50">
+      <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-r from-primary-50 via-white to-secondary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
+            asH1
             eyebrow="Our Services"
             title="Commercial Support for Brand Growth"
             description="BASDILS supports partners with franchise opportunities, manufacturing execution, product development, and packaging-led brand building solutions."
@@ -75,14 +116,15 @@ export function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {serviceDetails.map((service) => (
-              <article key={service.title} className="group rounded-2xl overflow-hidden bg-white border border-gray-200 hover:shadow-xl transition-all duration-300 flex flex-col animate-fade-in">
+              <article key={service.title} className="group rounded-lg overflow-hidden bg-white border border-primary-100 shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col animate-fade-in">
                 {/* Service Image */}
-                <div className="relative h-56 overflow-hidden">
+                <div className="media-image-frame h-60 rounded-none border-0 border-b border-primary-100">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="media-image-cover group-hover:scale-105"
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
@@ -117,7 +159,7 @@ export function ServicesPage() {
                   </div>
 
                   {/* CTA Button */}
-                  <a href="/contact" className="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all duration-300 text-center inline-block w-full">
+                  <a href="/contact" className="px-6 py-3 bg-primary-800 hover:bg-primary-950 text-white font-semibold rounded-lg transition-all duration-300 text-center inline-block w-full">
                     Inquire Now
                   </a>
                 </div>
@@ -143,7 +185,7 @@ export function ServicesPage() {
               { title: 'R&D Capability', description: 'In-house research and development facility' },
               { title: '24/7 Support', description: 'Dedicated support team for all your needs' }
             ].map((item, idx) => (
-              <div key={item.title} className="p-6 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 space-y-1 animate-fade-in" style={{ animationDelay: `${0.1 * (idx + 1)}s` }}>
+              <div key={item.title} className="p-6 bg-white rounded-lg border border-primary-100 hover:shadow-card transition-all duration-300 space-y-1 animate-fade-in" style={{ animationDelay: `${0.1 * (idx + 1)}s` }}>
                 <h4 className="text-base font-bold font-display text-gray-900">{item.title}</h4>
                 <p className="text-gray-600 text-xs">{item.description}</p>
               </div>
@@ -162,8 +204,8 @@ export function ServicesPage() {
           <div className="flex flex-col md:flex-row justify-between items-stretch gap-4">
             {processSteps.map((step, idx) => (
               <div key={step.number} className="flex-1 relative animate-fade-in" style={{ animationDelay: `${0.1 * (idx + 1)}s` }}>
-                <div className="p-6 bg-white rounded-xl border border-gray-200 text-center h-full hover:shadow-lg transition-all duration-300">
-                  <div className="w-10 h-10 rounded-lg bg-primary-600 text-white flex items-center justify-center text-lg font-bold mx-auto mb-2">{step.number}</div>
+                <div className="p-6 bg-white rounded-lg border border-primary-100 text-center h-full hover:shadow-card transition-all duration-300">
+                  <div className="w-10 h-10 rounded-lg bg-primary-900 text-secondary-200 flex items-center justify-center text-lg font-bold mx-auto mb-2">{step.number}</div>
                   <h4 className="text-base font-bold font-display text-gray-900 mb-1">{step.title}</h4>
                   <p className="text-gray-600 text-xs">{step.description}</p>
                 </div>
@@ -180,10 +222,10 @@ export function ServicesPage() {
             <h2 className="text-3xl md:text-4xl font-bold font-display text-gray-900 mb-3">Service Comparison</h2>
             <p className="text-base text-gray-600">Choose the right solution for your needs</p>
           </div>
-          <div className="overflow-x-auto rounded-xl border border-gray-200">
+          <div className="overflow-x-auto rounded-lg border border-primary-100 shadow-card">
             <table className="w-full">
               <thead>
-                <tr className="bg-primary-600 text-white">
+                <tr className="bg-primary-900 text-white">
                   <th className="px-6 py-4 text-left font-semibold">Feature</th>
                   <th className="px-6 py-4 text-center font-semibold">PCD Franchise</th>
                   <th className="px-6 py-4 text-center font-semibold">Third Party Mfg</th>
@@ -194,49 +236,49 @@ export function ServicesPage() {
               <tbody>
                 <tr className="border-b border-gray-200">
                   <td className="px-6 py-4 font-semibold text-gray-900">Initial Setup</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
                 </tr>
                 <tr className="border-b border-gray-200 bg-gray-50">
                   <td className="px-6 py-4 font-semibold text-gray-900">Marketing Support</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
                   <td className="px-6 py-4 text-center text-gray-400">-</td>
                   <td className="px-6 py-4 text-center text-gray-400">-</td>
                   <td className="px-6 py-4 text-center text-gray-400">-</td>
                 </tr>
                 <tr className="border-b border-gray-200">
                   <td className="px-6 py-4 font-semibold text-gray-900">Quality Assurance</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
                 </tr>
                 <tr className="border-b border-gray-200 bg-gray-50">
                   <td className="px-6 py-4 font-semibold text-gray-900">Regulatory Compliance</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
                 </tr>
                 <tr className="border-b border-gray-200">
                   <td className="px-6 py-4 font-semibold text-gray-900">R&D Support</td>
                   <td className="px-6 py-4 text-center text-gray-400">-</td>
                   <td className="px-6 py-4 text-center text-gray-400">-</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
                 </tr>
                 <tr className="border-b border-gray-200 bg-gray-50">
                   <td className="px-6 py-4 font-semibold text-gray-900">Custom Formulation</td>
                   <td className="px-6 py-4 text-center text-gray-400">-</td>
                   <td className="px-6 py-4 text-center text-gray-400">-</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
                 </tr>
                 <tr>
                   <td className="px-6 py-4 font-semibold text-gray-900">Territory Protection</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-bold">✓</td>
+                  <td className="px-6 py-4 text-center text-secondary-500 font-bold"><i className="fa-solid fa-check" aria-label="Included" /></td>
                   <td className="px-6 py-4 text-center text-gray-400">-</td>
                   <td className="px-6 py-4 text-center text-gray-400">-</td>
                   <td className="px-6 py-4 text-center text-gray-400">-</td>
@@ -248,7 +290,7 @@ export function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-r from-primary-600 to-primary-700">
+      <section className="py-12 md:py-16 lg:py-20 bg-[linear-gradient(135deg,#0d2027_0%,#224951_58%,#2e1d0e_100%)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto space-y-6">
             <div className="space-y-2">

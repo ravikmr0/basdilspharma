@@ -4,7 +4,7 @@ export const branding = {
     name: 'BASDILS PHARMACEUTICALS PVT. LTD.',
     shortName: 'BASDILS',
     tagline: 'Committed to Healthcare Excellence',
-    logo: 'https://basdilspharma.in/logo.png', // Update with actual logo URL
+    logo: '/Images/logo.png',
   },
   addresses: {
     registered: {
@@ -20,22 +20,23 @@ export const branding = {
         name: 'Dehradun Office',
         address: 'Dehradun, Uttarakhand, India',
         googleMapsUrl: 'https://maps.google.com/maps?q=BASDILS+Dehradun',
-        phone: '+91-XXXXX-XXXXX',
+        phone: '+91 9931691959',
         email: 'dehradun@basdilspharma.in',
       },
       {
         name: 'Mumbai Office',
         address: 'Mumbai, Maharashtra, India',
         googleMapsUrl: 'https://maps.google.com/maps?q=BASDILS+Mumbai',
-        phone: '+91-XXXXX-XXXXX',
+        phone: '+91 9931691959',
         email: 'mumbai@basdilspharma.in',
       },
     ],
   },
   contact: {
     email: 'info@basdilspharma.in',
-    phone: '+91-XXXXX-XXXXX',
-    website: 'https://basdilspharma.in',
+    gmail: 'basdilpharma@gmail.com',
+    phone: '+91 9931691959',
+    website: 'https://www.basdilspharma.com',
   },
   socialMedia: {
     instagram: 'https://instagram.com/basdilspharma',
@@ -45,24 +46,24 @@ export const branding = {
     youtube: 'https://youtube.com/@basdilspharma',
   },
   colors: {
-    primary: '#003366',      // Deep medical blue
-    secondary: '#0066CC',    // Professional blue
-    accent: '#FF6B35',       // Medical accent
-    success: '#2ECC71',      // Green
-    warning: '#F39C12',      // Orange
-    danger: '#E74C3C',       // Red
-    light: '#F8F9FA',        // Light gray
-    dark: '#2C3E50',         // Dark blue-gray
+    primary: '#0D2027',
+    secondary: '#245860',
+    accent: '#E1BD4F',
+    success: '#31878C',
+    warning: '#AA7D24',
+    danger: '#8B3A34',
+    light: '#F7FAF9',
+    dark: '#122B33',
   },
   categoryColors: {
-    orthopedics: { primary: '#7B68EE', secondary: '#E0D5FF' },
-    liverCare: { primary: '#2ECC71', secondary: '#D5F4E6' },
-    gynecology: { primary: '#FF6B9D', secondary: '#FFE0ED' },
-    hematinics: { primary: '#E74C3C', secondary: '#F5D5D0' },
-    respiratory: { primary: '#0099FF', secondary: '#D9E8FF' },
-    neurology: { primary: '#4B0082', secondary: '#E0D5FF' },
-    gastroenterology: { primary: '#FF9500', secondary: '#FFECD5' },
-    antibiotics: { primary: '#0066CC', secondary: '#D9E8FF' },
-    nutrition: { primary: '#27AE60', secondary: '#D5F4E6' },
+    orthopedics: { primary: '#245860', secondary: '#EAF3EF' },
+    liverCare: { primary: '#31878C', secondary: '#EEF7F7' },
+    gynecology: { primary: '#8B5E67', secondary: '#F7ECEF' },
+    hematinics: { primary: '#8B3A34', secondary: '#F6E9E5' },
+    respiratory: { primary: '#276D74', secondary: '#D7EDED' },
+    neurology: { primary: '#4C5963', secondary: '#EEF1F2' },
+    gastroenterology: { primary: '#AA7D24', secondary: '#FFF9EB' },
+    antibiotics: { primary: '#203F47', secondary: '#EEF7F7' },
+    nutrition: { primary: '#3F6C59', secondary: '#EAF3EF' },
   },
 };

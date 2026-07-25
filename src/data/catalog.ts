@@ -55,8 +55,8 @@ export const products: Product[] = [
     ingredients: ['Myo-Inositol', 'D-Chiro Inositol', 'L-Methylfolate', 'Calcium Carbonate', 'Cholecalciferol (Vitamin D3)'],
     benefits: ['Supports reproductive wellness', 'Promotes hormonal balance', 'Supports metabolic health', 'Enriched with essential nutrients', 'Fertility support supplement'],
     icon: 'fa-person-pregnant',
-    color: '#FF6B9D',
-    image: '/images/ovadil-od.webp'
+    color: '#8B5E67',
+    image: '/Images/ovadil-od.webp'
   },
   {
     slug: 'basdil-liv-ds',
@@ -76,8 +76,8 @@ export const products: Product[] = [
     ingredients: ['Bhringraj', 'Sharpunkha', 'Rohitak', 'Arjun', 'Ashwagandha', 'Chirayata', 'Kalmegh', 'Makoi', 'Tulsi', 'Giloy', 'Amla', 'Kutki'],
     benefits: ['Supports liver health', 'Helps improve digestion', 'Supports appetite', 'Useful in digestive wellness', 'Sugar-free formula'],
     icon: 'fa-leaf',
-    color: '#2ECC71',
-    image: '/images/basidil-liv-ds.webp'
+    color: '#31878C',
+    image: '/Images/basidil-liv-ds.webp'
   },
   {
     slug: 'basifol',
@@ -97,8 +97,8 @@ export const products: Product[] = [
     ingredients: ['L-Methylfolate', 'Pyridoxal-5-Phosphate', 'DHA', 'Potassium Iodide', 'Cyanocobalamin'],
     benefits: ['Prenatal nutritional support', 'Folate supplementation', 'DHA enriched formula', 'Vitamin B12 support', 'Pregnancy support supplement'],
     icon: 'fa-person-pregnant',
-    color: '#FF6B9D',
-    image: '/images/basifol.webp'
+    color: '#8B5E67',
+    image: '/Images/basifol.webp'
   },
   {
     slug: 'basofer-d3',
@@ -118,8 +118,8 @@ export const products: Product[] = [
     ingredients: ['Ferrous Bisglycinate', 'Zinc Bisglycinate', 'Folic Acid', 'Cyanocobalamin', 'Cholecalciferol (Vitamin D3)'],
     benefits: ['Iron supplementation', 'Folic Acid support', 'Vitamin B12 support', 'Vitamin D3 support', 'Zinc supplementation'],
     icon: 'fa-droplet',
-    color: '#E74C3C',
-    image: '/images/basofer-d3.webp'
+    color: '#8B3A34',
+    image: '/Images/basofer-d3.webp'
   },
   {
     slug: 'bacitrol-plus',
@@ -139,8 +139,8 @@ export const products: Product[] = [
     ingredients: ['L-Methyl Folate', 'Calcitriol', 'Calcium Carbonate', 'Vitamin K2-7', 'Methylcobalamin', 'Zinc', 'Magnesium'],
     benefits: ['Bone health support', 'Calcium supplementation', 'Nerve health support', 'Vitamin K2-7 support', 'Magnesium enrichment'],
     icon: 'fa-bone',
-    color: '#F39C12',
-    image: '/images/bacitrol-plus.webp'
+    color: '#AA7D24',
+    image: '/Images/bacitrol-plus.webp'
   },
   {
     slug: 'tendodil-forte',
@@ -160,8 +160,8 @@ export const products: Product[] = [
     ingredients: ['Undenatured Collagen Peptide Type II', 'Sodium Hyaluronate', 'Chondroitin Sulphate', 'Rosehip Extract', 'Curcuma Longa Extract', 'Boswellia Serrata Extract', 'Vitamin C'],
     benefits: ['Joint support', 'Cartilage health', 'Mobility support', 'Collagen supplementation', 'Osteoarthritis wellness support'],
     icon: 'fa-person-hiking',
-    color: '#9B59B6',
-    image: '/images/tendodil-forte.webp'
+    color: '#245860',
+    image: '/Images/tendodil-forte.webp'
   }
 ];
 

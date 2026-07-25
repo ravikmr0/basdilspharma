@@ -37,14 +37,15 @@ export function TeamSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           {teamMembers.map((member, idx) => (
-            <article key={idx} className="group rounded-2xl overflow-hidden bg-white border border-gray-200 hover:shadow-xl transition-all duration-300 flex flex-col animate-fade-in" style={{ animationDelay: `${0.1 * (idx + 1)}s` }}>
+            <article key={idx} className="group rounded-lg overflow-hidden bg-white border border-primary-100 shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col animate-fade-in" style={{ animationDelay: `${0.1 * (idx + 1)}s` }}>
               {/* Image Container */}
-              <div className="relative h-80 overflow-hidden bg-gray-100">
+              <div className="media-image-frame h-80 rounded-none border-0 border-b border-primary-100">
                 <img 
                   src={member.image} 
                   alt={member.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="media-image-cover object-top group-hover:scale-105"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -60,7 +61,7 @@ export function TeamSection() {
               </div>
 
               {/* Bottom Accent */}
-              <div className="h-1 bg-gradient-to-r from-primary-600 to-purple-600" />
+              <div className="h-1 bg-gradient-to-r from-primary-900 to-secondary-400" />
             </article>
           ))}
         </div>

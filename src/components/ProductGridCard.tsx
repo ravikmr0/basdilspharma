@@ -19,38 +19,39 @@ export function ProductGridCard({ product }: ProductGridCardProps) {
 
   return (
     <article
-      className="group bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col"
+      className="group bg-white rounded-lg shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden border border-primary-100 h-full flex flex-col"
       data-category={product.categoryTags.join(' ')}
       data-dosage={product.dosageTags.join(' ')}
       data-therapeutic={product.therapeuticTags.join(' ')}
     >
       {/* Product Image */}
-      <div className="relative h-56 bg-gray-100 overflow-hidden group">
+      <div className="product-image-frame h-60 group">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-contain bg-white p-4 group-hover:scale-105 transition-transform duration-500"
+          className="product-image-fit group-hover:scale-105"
           loading="lazy"
+          decoding="async"
           onError={(e) => {
             e.currentTarget.src = '/Images/logo.png';
-            e.currentTarget.className = 'w-full h-full object-contain bg-white p-4';
+            e.currentTarget.className = 'product-image-fit';
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-x-4 bottom-4 h-px bg-gradient-to-r from-transparent via-secondary-300 to-transparent" />
       </div>
 
       {/* Header with Category & Icon */}
-      <div className="bg-gradient-to-r from-primary-50 to-blue-50 px-5 py-5 border-b border-gray-100">
+      <div className="bg-gradient-to-r from-primary-50 via-white to-secondary-50 px-5 py-5 border-b border-primary-100">
         <div className="flex items-start justify-between mb-3">
           <div className="flex gap-2">
-            <span className="inline-block px-2 py-0.5 text-xs font-semibold text-primary-700 bg-primary-100 rounded-full">
+              <span className="inline-block px-2 py-0.5 text-xs font-semibold text-primary-900 bg-primary-100 rounded-md">
               {product.categoryLabel}
             </span>
-            <span className="inline-block px-2 py-0.5 text-xs font-semibold text-gray-700 bg-gray-100 rounded-full">
+            <span className="inline-block px-2 py-0.5 text-xs font-semibold text-gray-700 bg-white rounded-md">
               {product.dosageForm}
             </span>
           </div>
-          <div className="w-9 h-9 rounded-lg bg-primary-600 text-white flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <div className="w-9 h-9 rounded-lg bg-primary-900 text-secondary-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
             <i className="fa-solid fa-bottle-droplet text-sm" />
           </div>
         </div>
@@ -108,7 +109,7 @@ export function ProductGridCard({ product }: ProductGridCardProps) {
           <ul className="space-y-1">
             {highlightedBenefits.map((benefit) => (
               <li key={benefit} className="flex items-start gap-1.5 text-xs text-gray-700">
-                <span className="text-green-500 flex-shrink-0 mt-0.5">✓</span>
+                <i className="fa-solid fa-check text-secondary-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
                 <span>{benefit}</span>
               </li>
             ))}
@@ -117,10 +118,10 @@ export function ProductGridCard({ product }: ProductGridCardProps) {
       </div>
 
       {/* Action Button */}
-      <div className="px-5 py-4 border-t border-gray-100 bg-gray-50">
+      <div className="px-5 py-4 border-t border-primary-100 bg-primary-50/60">
         <Link
-          to={`/product/${product.slug}`}
-          className="block w-full text-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-300 text-sm"
+          to={`/products/${product.slug}`}
+          className="block w-full text-center px-4 py-2 bg-primary-800 hover:bg-primary-950 text-white font-semibold rounded-lg transition-colors duration-300 text-sm"
         >
           View Details
         </Link>

@@ -8,28 +8,39 @@
   }
 
   body {
-    background-color: #fafafa;
-    color: rgb(55, 65, 81);
+    background:
+      radial-gradient(circle at top left, rgba(225, 189, 79, 0.09), transparent 30rem),
+      linear-gradient(180deg, #fbfdfc 0%, #f5f8f7 45%, #ffffff 100%);
+    color: #2f3d43;
     line-height: 1.6;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', 'Manrope', sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
+    color: #0d2027;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: 0;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #1d728d;
+    outline-offset: 2px;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply px-5 sm:px-7 py-2.5 sm:py-3.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 inline-block text-sm sm:text-base cursor-pointer;
+    @apply px-5 sm:px-7 py-2.5 sm:py-3.5 bg-primary-800 hover:bg-primary-950 text-white font-semibold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg inline-block text-sm sm:text-base cursor-pointer;
   }
 
   .btn-secondary {
-    @apply px-5 sm:px-7 py-2.5 sm:py-3.5 bg-white border border-gray-200 hover:bg-gray-50 text-gray-800 font-semibold rounded-full transition-all duration-300 inline-block text-sm sm:text-base cursor-pointer hover:shadow-sm;
+    @apply px-5 sm:px-7 py-2.5 sm:py-3.5 bg-white border border-secondary-300 hover:border-secondary-500 hover:bg-secondary-50 text-primary-950 font-semibold rounded-lg transition-all duration-300 inline-block text-sm sm:text-base cursor-pointer hover:shadow-sm;
   }
 
   .btn-outline {
-    @apply px-5 sm:px-7 py-2.5 sm:py-3.5 border-2 border-primary-600 text-primary-600 hover:bg-primary-50 font-semibold rounded-full transition-all duration-300 inline-block text-sm sm:text-base cursor-pointer;
+    @apply px-5 sm:px-7 py-2.5 sm:py-3.5 border border-primary-700 text-primary-800 hover:bg-primary-50 font-semibold rounded-lg transition-all duration-300 inline-block text-sm sm:text-base cursor-pointer;
   }
 
   .section-spacing {
@@ -41,15 +52,15 @@
   }
 
   .heading-lg {
-    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-display leading-tight text-gray-900;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-display leading-tight text-primary-950;
   }
 
   .heading-md {
-    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-display leading-tight text-gray-900;
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-display leading-tight text-primary-950;
   }
 
   .heading-sm {
-    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold font-display leading-tight text-gray-900;
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold font-display leading-tight text-primary-950;
   }
 
   .eyebrow {
@@ -57,7 +68,7 @@
   }
 
   .card-base {
-    @apply p-6 sm:p-8 rounded-[20px] border border-gray-100 bg-white transition-all duration-300 shadow-card hover:shadow-card-hover hover:border-primary-100;
+    @apply p-6 sm:p-8 rounded-lg border border-primary-100 bg-white transition-all duration-300 shadow-card hover:shadow-card-hover hover:border-secondary-300;
   }
 
   .glass-effect {
@@ -93,7 +104,7 @@
 
   /* Medical/Pharmaceutical Premium Styles */
   .medical-card {
-    @apply p-4 sm:p-6 rounded-2xl bg-white border border-primary-100 shadow-md hover:shadow-lg transition-all duration-300 hover:border-primary-300 hover:-translate-y-1;
+    @apply p-4 sm:p-6 rounded-lg bg-white border border-primary-100 shadow-md hover:shadow-lg transition-all duration-300 hover:border-secondary-300 hover:-translate-y-1;
   }
 
   .premium-shadow {
@@ -101,7 +112,7 @@
   }
 
   .clinical-bg {
-    @apply bg-gradient-to-br from-primary-50 to-red-50/20;
+    @apply bg-gradient-to-br from-primary-50 to-secondary-50;
   }
 
   .lab-environment {
@@ -122,6 +133,22 @@
 
   .category-tag {
     @apply inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider;
+  }
+
+  .product-image-frame {
+    @apply relative overflow-hidden rounded-lg border border-primary-100 bg-gradient-to-br from-white via-primary-50 to-secondary-50;
+  }
+
+  .product-image-fit {
+    @apply w-full h-full object-contain p-4 sm:p-5 transition-transform duration-500;
+  }
+
+  .media-image-frame {
+    @apply relative overflow-hidden rounded-lg border border-primary-100 bg-primary-50;
+  }
+
+  .media-image-cover {
+    @apply w-full h-full object-cover transition-transform duration-500;
   }
 }
 

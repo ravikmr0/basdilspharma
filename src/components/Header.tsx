@@ -27,8 +27,8 @@ export function Header({ menuOpen, onToggleMenu }: HeaderProps) {
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isTransparent 
-          ? 'bg-transparent border-b border-transparent' 
-          : 'bg-white border-b border-gray-200 shadow-sm'
+          ? 'bg-transparent border-b border-transparent'
+          : 'bg-white/95 border-b border-primary-100 shadow-sm backdrop-blur-xl'
       }`}>
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
@@ -38,19 +38,18 @@ export function Header({ menuOpen, onToggleMenu }: HeaderProps) {
               to="/" 
               aria-label="BASDILS Pharmaceuticals home"
             >
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-600 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300 flex-shrink-0">
+              <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-white ring-1 ring-secondary-200 flex items-center justify-center shadow-sm group-hover:shadow-glow transition-shadow duration-300 flex-shrink-0">
                 <img
                   src="/Images/logo.png"
-                  alt="BASDILS Logo"
-                  width="48"
-                  height="48"
+                  alt="BasdilsPharmaceuticals Logo"
+                  width="40"
+                  height="40"
                   decoding="async"
-                  className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                  className="w-7 h-7 sm:w-9 sm:h-9 object-contain"
                 />
               </div>
               <div className="hidden xs:flex sm:flex flex-col justify-center min-w-0">
-                <strong className="text-gray-900 font-bold text-base sm:text-lg leading-tight">BASDILS</strong>
-                <small className="text-gray-600 text-xs font-medium leading-tight">Pharmaceuticals</small>
+                <strong className="text-primary-950 font-extrabold text-sm sm:text-base leading-tight tracking-[0.02em]">Basdils <span className="text-primary-700">Pharmaceuticals</span></strong>
               </div>
             </NavLink>
 
@@ -59,9 +58,9 @@ export function Header({ menuOpen, onToggleMenu }: HeaderProps) {
               <div className="relative w-full">
                 <input
                   type="search"
-                  placeholder="Search..."
+                  placeholder="Search products"
                   aria-label="Search products"
-                  className="w-full px-2 sm:px-3 py-1.5 pl-2 sm:pl-3 pr-8 rounded-lg border border-gray-300 focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-100 bg-white text-xs sm:text-sm transition-all duration-200"
+                  className="w-full px-2 sm:px-3 py-1.5 pl-2 sm:pl-3 pr-8 rounded-lg border border-primary-100 focus:border-secondary-400 focus:outline-none focus:ring-2 focus:ring-secondary-100 bg-white/95 text-xs sm:text-sm transition-all duration-200"
                 />
                 <button 
                   className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary-600 transition-colors flex-shrink-0"
@@ -80,7 +79,7 @@ export function Header({ menuOpen, onToggleMenu }: HeaderProps) {
                   type="search"
                   placeholder="Search Products..."
                   aria-label="Search products"
-                  className="w-full px-3 sm:px-4 py-2 pl-3 sm:pl-4 pr-9 sm:pr-10 rounded-lg border border-gray-300 focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-100 bg-white text-sm transition-all duration-200"
+                  className="w-full px-3 sm:px-4 py-2 pl-3 sm:pl-4 pr-9 sm:pr-10 rounded-lg border border-primary-100 focus:border-secondary-400 focus:outline-none focus:ring-2 focus:ring-secondary-100 bg-white/95 text-sm transition-all duration-200"
                 />
                 <button 
                   className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary-600 transition-colors flex-shrink-0"
@@ -101,8 +100,8 @@ export function Header({ menuOpen, onToggleMenu }: HeaderProps) {
                     to={item.to}
                     className={({ isActive }) => 
                       isActive 
-                        ? 'px-3 lg:px-4 py-2 text-primary-600 font-semibold border-b-2 border-primary-600 text-xs lg:text-sm transition-colors' 
-                        : 'px-3 lg:px-4 py-2 text-gray-700 hover:text-primary-600 font-medium text-xs lg:text-sm transition-colors'
+                        ? 'px-3 lg:px-4 py-2 text-primary-900 font-semibold border-b-2 border-secondary-400 text-xs lg:text-sm transition-colors'
+                        : 'px-3 lg:px-4 py-2 text-gray-700 hover:text-primary-900 font-medium text-xs lg:text-sm transition-colors'
                     }
                   >
                     {item.label}
@@ -124,7 +123,7 @@ export function Header({ menuOpen, onToggleMenu }: HeaderProps) {
               aria-controls="mobile-nav"
               onClick={onToggleMenu}
             >
-              <div className="w-5 h-5 sm:w-6 sm:h-6 flex flex-col justify-center gap-1">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 flex flex-col justify-center gap-1" aria-hidden="true">
                 <span className={`h-0.5 w-5 sm:w-6 bg-current transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
                 <span className={`h-0.5 w-5 sm:w-6 bg-current transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
                 <span className={`h-0.5 w-5 sm:w-6 bg-current transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
@@ -143,7 +142,7 @@ export function Header({ menuOpen, onToggleMenu }: HeaderProps) {
           onClick={onToggleMenu}
         >
           <nav 
-            className="bg-white shadow-xl max-w-sm w-full ml-auto rounded-l-2xl overflow-y-auto max-h-screen" 
+            className="bg-white shadow-xl max-w-sm w-full ml-auto rounded-l-2xl overflow-y-auto max-h-screen"
             id="mobile-nav"
             onClick={(e) => e.stopPropagation()}
           >
@@ -153,19 +152,18 @@ export function Header({ menuOpen, onToggleMenu }: HeaderProps) {
                 to="/"
                 onClick={onToggleMenu}
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-600 flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-white ring-1 ring-secondary-200 flex items-center justify-center flex-shrink-0">
                   <img
-                    src="/logo.jpeg"
-                    alt="BASDILS Pharmaceuticals"
-                    width="48"
-                    height="48"
+                    src="/Images/logo.png"
+                    alt="BasdilsPharmaceuticals"
+                    width="40"
+                    height="40"
                     decoding="async"
-                    className="w-8 h-8 sm:w-10 sm:h-10"
+                    className="w-7 h-7 sm:w-9 sm:h-9 object-contain"
                   />
                 </div>
                 <div className="min-w-0">
-                  <strong className="block text-gray-900 font-bold text-base sm:text-lg leading-tight">BASDILS</strong>
-                  <small className="text-gray-600 text-xs font-medium leading-tight">Pharmaceuticals</small>
+                  <strong className="block text-primary-950 font-bold text-sm sm:text-base leading-tight">Basdils <span className="text-primary-700">Pharmaceuticals</span></strong>
                 </div>
               </NavLink>
             </div>
@@ -177,7 +175,7 @@ export function Header({ menuOpen, onToggleMenu }: HeaderProps) {
                   to={item.to}
                   className={({ isActive }) => 
                     isActive 
-                      ? 'block px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-primary-50 text-primary-600 font-semibold text-sm transition-colors' 
+                      ? 'block px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-primary-50 text-primary-900 font-semibold text-sm transition-colors'
                       : 'block px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium text-sm transition-colors'
                   }
                   onClick={onToggleMenu}

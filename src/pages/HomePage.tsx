@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { PremiumHeroSlider } from '../components/PremiumHeroSlider';
 import { SectionHeading } from '../components/SectionHeading';
 import { ProductCardsSlider } from '../components/ProductCardsSlider';
+import { PageMeta } from '../components/PageMeta';
 import { products } from '../data/catalog';
 
 const testimonials = [
@@ -24,39 +25,88 @@ const testimonials = [
 
 const faqs = [
   {
-    question: 'What types of pharmaceutical partnerships does BASDILS offer?',
-    answer: 'We support PCD pharma franchise partnerships, third-party manufacturing, and product distribution across multiple therapeutic segments.'
+    question: 'Does Basdils Pharmaceuticals offer PCD Pharma Franchise opportunities in India?',
+    answer: 'Yes, Basdils Pharmaceuticals offers exclusive PCD Pharma Franchise opportunities across India with monopoly rights, marketing visual aids, promotional inputs, and comprehensive support.'
   },
   {
-    question: 'How does BASDILS maintain product quality?',
-    answer: 'Our products are manufactured through quality-focused processes with stringent controls, regulatory compliance, and recognized manufacturing standards.'
+    question: 'Are your pharmaceutical products WHO-GMP certified?',
+    answer: 'All our formulations are manufactured in state-of-the-art WHO-GMP certified and ISO 9001:2015 accredited facilities adhering to strict quality standards.'
   },
   {
-    question: 'Which therapeutic segments are available?',
-    answer: 'Our portfolio covers women’s healthcare, liver care, nutraceuticals, hematinics, bone and joint health, Ayurvedic healthcare, and general wellness.'
+    question: 'What therapeutic segments does Basdils Pharmaceuticals specialize in?',
+    answer: 'We cover Women Healthcare, Liver Care, Bone & Nerve Health, Joint Care, Hematinics, Ayurvedic healthcare formulations, and General Wellness products.'
   },
   {
-    question: 'How can I enquire about a franchise or manufacturing partnership?',
-    answer: 'Use the contact page to share your location and requirements. Our team will review the enquiry and respond with the relevant details.'
+    question: 'Do you provide Third-Party Pharmaceutical Manufacturing services?',
+    answer: 'Yes, we provide end-to-end third-party and contract manufacturing services for tablets, capsules, softgels, syrups, and nutraceutical products.'
+  },
+  {
+    question: 'How can I get started as a franchise partner or place a bulk inquiry?',
+    answer: 'You can reach out directly via WhatsApp at +91 9931691959, email us at basdilpharma@gmail.com, or fill out the contact form on our website.'
   }
 ];
+
+const homeSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.basdilspharma.com/#webpage',
+      'url': 'https://www.basdilspharma.com/',
+      'name': 'Basdils Pharmaceuticals Pvt. Ltd. | WHO-GMP Pharma Manufacturer India',
+      'description': 'WHO-GMP certified pharmaceutical manufacturer offering PCD pharma franchise, third-party manufacturing, and nutraceutical products across India.',
+      'isPartOf': { '@id': 'https://www.basdilspharma.com/#website' }
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://www.basdilspharma.com/#breadcrumb',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://www.basdilspharma.com/'
+        }
+      ]
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.basdilspharma.com/#faq',
+      'mainEntity': faqs.map((faq) => ({
+        '@type': 'Question',
+        'name': faq.question,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': faq.answer
+        }
+      }))
+    }
+  ]
+};
 
 export function HomePage() {
   return (
     <>
+      <PageMeta
+        title="WHO-GMP Certified Pharmaceutical Manufacturer & PCD Franchise India"
+        description="Basdils Pharmaceuticals Pvt. Ltd. is a leading WHO-GMP certified pharmaceutical manufacturer in India offering PCD pharma franchise, third-party manufacturing, and high-quality healthcare formulations."
+        canonical="https://www.basdilspharma.com/"
+        schema={homeSchema}
+      />
+
       <PremiumHeroSlider />
 
       {/* Products Section */}
-      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-white" id="products">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20 bg-white" id="products">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Therapeutic Segments"
             title="Products across key healthcare categories"
             description="Explore BASDILS offerings across women's healthcare, liver care, nutraceuticals, iron and hematinics, bone health, joint care, Ayurvedic healthcare, and general wellness."
           />
-          <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-primary-200 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 animate-slide-up">
+          <div className="bg-gradient-to-r from-primary-50 via-white to-secondary-50 rounded-lg p-4 sm:p-6 md:p-8 border border-primary-100 shadow-card flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 animate-slide-up">
             <div className="space-y-1 w-full md:w-auto">
-              <p className="text-xs sm:text-sm font-semibold text-primary-600 uppercase tracking-wider">Browse the catalog</p>
+              <p className="text-xs sm:text-sm font-semibold text-secondary-700 uppercase tracking-wider">Browse the catalog</p>
               <p className="text-xs sm:text-base text-gray-700 font-medium">Go to the dedicated products page for search and filters.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 flex-shrink-0 w-full sm:w-auto">
@@ -72,7 +122,7 @@ export function HomePage() {
       </section>
 
       {/* Featured Products Section */}
-      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-gray-50" id="featured-products">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20 bg-primary-50/60" id="featured-products">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Quality Commitment"
@@ -93,30 +143,52 @@ export function HomePage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {[
-              'Premium Quality Products',
-              'Scientific Formulations',
-              'Regulatory Compliance',
-              'Wide Product Portfolio',
-              'Ethical Business Practices',
-              'Customer Satisfaction'
-            ].map((title) => (
+              {
+                title: 'Premium Quality Products',
+                desc: 'Formulated using high-purity active ingredients compliant with IP, BP, and USP standards.'
+              },
+              {
+                title: 'Scientific Formulations',
+                desc: 'Developed by experienced R&D scientists to maximize bioavailability and clinical efficacy.'
+              },
+              {
+                title: 'Regulatory Compliance',
+                desc: 'Full documentation, COA certificates, and WHO-GMP audit readiness for every batch.'
+              },
+              {
+                title: 'Wide Product Portfolio',
+                desc: 'Extensive product range spanning Tablets, Capsules, Softgels, Syrups, and Nutraceuticals.'
+              },
+              {
+                title: 'Ethical Business Practices',
+                desc: 'Transparent pricing, exclusive monopoly rights, and trustworthy commercial partnerships.'
+              },
+              {
+                title: 'Customer Satisfaction',
+                desc: 'Dedicated account management, fast dispatch, and reliable post-sales support.'
+              }
+            ].map((item) => (
               <div 
-                key={title} 
-                  className="card-base hover:shadow-lg transition-all duration-300 p-4 sm:p-5 md:p-6 border-l-4 border-primary-600 group"
-                >
-                  <h3 className="text-sm sm:text-base font-bold text-primary-950 group-hover:text-secondary-700 transition-colors">
-                    {title}
-                  </h3>
-                </div>
+                key={item.title} 
+                className="card-base hover:shadow-lg transition-all duration-300 p-4 sm:p-5 md:p-6 border-l-4 border-primary-600 group space-y-2"
+              >
+                <h3 className="text-sm sm:text-base font-bold text-primary-950 group-hover:text-secondary-700 transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Manufacturing Excellence Section */}
-      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-gradient-to-br from-blue-50 to-indigo-50 border-y-2 border-blue-200" id="manufacturing">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800 border-y border-primary-100" id="manufacturing">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <SectionHeading
+            tone="dark"
             eyebrow="Manufacturing Excellence"
             title="State-of-the-art pharmaceutical manufacturing"
             description="BASDILS operates WHO-GMP certified facilities with advanced quality control systems, ISO certifications, and stringent regulatory compliance to ensure every product meets the highest international standards."
@@ -124,47 +196,47 @@ export function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <div className="space-y-4">
               <div className="flex gap-3 items-start">
-                <div className="w-12 h-12 rounded-lg bg-blue-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-lg">✓</div>
+                <div className="w-12 h-12 rounded-lg bg-secondary-300 text-primary-950 flex items-center justify-center flex-shrink-0 font-bold text-lg"><i className="fa-solid fa-check" aria-hidden="true" /></div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-sm sm:text-base">WHO-GMP Certification</h4>
-                  <p className="text-gray-600 text-xs sm:text-sm mt-1">Compliance with World Health Organization Good Manufacturing Practice standards</p>
+                  <h4 className="font-bold text-white text-sm sm:text-base">WHO-GMP Certification</h4>
+                  <p className="text-primary-100 text-xs sm:text-sm mt-1">Compliance with World Health Organization Good Manufacturing Practice standards</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <div className="w-12 h-12 rounded-lg bg-blue-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-lg">✓</div>
+                <div className="w-12 h-12 rounded-lg bg-secondary-300 text-primary-950 flex items-center justify-center flex-shrink-0 font-bold text-lg"><i className="fa-solid fa-check" aria-hidden="true" /></div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-sm sm:text-base">ISO 9001:2015 Certified</h4>
-                  <p className="text-gray-600 text-xs sm:text-sm mt-1">Quality management system and international best practices</p>
+                  <h4 className="font-bold text-white text-sm sm:text-base">ISO 9001:2015 Certified</h4>
+                  <p className="text-primary-100 text-xs sm:text-sm mt-1">Quality management system and international best practices</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <div className="w-12 h-12 rounded-lg bg-blue-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-lg">✓</div>
+                <div className="w-12 h-12 rounded-lg bg-secondary-300 text-primary-950 flex items-center justify-center flex-shrink-0 font-bold text-lg"><i className="fa-solid fa-check" aria-hidden="true" /></div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-sm sm:text-base">Advanced R&D</h4>
-                  <p className="text-gray-600 text-xs sm:text-sm mt-1">Continuous research and development for innovative formulations</p>
+                  <h4 className="font-bold text-white text-sm sm:text-base">Advanced R&D</h4>
+                  <p className="text-primary-100 text-xs sm:text-sm mt-1">Continuous research and development for innovative formulations</p>
                 </div>
               </div>
             </div>
             <div className="space-y-4">
               <div className="flex gap-3 items-start">
-                <div className="w-12 h-12 rounded-lg bg-indigo-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-lg">✓</div>
+                <div className="w-12 h-12 rounded-lg bg-secondary-300 text-primary-950 flex items-center justify-center flex-shrink-0 font-bold text-lg"><i className="fa-solid fa-check" aria-hidden="true" /></div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-sm sm:text-base">Stringent Quality Control</h4>
-                  <p className="text-gray-600 text-xs sm:text-sm mt-1">In-process and finished product testing with certified laboratories</p>
+                  <h4 className="font-bold text-white text-sm sm:text-base">Stringent Quality Control</h4>
+                  <p className="text-primary-100 text-xs sm:text-sm mt-1">In-process and finished product testing with certified laboratories</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <div className="w-12 h-12 rounded-lg bg-indigo-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-lg">✓</div>
+                <div className="w-12 h-12 rounded-lg bg-secondary-300 text-primary-950 flex items-center justify-center flex-shrink-0 font-bold text-lg"><i className="fa-solid fa-check" aria-hidden="true" /></div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-sm sm:text-base">Regulatory Compliance</h4>
-                  <p className="text-gray-600 text-xs sm:text-sm mt-1">Full compliance with Indian Drugs and Cosmetics Act and regulations</p>
+                  <h4 className="font-bold text-white text-sm sm:text-base">Regulatory Compliance</h4>
+                  <p className="text-primary-100 text-xs sm:text-sm mt-1">Full compliance with Indian Drugs and Cosmetics Act and regulations</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <div className="w-12 h-12 rounded-lg bg-indigo-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-lg">✓</div>
+                <div className="w-12 h-12 rounded-lg bg-secondary-300 text-primary-950 flex items-center justify-center flex-shrink-0 font-bold text-lg"><i className="fa-solid fa-check" aria-hidden="true" /></div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-sm sm:text-base">Traceability Systems</h4>
-                  <p className="text-gray-600 text-xs sm:text-sm mt-1">Complete batch tracking and documentation from raw material to finished product</p>
+                  <h4 className="font-bold text-white text-sm sm:text-base">Traceability Systems</h4>
+                  <p className="text-primary-100 text-xs sm:text-sm mt-1">Complete batch tracking and documentation from raw material to finished product</p>
                 </div>
               </div>
             </div>
@@ -193,11 +265,11 @@ export function HomePage() {
                 key={service.title} 
                 className="card-base hover:shadow-lg transition-all duration-300 p-4 sm:p-5 md:p-6 space-y-2"
               >
-                <div className="text-xs sm:text-sm font-bold text-primary-600">{service.num}</div>
-                <h3 className="text-sm sm:text-base font-bold text-gray-900">
+                <div className="text-xs sm:text-sm font-bold text-secondary-700">{service.num}</div>
+                <h3 className="text-sm sm:text-base font-bold text-primary-950">
                   {service.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-600">
+                <p className="text-xs sm:text-sm text-gray-700">
                   {service.desc}
                 </p>
               </div>
@@ -220,17 +292,17 @@ export function HomePage() {
                 key={testimonial.name}
                 className="card-base space-y-2 sm:space-y-3 border-2 border-gray-200 hover:border-primary-300 hover:shadow-card-hover transition-all duration-300 p-4 sm:p-5 md:p-6"
               >
-                <div className="flex gap-0.5">
+                <div className="flex gap-1 text-amber-400">
                   {Array.from({ length: 5 }).map((_, index) => (
-                    <span key={`${testimonial.name}-${index}`} className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-primary-600" />
+                    <i key={`${testimonial.name}-${index}`} className="fa-solid fa-star text-xs sm:text-sm" />
                   ))}
                 </div>
                 <p className="text-gray-700 italic leading-relaxed text-xs sm:text-sm">
                   "{testimonial.quote}"
                 </p>
                 <div className="pt-2 sm:pt-3 border-t border-gray-200">
-                  <p className="font-bold text-gray-900 text-xs sm:text-sm">{testimonial.name}</p>
-                  <p className="text-xs text-primary-600 font-medium">{testimonial.role}</p>
+                  <p className="font-bold text-primary-950 text-xs sm:text-sm">{testimonial.name}</p>
+                  <p className="text-xs text-secondary-700 font-semibold">{testimonial.role}</p>
                 </div>
               </article>
             ))}
@@ -263,7 +335,7 @@ export function HomePage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-r from-primary-600 to-primary-700">
+      <section className="py-12 md:py-16 lg:py-20 bg-[linear-gradient(135deg,#0d2027_0%,#224951_58%,#2e1d0e_100%)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto space-y-6">
             <div className="space-y-3">
@@ -279,7 +351,7 @@ export function HomePage() {
             </div>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link 
-                className="px-8 py-3 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl inline-block text-center"
+                className="px-8 py-3 bg-white text-primary-950 font-semibold rounded-lg hover:bg-secondary-50 transition-all duration-300 shadow-lg hover:shadow-xl inline-block text-center"
                 to="/contact"
               >
                 Contact BASDILS
@@ -297,3 +369,4 @@ export function HomePage() {
     </>
   );
 }
+

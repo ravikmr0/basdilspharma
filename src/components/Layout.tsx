@@ -34,6 +34,12 @@ export function SiteLayout() {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none"
+      >
+        Skip to main content
+      </a>
       <Header
         menuOpen={menuOpen}
         onToggleMenu={() => setMenuOpen((current) => !current)}
@@ -44,7 +50,7 @@ export function SiteLayout() {
       <Footer />
       {/* Call Button */}
       <a
-        className="fixed bottom-[96px] right-6 w-[60px] h-[60px] bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-xl z-40 sm:text-xl lg:text-2xl sm:w-[65px] sm:h-[65px] lg:w-[70px] lg:h-[70px] sm:bottom-[105px] lg:bottom-[112px]"
+        className="fixed bottom-[96px] right-6 w-[56px] h-[56px] bg-primary-700 hover:bg-primary-800 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-xl z-40 sm:text-xl lg:text-2xl sm:w-[60px] sm:h-[60px] lg:w-[64px] lg:h-[64px] sm:bottom-[105px] lg:bottom-[112px]"
         href="tel:+919931691959"
         aria-label="Call BASDILS"
       >
@@ -53,7 +59,7 @@ export function SiteLayout() {
       
       {/* WhatsApp Button */}
       <a
-        className="fixed bottom-6 right-6 w-[60px] h-[60px] bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-xl z-40 sm:text-xl lg:text-2xl sm:w-[65px] sm:h-[65px] lg:w-[70px] lg:h-[70px]"
+        className="fixed bottom-6 right-6 w-[56px] h-[56px] bg-secondary-600 hover:bg-secondary-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-xl z-40 sm:text-xl lg:text-2xl sm:w-[60px] sm:h-[60px] lg:w-[64px] lg:h-[64px]"
         href="https://wa.me/919931691959"
         target="_blank"
         rel="noreferrer"
