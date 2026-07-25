@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { navigation } from '../data/catalog';
+import { branding } from '../config/branding';
 
 type HeaderProps = {
   menuOpen: boolean;
@@ -39,12 +40,12 @@ export function Header({ menuOpen, onToggleMenu }: HeaderProps) {
             >
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-600 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300 flex-shrink-0">
                 <img
-                  src="/logo.jpeg"
+                  src="/Images/logo.png"
                   alt="BASDILS Logo"
                   width="48"
                   height="48"
                   decoding="async"
-                  className="w-8 h-8 sm:w-10 sm:h-10"
+                  className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
                 />
               </div>
               <div className="hidden xs:flex sm:flex flex-col justify-center min-w-0">
@@ -188,23 +189,26 @@ export function Header({ menuOpen, onToggleMenu }: HeaderProps) {
 
             <div className="p-4 sm:p-6 border-t border-gray-200">
               <div className="flex justify-center gap-3 mb-4">
-                <a href="#" aria-label="LinkedIn" className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary-100 text-gray-600 hover:text-primary-600 flex items-center justify-center transition-all duration-300 text-sm">
+                <a href={branding.socialMedia.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary-100 text-gray-600 hover:text-primary-600 flex items-center justify-center transition-all duration-300 text-sm">
                   <i className="fa-brands fa-linkedin" />
                 </a>
-                <a href="#" aria-label="Facebook" className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary-100 text-gray-600 hover:text-primary-600 flex items-center justify-center transition-all duration-300 text-sm">
+                <a href={branding.socialMedia.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary-100 text-gray-600 hover:text-primary-600 flex items-center justify-center transition-all duration-300 text-sm">
                   <i className="fa-brands fa-facebook" />
                 </a>
-                <a href="#" aria-label="Instagram" className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary-100 text-gray-600 hover:text-primary-600 flex items-center justify-center transition-all duration-300 text-sm">
+                <a href={branding.socialMedia.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary-100 text-gray-600 hover:text-primary-600 flex items-center justify-center transition-all duration-300 text-sm">
                   <i className="fa-brands fa-instagram" />
                 </a>
-                <a href="#" aria-label="Twitter" className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary-100 text-gray-600 hover:text-primary-600 flex items-center justify-center transition-all duration-300 text-sm">
-                  <i className="fa-brands fa-twitter" />
+                <a href={branding.socialMedia.twitter} target="_blank" rel="noreferrer" aria-label="X (Twitter)" className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary-100 text-gray-600 hover:text-primary-600 flex items-center justify-center transition-all duration-300 text-sm">
+                  <i className="fa-brands fa-x-twitter" />
+                </a>
+                <a href={branding.socialMedia.youtube} target="_blank" rel="noreferrer" aria-label="YouTube" className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-primary-100 text-gray-600 hover:text-primary-600 flex items-center justify-center transition-all duration-300 text-sm">
+                  <i className="fa-brands fa-youtube" />
                 </a>
               </div>
             </div>
             
             <a 
-              href="tel:+919931691959"
+              href={`tel:${branding.contact.phone}`}
               className="block mx-3 sm:mx-4 px-3 py-2 mb-3 bg-primary-600 text-white font-semibold rounded-lg text-center hover:bg-primary-700 transition-colors text-xs sm:text-sm"
             >
               <i className="fa-solid fa-phone mr-2" />
